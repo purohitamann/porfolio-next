@@ -27,7 +27,7 @@ export default {
 			},
 		  },
 		  animation: {
-			backgroundFade: 'backgroundFade 5s infinite',
+			backgroundFade: 'backgroundFade 10s infinite',
 			fadeInOut: 'fadeInOut 5s infinite',
 			float: 'float 3s ease-in-out infinite',
 		  },

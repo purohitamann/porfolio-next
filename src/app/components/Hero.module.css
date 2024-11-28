@@ -1,19 +1,21 @@
+/* Background color animation */
 @keyframes backgroundFade {
     0% {
-        background-color: #F2FCE2; /* Previous color */
+        background-color: #F2FCE2; /* Initial color */
     }
     50% {
-        background-color: #EAFBFC; /* New color */
+        background-color: #EAFBFC; /* Transition color */
     }
     100% {
-        background-color: #F2FCE2; /* Previous color */
+        background-color: #F2FCE2; /* Final color */
     }
 }
 
 .fade-background {
-    animation: backgroundFade 5s infinite;
+    animation: backgroundFade 10s infinite;
 }
 
+/* Fade-in-out effect */
 @keyframes fadeInOut {
     0% {
         opacity: 1;
@@ -27,9 +29,10 @@
 }
 
 .fade-in-out {
-    animation: fadeInOut 5s infinite;
+    animation: fadeInOut 10s infinite;
 }
 
+/* Floating effect for the image */
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -42,6 +45,19 @@
     }
 }
 
-.float {
+.animate-float {
     animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .fade-background {
+        animation: backgroundFade 7s infinite;
+    }
+    .h1 {
+        font-size: 2rem;
+    }
+    .p {
+        font-size: 1rem;
+    }
 }
