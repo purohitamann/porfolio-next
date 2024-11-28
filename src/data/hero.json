@@ -1,0 +1,16 @@
+{
+  "hero": {
+    "title": "Hello, I'm Aman Purohit",
+    "description": "I'm a passionate software developer with 3 internship experiences.",
+    "subtitle": "My new portfolio is in the making. Stay tuned!"
+  },
+  "about": {},
+  "work": {},
+  "contact": {},
+  "links": {
+    "github": "https://github.com/purohitamann",
+    "linkedin": "https://www.linkedin.com/in/amanhiranpurohit/",
+    "instagram": "https://www.instagram.com/purohitamann/",
+    "location": "https://maps.app.goo.gl/iydEq5wxTnsgwAxT9"
+  }
+}

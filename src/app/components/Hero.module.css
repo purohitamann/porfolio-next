@@ -1,0 +1,47 @@
+@keyframes backgroundFade {
+    0% {
+        background-color: #F2FCE2; /* Previous color */
+    }
+    50% {
+        background-color: #EAFBFC; /* New color */
+    }
+    100% {
+        background-color: #F2FCE2; /* Previous color */
+    }
+}
+
+.fade-background {
+    animation: backgroundFade 5s infinite;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in-out {
+    animation: fadeInOut 5s infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
