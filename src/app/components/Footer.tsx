@@ -28,6 +28,7 @@ const Footer = () => {
                         <Button variant={"link"} className="text-sm md:text-base">Medium</Button>
                         <Button variant={"link"} className="text-sm md:text-base">LinkedIn</Button>
                         <Button variant={"link"} className="text-sm md:text-base">Instagram</Button>
+                        <Button variant={"link"} className="text-sm md:text-base">GitHub</Button>
                         <Button variant={"link"} className="text-sm md:text-base">Blog</Button>
                     </div>
                 </div>

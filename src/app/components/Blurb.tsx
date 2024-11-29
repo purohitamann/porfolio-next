@@ -1,8 +1,6 @@
 import React from 'react';
 import blurb from '../../data/blurb.json';
 import Link from 'next/link';
-import { Separator } from '@/components/ui/separator';
-
 const Blurb = () => {
     return (
         <div className="h-3/4 w-screen  text-gray-500 font-sans font-medium">

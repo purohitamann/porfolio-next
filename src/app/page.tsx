@@ -1,7 +1,7 @@
-import { Separator } from "@/components/ui/separator";
+
 import Blurb from "./components/Blurb";
 import Hero from "./components/Hero";
-import SectionWrapper from "./components/SectionWrapper";
+
 import Footer from "./components/Footer";
 export default function Home() {
   return (

@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from '@/components/ui/button';
 import { Linkedin } from 'lucide-react';
 import { Instagram } from 'lucide-react';
-
+import { Github } from 'lucide-react';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -33,12 +33,12 @@ const Navbar = () => {
                 {/* Links (Hidden on small screens, visible on medium and larger screens) */}
                 <ul className="hidden md:flex text-black justify-between items-center h-full gap-10">
 
-                    <a href={Hero.links.linkedin} target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">About</Button></a>
+                    <a href="/" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">About</Button></a>
 
 
-                    <a href={Hero.links.linkedin} target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Work</Button></a>
+                    <a href="/" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Work</Button></a>
 
-                    <a href={Hero.links.linkedin} target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Contact</Button></a>
+                    <a href="/" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Contact</Button></a>
 
 
                     {/* <Button
@@ -47,6 +47,7 @@ const Navbar = () => {
                     >
                         LinkedInx
                     </Button> */}
+                    <a href={Hero.links.github} target="_blank" rel="noopener noreferrer"> <Github className='text-gray-600 hover:cursor-pointer hover:text-black ' /></a>
                     <a href={Hero.links.linkedin} target="_blank" rel="noopener noreferrer"> <Linkedin className='text-gray-600 hover:cursor-pointer hover:text-black ' /></a>
                     <a href={Hero.links.instagram} target="_blank" rel="noopener noreferrer"> <Instagram className='text-gray-600 hover:cursor-pointer hover:text-black ' /></a>
 
