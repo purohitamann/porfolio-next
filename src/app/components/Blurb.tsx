@@ -1,12 +1,13 @@
 import React from 'react';
 import blurb from '../../data/blurb.json';
 import Link from 'next/link';
+import { Separator } from '@/components/ui/separator';
 
 const Blurb = () => {
     return (
-        <div className="h-3/4 w-screen text-gray-500 font-sans font-medium">
-            <div className="flex flex-col justify-center items-center align-center h-1/2 md:h-full px-4 lg:px-44 text-center font-normal text-sm  md:text-4xl">
-                <p >
+        <div className="h-3/4 w-screen  text-gray-500 font-sans font-medium">
+            <div className="flex flex-col justify-center items-center h-1/2 md:h-1/2 px-4 lg:px-44 text-center font-normal text-lg md:test-sm  md:text-4xl ">
+                <p className="font-light mt-60 pt-50 md:mt-20 md:pt-40">
                     {blurb.blurb[0].text}
                     <Link className='underline  text-black hover:text-gray-600 hover:animate-backgroundFade' href={blurb.blurb[0].highlight!.link}>
                         {blurb.blurb[0].highlight?.name}
@@ -20,6 +21,8 @@ const Blurb = () => {
                     </Link>{blurb.blurb[2].description}
                 </p>
             </div>
+
+
         </div >
     );
 };

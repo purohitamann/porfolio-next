@@ -4,20 +4,23 @@ import Hero from '../../data/hero.json';
 import Link from 'next/link';
 import { HiMenu, HiX } from 'react-icons/hi'; // Hamburger and Close icons
 import { Separator } from "@/components/ui/separator"
+import { Button } from '@/components/ui/button';
+import { Linkedin } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="w-screen h-20 bg-transparent fixed top-0 left-0 z-50">
-            <div className="flex justify-between items-center px-6 md:px-16 py-8">
+        <div className="w-screen h-20 bg-transparent  top-0 left-0 z-50 md:text-lg fixed">
+            <div className="flex justify-between text-lg items-center px-6 md:px-16 py-8">
                 {/* Logo or Location */}
-                <Link
+                <h1
                     className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
-                    href={Hero.links.location}
+
                 >
-                    Greater Toronto Area
-                </Link>
+                    A
+                </h1>
 
                 {/* Hamburger Icon (Visible on small screens) */}
                 <div
@@ -29,21 +32,24 @@ const Navbar = () => {
 
                 {/* Links (Hidden on small screens, visible on medium and larger screens) */}
                 <ul className="hidden md:flex text-black justify-between items-center h-full gap-10">
-                    <li className="hover:text-gray-600 hover:cursor-pointer">About</li>
-                    <li className="hover:text-gray-600 hover:cursor-pointer">Work</li>
-                    <li className="hover:text-gray-600 hover:cursor-pointer">Contact</li>
-                    <Link
+
+                    <a href={Hero.links.linkedin} target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">About</Button></a>
+
+
+                    <a href={Hero.links.linkedin} target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Work</Button></a>
+
+                    <a href={Hero.links.linkedin} target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Contact</Button></a>
+
+
+                    {/* <Button
                         className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
                         href={Hero.links.linkedin}
                     >
-                        LinkedIn
-                    </Link>
-                    <Link
-                        className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
-                        href={Hero.links.instagram}
-                    >
-                        Instagram
-                    </Link>
+                        LinkedInx
+                    </Button> */}
+                    <a href={Hero.links.linkedin} target="_blank" rel="noopener noreferrer"> <Linkedin className='text-gray-600 hover:cursor-pointer hover:text-black ' /></a>
+                    <a href={Hero.links.instagram} target="_blank" rel="noopener noreferrer"> <Instagram className='text-gray-600 hover:cursor-pointer hover:text-black ' /></a>
+
                 </ul>
             </div>
 

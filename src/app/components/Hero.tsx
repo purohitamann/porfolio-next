@@ -4,8 +4,8 @@ import './Hero.module.css';
 
 const Hero = () => {
     return (
-        <div className="h-3/4 w-screen text-black font-sans font-medium fade-background animate-backgroundFade ">
-            <div className="flex flex-col lg:flex-row justify-center items-center h-full px-4 lg:px-0">
+        <div className="h-3/4 w-screen text-black font-sans  font-medium fade-background animate-backgroundFade ">
+            <div className="flex flex-col  align-center lg:flex-row justify-center items-center h-full px-4 lg:px-0">
                 <div>
                     <img
                         src="/working-memoji.png"
@@ -22,6 +22,7 @@ const Hero = () => {
                 </div>
 
             </div>
+
         </div>
     );
 };
