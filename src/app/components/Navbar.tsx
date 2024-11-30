@@ -12,11 +12,11 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="w-screen h-20 bg-transparent  top-0 left-0 z-50 md:text-lg fixed">
+        <div className="w-screen h-20 bg-transparent animate-backgroundFade  top-0 left-0 z-50 md:text-lg fixed">
             <div className="flex justify-between text-lg items-center px-6 md:px-16 py-8">
                 {/* Logo or Location */}
                 <h1
-                    className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
+                    className="text-black font-bold text-3xl -rotate-45 hover:animate-bounce  hover:rotate-3 hover:underline"
 
                 >
                     A
@@ -33,12 +33,13 @@ const Navbar = () => {
                 {/* Links (Hidden on small screens, visible on medium and larger screens) */}
                 <ul className="hidden md:flex text-black justify-between items-center h-full gap-10">
 
-                    <a href="/" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">About</Button></a>
+                    <a href="#about" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">About</Button></a>
 
 
-                    <a href="/" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Work</Button></a>
+                    <a href="#projects" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Project</Button></a>
+                    <a href="#work" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Experience</Button></a>
 
-                    <a href="/" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Contact</Button></a>
+                    <a href="#contact" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Contact</Button></a>
 
 
                     {/* <Button

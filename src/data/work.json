@@ -1,0 +1,36 @@
+{
+  "work": [
+    {
+      "id": 1,
+      "role": "Software Development Tutor",
+      "company": "Sheridan College",
+      "startDate": "Sepetember 2024",
+      "endDate": "Present",
+      "description": "Guiding 500+ students with modern technologies"
+    },
+    {
+      "id": 2,
+      "role": "Software Engineering Residency",
+      "company": "July 2024",
+      "startDate": "2023",
+      "endDate": "Present",
+      "description": "Deploying AI-driven and full-stack solutions in dynamic team environments."
+    },
+    {
+      "id": 3,
+      "role": "Software Developer Intern",
+      "company": "Zeuty",
+      "startDate": "April 2024",
+      "endDate": "Present",
+      "description": "Developing cross-platform mobile applications for University students."
+    },
+    {
+      "id": 4,
+      "role": "President",
+      "company": "Sheridan Swiftie Club",
+      "startDate": "Oct 2023",
+      "endDate": "Present",
+      "description": "Fostering community engagement by organizing charity events."
+    }
+  ]
+}

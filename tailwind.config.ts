@@ -15,6 +15,11 @@ export default {
 			  '50%': { backgroundColor: '#EAFBFC' },
 			  '100%': { backgroundColor: '#F2FCE2' },
 			},
+			lift: {
+				'0%': { transform: 'translateZ(0px) rotateX(0deg)' },
+				'50%': { transform: 'translateZ(50px) rotateX(10deg)' },
+				'100%': { transform: 'translateZ(0px) rotateX(0deg)' },
+			  },
 			fadeInOut: {
 			  '0%': { opacity: '1' },
 			  '50%': { opacity: '0.5' },
@@ -25,11 +30,17 @@ export default {
 			  '50%': { transform: 'translateY(-10px)' },
 			  '100%': { transform: 'translateY(0)' },
 			},
+			fade:{
+				'0%': { opacity: '0' },
+				'100%': { opacity: '1' },
+			}
 		  },
 		  animation: {
 			backgroundFade: 'backgroundFade 10s infinite',
 			fadeInOut: 'fadeInOut 5s infinite',
 			float: 'float 3s ease-in-out infinite',
+			lift: 'lift 4s ease-in-out infinite',
+			fade: 'fade 1.2s ease-in-out',
 		  },
   		colors: {
   			background: 'hsl(var(--background))',

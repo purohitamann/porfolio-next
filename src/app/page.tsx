@@ -1,12 +1,16 @@
 
 import Blurb from "./components/Blurb";
 import Hero from "./components/Hero";
-
+import SectionWrapper from "./components/SectionWrapper";
 import Footer from "./components/Footer";
+import ScreenWrapper from "./components/ScreenWrapper";
+import Projects from "./components/Projects";
+import Work from "./components/Work";
+import Blog from "./components/Blog";
 export default function Home() {
   return (
     <div className="h-screen w-screen bg-white ">
-      {/* https://www.framer.com/marketplace/templates/olio/ */}
+      {/* https://www.framer.com/marketplace/templates/olio/
       {/* https://www.framer.com/marketplace/templates/clientele/ */}
       {/* https://www.framer.com/marketplace/templates/jane/ */}
       {/* https://www.framer.com/marketplace/templates/cohesion/ */}
@@ -14,18 +18,11 @@ export default function Home() {
 
       <Hero />
       <Blurb />
-      {/* <SectionWrapper title="Projects" >
-        <div className="h-3/4 w-screen flex flex-col justify-center items-center text-black font-sans font-medium">
-        </div>
-      </SectionWrapper>
-      <SectionWrapper title="Work" >
-        <div className="h-3/4 w-screen flex flex-col justify-center items-center text-black font-sans font-medium">
-        </div>
-      </SectionWrapper>
-      <SectionWrapper title="Blog" >
-        <div className="h-3/4 w-screen flex flex-col justify-center items-center text-black font-sans font-medium">
-        </div>
-      </SectionWrapper> */}
+
+      <Projects />
+      <Work />
+      <Blog />
+
       <div>
         <Footer />
       </div>
