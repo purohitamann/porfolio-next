@@ -1,12 +1,13 @@
 
 import Blurb from "./components/Blurb";
 import Hero from "./components/Hero";
-import SectionWrapper from "./components/SectionWrapper";
+
 import Footer from "./components/Footer";
-import ScreenWrapper from "./components/ScreenWrapper";
+
 import Projects from "./components/Projects";
 import Work from "./components/Work";
 import Blog from "./components/Blog";
+import HoverFrame from "./components/HoverFrame";
 export default function Home() {
   return (
     <div className="h-screen w-screen bg-white ">
@@ -18,10 +19,11 @@ export default function Home() {
 
       <Hero />
       <Blurb />
-
+      <Blog />
       <Projects />
       <Work />
-      <Blog />
+
+
 
       <div>
         <Footer />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 const ProjectFrame = ({
     image,
     name,
@@ -14,9 +15,11 @@ const ProjectFrame = ({
     className?: string;
 }) => {
     return (
-        <>
-            <div className="relative flex flex-col justify-start items-start  text-start cursor-pointer transition-transform duration-300 hover:scale-105 hover:rotate-2 hover:opacity-85 p-4 ">
 
+
+
+        <div className="relative flex flex-col justify-start items-start  text-start cursor-pointer transition-transform duration-300 hover:scale-105 hover:rotate-2 hover:opacity-85 p-4 ">
+            <Link href={link}>
 
                 <div className={`relative  bg-gray-100 rounded-lg shadow-lg flex flex-col items-center justify-center overflow-hidden hover:shadow-2xl ${className}`}>
                     {/* Project Image */}
@@ -46,8 +49,10 @@ const ProjectFrame = ({
 
                     </div>
                 </div>
-            </div>
-        </>
+            </Link>
+        </div>
+
+
     );
 };
 

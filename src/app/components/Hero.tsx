@@ -1,7 +1,6 @@
 import React from 'react';
 import hero from '../../data/hero.json';
 import './Hero.module.css';
-import { motion } from 'framer-motion';
 export default function Hero() {
 
     // animate() function

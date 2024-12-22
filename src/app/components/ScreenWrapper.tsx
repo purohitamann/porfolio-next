@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-export default function ScreenWrapper({ children, className }: { children: React.ReactNode, className?: string }) {
+export default function ScreenWrapper({ children }: { children: React.ReactNode, className?: string }) {
 
     return (
         <div className="perspective-1000">

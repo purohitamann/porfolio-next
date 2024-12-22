@@ -1,20 +1,15 @@
 {
   "work": [
     {
-      "id": 1,
-      "role": "Software Development Tutor",
-      "company": "Sheridan College",
-      "startDate": "Sepetember 2024",
-      "endDate": "Present",
-      "description": "Guiding 500+ students with modern technologies"
-    },
-    {
       "id": 2,
-      "role": "Software Engineering Residency",
-      "company": "July 2024",
+      "role": "Software Engineering Resident",
+      "company": "Headstarter AI",
       "startDate": "2023",
       "endDate": "Present",
-      "description": "Deploying AI-driven and full-stack solutions in dynamic team environments."
+      "description": "Deploying AI-driven and full-stack solutions in dynamic team environments.",
+      "link": "https://headstarter.co/",
+      "linkLabel": "Headstarter AI",
+      "logo": "headstarter.avif"
     },
     {
       "id": 3,
@@ -22,7 +17,27 @@
       "company": "Zeuty",
       "startDate": "April 2024",
       "endDate": "Present",
-      "description": "Developing cross-platform mobile applications for University students."
+      "description": "Developing cross-platform mobile applications for University students.",
+      "link": "https://www.linkedin.com/company/zeuty"
+    },
+
+    {
+      "id": 5,
+      "role": "Peer Mentor",
+      "company": "Sheridan College",
+      "startDate": "December 2024",
+      "endDate": "Present",
+      "description": "Student Leader at Sheridan College.",
+      "link": "https://www.sheridancollege.ca/newsroom/articles/community/students-helping-students-sheridans-peer-mentor-program"
+    },
+    {
+      "id": 1,
+      "role": "Software Development Learning Assistant",
+      "company": "Sheridan College",
+      "startDate": "Sepetember 2024",
+      "endDate": "December 2024",
+      "description": "Guided 500+ students with modern technologies",
+      "link": "https://www.sheridancollege.ca/"
     },
     {
       "id": 4,
@@ -30,7 +45,8 @@
       "company": "Sheridan Swiftie Club",
       "startDate": "Oct 2023",
       "endDate": "Present",
-      "description": "Fostering community engagement by organizing charity events."
+      "description": "Fostering community engagement by organizing charity events.",
+      "link": "https://sheridanswiftieclub.vercel.app"
     }
   ]
 }

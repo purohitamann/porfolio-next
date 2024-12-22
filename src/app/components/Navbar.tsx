@@ -33,13 +33,13 @@ const Navbar = () => {
                 {/* Links (Hidden on small screens, visible on medium and larger screens) */}
                 <ul className="hidden md:flex text-black justify-between items-center h-full gap-10">
 
-                    <a href="#about" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">About</Button></a>
+                    <a href="#about" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">About</Button></a>
 
 
-                    <a href="#projects" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Project</Button></a>
-                    <a href="#work" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Experience</Button></a>
+                    <a href="#projects" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Project</Button></a>
+                    <a href="#work" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Experience</Button></a>
 
-                    <a href="#contact" target="_blank" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Contact</Button></a>
+                    <a href="#contact" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Contact</Button></a>
 
 
                     {/* <Button
@@ -61,34 +61,42 @@ const Navbar = () => {
                     <ul className="flex flex-col items-center gap-2 w-1/2 mx-auto   ">
                         <li
                             className="hover:text-gray-600 hover:cursor-pointer "
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => { setIsOpen(false); window.location.href = "#about" }}
                         >
                             About
                         </li>
                         <Separator />
                         <li
                             className="hover:text-gray-600 hover:cursor-pointer"
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => { setIsOpen(false); window.location.href = "#work" }}
                         >
                             Work
                         </li>    <Separator />
                         <li
                             className="hover:text-gray-600 hover:cursor-pointer"
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => { setIsOpen(false); window.location.href = "#contact" }}
                         >
                             Contact
                         </li>    <Separator />
                         <Link
                             className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
                             href={Hero.links.linkedin}
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => { setIsOpen(false); window.location.href = Hero.links.linkedin }}
                         >
                             LinkedIn
                         </Link>    <Separator />
                         <Link
                             className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
                             href={Hero.links.instagram}
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => { setIsOpen(false); window.location.href = Hero.links.github }}
+                        >
+                            Github
+                        </Link>
+                        <Separator />
+                        <Link
+                            className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
+                            href={Hero.links.instagram}
+                            onClick={() => { setIsOpen(false); window.location.href = Hero.links.instagram }}
                         >
                             Instagram
                         </Link>
