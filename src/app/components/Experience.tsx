@@ -14,7 +14,7 @@ interface Props {
 
 export default function Experience({ role, company, startDate, endDate, description, key, link }: Props) {
     return (
-        <div className="h-auto w-full md:w-1/2 p-4" id={`${key}`}>
+        <div className="h-auto w-full  p-4" id={`${key}`}>
             <div className="flex flex-col  md:items-start md:justify-start">
                 <h1 className="text-2xl font-semibold">{role}</h1>
                 <div className="text-lg hover:text-gray-600 hover:animate-backgroundFade"> <HoverFrame name={company!} url={link} /></div>

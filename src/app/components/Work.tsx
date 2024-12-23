@@ -2,52 +2,62 @@ import React from 'react';
 import SectionWrapper from './SectionWrapper';
 import Experience from './Experience';
 import experience from '../../data/work.json';
+import Image from 'next/image';
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 
 
 const Work = () => {
     return (
         <SectionWrapper title="Experience">
-            <div className="flex flex-col justify-center w-full items-center md:justify-end md:items-end" id='work'>
-                {experience.work.map((work: { id: number, link: string, role: string; company: string; startDate: string; endDate: string; description: string; }, index: number) => (
-                    <Experience
-                        key={work.id}
-                        role={work.role}
-                        company={work.company}
-                        startDate={work.startDate}
-                        endDate={work.endDate}
-                        description={work.description}
-                        link={work.link}
-                    />
-                ))}
+            <div className="flex flex-row justify-center w-full" id='work'>
+                <div className=" hidden md:flex flex-col justify-center  items-center  h-full  ">
+                    <div>  {logoAvatar("/logo/headstarter.jpeg", "https://headstarter.co")}</div>
+                    <div>  {logoAvatar("/logo/zeuty.jpeg", "https://www.linkedin.com/company/zeuty")}</div>
+                    <div> {logoAvatar("/logo/sheridan.jpeg", "https://www.sheridancollege.ca/newsroom/articles/community/students-helping-students-sheridans-peer-mentor-program")}</div>
+                    <div> {logoAvatar("/logo/sheridan.jpeg", "https://www.sheridancollege.ca")}</div>
+                    <div>  {logoAvatar("/logo/ssc.jpeg", "https://sheridanswiftieclub.vercel.app")}</div>
+
+                </div>
+
+
+
+                <div className="  p-4">
+
+
+                    {experience.work.map((work: { id: number, link: string, role: string; company: string; startDate: string; endDate: string; description: string; }, index: number) => (
+                        <Experience
+                            key={work.id}
+                            role={work.role}
+                            company={work.company}
+                            startDate={work.startDate}
+                            endDate={work.endDate}
+                            description={work.description}
+                            link={work.link}
+                        />
+                    ))}
+
+                </div>
 
 
             </div>
-        </SectionWrapper>
+        </SectionWrapper >
     );
 };
 
 export default Work;
-// import React from 'react';
-// import Experience from './Experience';
-// import workData from '../../data/work.json';
 
+export function logoAvatar(imgpath: string, url: string) {
+    return (
+        <div className="flex flex-row justify-center w-[100px] items-center rounded-full h-full m-7 overflow-hidden border-8  hover:animate-backgroundFade">
+            <HoverCard>   <HoverCardTrigger> <Image src={`${imgpath}`} alt="" width={100} height={400} /></HoverCardTrigger>
+                <HoverCardContent className='min-w-[500px] h-[500px]' >
+                    <iframe
+                        src={`${url}`}
+                        className='w-full h-full'
+                    ></iframe>
+                </HoverCardContent>
+            </HoverCard>
 
-// const App = () => {
-//     return (
-//         <div className="flex flex-wrap">
-//             {workData.work.map((work) => (
-//                 <Experience
-//                     key={work.id}
-//                     role={work.role}
-//                     company={work.company}
-//                     startDate={work.startDate}
-//                     endDate={work.endDate}
-//                     description={work.description}
-//                     link={work.link}
-//                 />
-//             ))}
-//         </div>
-//     );
-// };
-
-// export default App;
+        </div>
+    )
+}

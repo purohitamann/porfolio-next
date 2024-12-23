@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import SectionWrapper from './SectionWrapper';
 import ProjectFrame from './ProjectFrame';
