@@ -1,35 +1,35 @@
 {
   "project": {
     "featured": {
-      "image": "/projects/btm.png",
+      "image": "/btm.png",
       "name": "Brain Tumor Classification Model",
       "techStack": "Streamlit, Python, Tensorflow, Gemini",
       "link": "https://github.com/purohitamann/BrainTumorClassficationModel"
     },
     "projects": [
       {
-        "image": "/projects/pr.png",
+        "image": "/pr.png",
         "name": "ALT - PR Review Agent",
         "techStack": "Typescript, Groq, Github API",
         "link": "https://github.com/purohitamann/PR-ReviewAgent"
       },
       {
-        "image": "/projects/ssc.png",
+        "image": "/ssc.png",
         "name": "Sheridan Swiftie Club Portal",
         "techStack": "React(Next.js), Tailwind, Firebase",
         "link": "https://github.com/purohitamann/sheridan-swiftie-club"
       },
       {
-        "image": "/projects/chm.png",
+        "image": "/chm.png",
         "name": "Customer Churn Prediction Model",
         "techStack": "Streamlit, Python, llama, Pandas, Matplotlib",
         "link": "https://github.com/purohitamann/ChurnPredictionModel"
       },
       {
-        "image": "/projects/mca.png",
-        "name": "Multimodal Complaint Analyzer",
-        "techStack": "React(Next.js), Tailwind, GCP ",
-        "link": "https://github.com/purohitamann/multimodal-complaint-analyzer/"
+        "image": "/pentagram.png",
+        "name": "Pentagram - Realtime Image Diffusion",
+        "techStack": "React(Next.js), Tailwind, Supabase, Modal GPU, Stable Diffusion 3.5 Turbo ",
+        "link": "https://github.com/purohitamann/pentagram"
       }
     ]
   }

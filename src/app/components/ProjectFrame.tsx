@@ -1,6 +1,8 @@
+'use client';
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 const ProjectFrame = ({
     image,
     name,
@@ -19,11 +21,13 @@ const ProjectFrame = ({
 
 
         <div className="relative flex flex-col justify-start items-start  text-start cursor-pointer transition-transform duration-300 hover:scale-105 hover:rotate-2 hover:opacity-85 p-4 ">
-            <Link href={link}>
+            <Link href={link!}>
 
                 <div className={`relative  bg-gray-100 rounded-lg shadow-lg flex flex-col items-center justify-center overflow-hidden hover:shadow-2xl ${className}`}>
                     {/* Project Image */}
-                    <img
+                    <Image
+                        width={500}
+                        height={500}
                         src={image}
                         alt={name}
                         className={`w-full h-full object-cover rounded-8 absoluten ${className}`}

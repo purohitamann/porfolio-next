@@ -1,6 +1,6 @@
 import React from 'react'
 import SectionWrapper from './SectionWrapper'
-import Highlight from './Highlight'
+
 import BlogFrame from './BlogFrame'
 
 const Blog = () => {
