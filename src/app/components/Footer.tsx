@@ -2,9 +2,12 @@ import React from 'react';
 import footer from '../../data/footer.json';
 import { Button } from '@/components/ui/button';
 
-const Footer = () => {
+type Props = {
+    className?: string;
+}
+const Footer = ({ className }: Props) => {
     return (
-        <div className="h-auto w-full text-black font-sans relative font-medium animate-backgroundFade" id="contact">
+        <div className={`h-auto w-full text-black font-sans relative font-medium animate-backgroundFade ${className}`} id="contact">
 
             {/* Main Container */}
             <div className="flex flex-col justify-center items-center w-full px-4 md:px-20 lg:px-44 py-10">

@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="h-screen w-screen bg-white ">
 
-        <div>
+        <div className="w-screen mb-10">
           <Navbar />
         </div>
         <section className="h-full w-screen flex flex-col justify-center items-center text-black font-sans ">
