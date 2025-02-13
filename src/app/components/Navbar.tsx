@@ -19,7 +19,7 @@ const Navbar = () => {
                     className="text-black font-bold text-3xl -rotate-45 hover:animate-bounce  hover:rotate-3 hover:underline"
 
                 >
-                    A
+                    <Link href="/" rel="noopener noreferrer">A</Link>
                 </h1>
 
                 {/* Hamburger Icon (Visible on small screens) */}
@@ -36,7 +36,7 @@ const Navbar = () => {
                     <a href="#about" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">About</Button></a>
 
 
-                    <a href="#projects" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Project</Button></a>
+                    <a href="projects" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Project</Button></a>
                     <a href="#work" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Experience</Button></a>
 
                     <a href="#contact" rel="noopener noreferrer"> <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Contact</Button></a>

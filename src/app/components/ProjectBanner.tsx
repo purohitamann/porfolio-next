@@ -31,6 +31,7 @@ const ProjectFrame = () => {
                             <Tags />
                             <Tags />
                             <Tags />
+                            <Tags />
                         </div>
                     </div>
                 </div>
