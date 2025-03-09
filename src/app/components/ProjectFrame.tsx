@@ -4,6 +4,7 @@ import { Github, Heart } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { supabase } from '@/utils/supabase';
+import { useCursorHover } from '../hooks/useCursorHover';
 
 const ProjectFrame = ({
     image,
@@ -21,6 +22,8 @@ const ProjectFrame = ({
     projectId?: number;
 }) => {
     const [likes, setLikes] = useState(0);
+    const linkCursorHandlers = useCursorHover('link');
+    const hoverCursorHandlers = useCursorHover('hover');
 
     useEffect(() => {
         // Only fetch likes if projectId is provided
@@ -59,7 +62,7 @@ const ProjectFrame = ({
     }, [projectId]);
 
     return (
-        <div className="flex justify-start items-start text-start transition-transform duration-300 hover:scale-[1.02] p-4">
+        <div className="flex justify-start items-start text-start transition-transform duration-300 hover:scale-[1.02] p-4" {...hoverCursorHandlers}>
             <Link href="/projects" className="w-full h-full cursor-pointer">
                 <div className={`relative bg-white rounded-lg shadow-lg overflow-hidden flex flex-col ${className}`}>
                     {/* Top - Image */}
@@ -88,6 +91,7 @@ const ProjectFrame = ({
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
                                 onClick={(e) => e.stopPropagation()}
+                                {...linkCursorHandlers}
                             >
                                 <Github className="h-5 w-5" />
                                 <span>View Code</span>
