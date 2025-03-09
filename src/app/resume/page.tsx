@@ -44,9 +44,10 @@ export default function ResumePage() {
         )}
         
         {/* Resume iframe */}
-        <div className={`w-full p-2 h-screen flex rounded-lg shadow-lg overflow-hidden transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <div className={`w-full  h-screen flex rounded-lg shadow-lg overflow-hidden transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
           <iframe 
             src="https://docs.google.com/document/d/e/2PACX-1vR2loirhku4bmZ2SFh3Bh1m5ad6PqQOOC1C7uGUBUhDJ4d_kgMji4DNIqWKBEdDy16AGy6gLgHjjTIW/pub?embedded=true"
+            // src='https://docs.google.com/document/d/e/2PACX-1vR2loirhku4bmZ2SFh3Bh1m5ad6PqQOOC1C7uGUBUhDJ4d_kgMji4DNIqWKBEdDy16AGy6gLgHjjTIW/pub'
             className="w-full h-full border-0"
             
             allowFullScreen
