@@ -16,7 +16,8 @@ const Projects = () => {
                             name={`${project.project.featured.name}`}
                             techStack={`${project.project.featured.techStack}`}
                             link={`${project.project.featured.link}`}
-                            className="w-full md:w-[70vw] h-[300px]"
+                            className="w-full md:w-[70vw] h-[60vh]"
+                            projectId={project.project.featured.id}
                         />
                     </div>
 
@@ -29,7 +30,8 @@ const Projects = () => {
                                 name={proj.name}
                                 techStack={proj.techStack}
                                 link={proj.link}
-                                className="w-full h-[250px]"
+                                className="w-full h-[60vh]"
+                                projectId={proj.id}
                             />
                         ))}
                     </div>

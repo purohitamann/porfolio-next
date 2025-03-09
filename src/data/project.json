@@ -1,6 +1,7 @@
 {
   "project": {
     "featured": {
+      "id": 1,
       "image": "/btm.png",
       "name": "Brain Tumor Classification Model",
       "techStack": "Streamlit, Python, Tensorflow, Gemini",
@@ -8,24 +9,28 @@
     },
     "projects": [
       {
+        "id": 2,
         "image": "/pr.png",
         "name": "ALT - PR Review Agent",
         "techStack": "Typescript, Groq, Github API",
         "link": "https://github.com/purohitamann/PR-ReviewAgent"
       },
       {
+        "id": 3,
         "image": "/ssc.png",
         "name": "Sheridan Swiftie Club Portal",
         "techStack": "React(Next.js), Tailwind, Firebase",
         "link": "https://github.com/purohitamann/sheridan-swiftie-club"
       },
       {
+        "id": 4,
         "image": "/chm.png",
         "name": "Customer Churn Prediction Model",
         "techStack": "Streamlit, Python, llama, Pandas, Matplotlib",
         "link": "https://github.com/purohitamann/ChurnPredictionModel"
       },
       {
+        "id": 5,
         "image": "/pentagram.png",
         "name": "Pentagram - Realtime Image Diffusion",
         "techStack": "React(Next.js), Tailwind, Supabase, Modal GPU, Stable Diffusion 3.5 Turbo ",
