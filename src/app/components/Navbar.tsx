@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Hero from '../../data/hero.json';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { HiMenu, HiX } from 'react-icons/hi'; // Hamburger and Close icons
 import { Separator } from "@/components/ui/separator"
 import { Button } from '@/components/ui/button';
@@ -12,7 +13,29 @@ import { useCursorHover } from '../hooks/useCursorHover';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    /**
+     * A constant that holds the handlers for cursor hover effects on links.
+     * 
+     * This is initialized using the `useCursorHover` hook with the argument 'link',
+     * which likely sets up specific cursor styles or behaviors when hovering over links.
+     */
     const linkCursorHandlers = useCursorHover('link');
+    const router = useRouter();
+
+    const scrollToSection = (sectionId: string) => {
+        setIsOpen(false);
+        
+        // If we're on the homepage, scroll to the section
+        if (window.location.pathname === '/') {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else {
+            // If we're on another page, navigate to homepage and then scroll
+            router.push(`/#${sectionId}`);
+        }
+    };
 
     return (
         <div className="w-screen h-20 bg-transparent animate-backgroundFade top-0 left-0 z-50 md:text-lg fixed">
@@ -36,21 +59,24 @@ const Navbar = () => {
 
                 {/* Links (Hidden on small screens, visible on medium and larger screens) */}
                 <ul className="hidden md:flex text-black justify-between items-center h-full gap-10">
-                    <a href="#about" rel="noopener noreferrer" {...linkCursorHandlers}> 
+                    <div onClick={() => scrollToSection('about')} {...linkCursorHandlers}> 
                         <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">About</Button>
-                    </a>
+                    </div>
 
-                    <a href="projects" rel="noopener noreferrer" {...linkCursorHandlers}> 
+                    <Link href="/projects" {...linkCursorHandlers}> 
                         <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Project</Button>
-                    </a>
+                    </Link>
                     
-                    <a href="#work" rel="noopener noreferrer" {...linkCursorHandlers}> 
+                    <Link href="/work" {...linkCursorHandlers}> 
                         <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Experience</Button>
-                    </a>
+                    </Link>
+                    <Link href="/resume" {...linkCursorHandlers}> 
+                        <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Resume</Button>
+                    </Link>
 
-                    <a href="#contact" rel="noopener noreferrer" {...linkCursorHandlers}> 
+                    <div onClick={() => scrollToSection('contact')} {...linkCursorHandlers}> 
                         <Button className="hover:text-gray-600 hover:cursor-pointer text-lg" variant="link">Contact</Button>
-                    </a>
+                    </div>
 
                     <a href={Hero.links.github} target="_blank" rel="noopener noreferrer" {...linkCursorHandlers}> 
                         <Github className='text-gray-600 hover:cursor-pointer hover:text-black' />
@@ -72,7 +98,7 @@ const Navbar = () => {
                     <ul className="flex flex-col items-center gap-2 w-1/2 mx-auto">
                         <li
                             className="hover:text-gray-600 hover:cursor-pointer"
-                            onClick={() => { setIsOpen(false); window.location.href = "#about" }}
+                            onClick={() => scrollToSection('about')}
                             {...linkCursorHandlers}
                         >
                             About
@@ -80,7 +106,7 @@ const Navbar = () => {
                         <Separator />
                         <li
                             className="hover:text-gray-600 hover:cursor-pointer"
-                            onClick={() => { setIsOpen(false); window.location.href = "#work" }}
+                            onClick={() => router.push('/work')}
                             {...linkCursorHandlers}
                         >
                             Work
@@ -88,7 +114,7 @@ const Navbar = () => {
                         <Separator />
                         <li
                             className="hover:text-gray-600 hover:cursor-pointer"
-                            onClick={() => { setIsOpen(false); window.location.href = "#contact" }}
+                            onClick={() => scrollToSection('contact')}
                             {...linkCursorHandlers}
                         >
                             Contact
@@ -97,7 +123,7 @@ const Navbar = () => {
                         <Link
                             className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
                             href={Hero.links.linkedin}
-                            onClick={() => { setIsOpen(false); window.location.href = Hero.links.linkedin }}
+                            onClick={(e) => { e.stopPropagation(); window.open(Hero.links.linkedin, '_blank'); }}
                             {...linkCursorHandlers}
                         >
                             LinkedIn
@@ -105,8 +131,8 @@ const Navbar = () => {
                         <Separator />
                         <Link
                             className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
-                            href={Hero.links.instagram}
-                            onClick={() => { setIsOpen(false); window.location.href = Hero.links.github }}
+                            href={Hero.links.github}
+                            onClick={(e) => { e.stopPropagation(); window.open(Hero.links.github, '_blank'); }}
                             {...linkCursorHandlers}
                         >
                             Github
@@ -115,7 +141,7 @@ const Navbar = () => {
                         <Link
                             className="text-black hover:text-gray-600 hover:cursor-pointer hover:rotate-3 hover:underline"
                             href={Hero.links.instagram}
-                            onClick={() => { setIsOpen(false); window.location.href = Hero.links.instagram }}
+                            onClick={(e) => { e.stopPropagation(); window.open(Hero.links.instagram, '_blank'); }}
                             {...linkCursorHandlers}
                         >
                             Instagram

@@ -27,7 +27,7 @@ export default function ProjectsPage() {
                     projects.map((project) => (
                         <ProjectFrame
                             key={project.id}
-                            image={'/default.png'} // Replace with actual image if available
+                            image={project.img} // Replace with actual image if available
                             name={project.name}
                             techStack={project.technologiesUsed.join(', ')}
                             problemStatement={project.problemStatement}
