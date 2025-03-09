@@ -86,7 +86,7 @@ const ProjectBanner: React.FC<ProjectProps> = ({
         }
         
         setIsLiked(true);
-        setProjectLikes(prev => prev + 1);
+        setProjectLikes(prev => prev + 1 );
     };
     
     const handleClick = () => {
@@ -118,6 +118,14 @@ const ProjectBanner: React.FC<ProjectProps> = ({
                             <div>
                                 <h2 className="text-sm font-semibold text-gray-700">Problem</h2>
                                 <p className="text-sm md:text-base text-gray-600 line-clamp-2">{problemStatement}</p>
+                            </div>
+                            <div>
+                                <h2 className="text-sm font-semibold text-gray-700">Solution</h2>
+                                <p className="text-sm md:text-base text-gray-600 line-clamp-2">{solution}</p>
+                            </div>
+                            <div>
+                                <h2 className="text-sm font-semibold text-gray-700">Future Iteration</h2>
+                                <p className="text-sm md:text-base text-gray-600 line-clamp-2">{futureIteration}</p>
                             </div>
                             <div className="flex flex-wrap gap-2 mt-3">
                                 {tags.map((tag, index) => (
