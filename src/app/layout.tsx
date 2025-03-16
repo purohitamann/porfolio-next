@@ -21,7 +21,7 @@ export default function RootLayout({
         <body className="h-screen w-screen bg-white cursor-none">
           <CustomCursor />
           <div className="w-screen mb-10">
-            <Navbar />
+            {/* <Navbar /> */}
           </div>
           <section className="h-full w-screen flex flex-col justify-center items-center text-black font-sans">
             {children}
