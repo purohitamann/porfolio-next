@@ -1,36 +1,19 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import GitHubPreview from './GithubPreview'
 
-import {
-    HoverCard,
-    HoverCardContent,
-    HoverCardTrigger,
-} from "@/components/ui/hover-card"
+const Page = () => {
+    
 
-const page = () => {
     return (
-        <div className='h-screen md:h-screen w-screen bg-white '>
-            {/* <iframe
-                src="https://headstarter.co/"
-                className=''
-            ></iframe> */}
-            <div>
-                <div className='bg-blue-400 flex flex-col justify-center w-full items-center' id='work'>
+        <div className='h-auto w-screen bg-white flex '>
+            {/* GitHub Repo Preview */}
+            <GitHubPreview url="https://github.com/purohitamann/BrainTumorClassficationModel" />
+<GitHubPreview url="https://github.com/HeyPuter/puter/pull/1175" />
+<GitHubPreview url="https://github.com/internetarchive/openlibrary/pull/10152" />
 
-
-                    <HoverCard>
-                        <HoverCardTrigger>Hover</HoverCardTrigger>
-                        <HoverCardContent className='min-w-[500px] h-[500px]' >
-                            <iframe
-                                src="https://headstarter.co"
-                                className='w-full h-full'
-                            ></iframe>
-                        </HoverCardContent>
-                    </HoverCard>
-                </div>
-            </div>
         </div>
     )
 }
-
-export default page
+2
+export default Page
