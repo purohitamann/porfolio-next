@@ -32,7 +32,7 @@ const GitHubRepoPreview = ({ repoUrl }) => {
     }, [repoUrl])
 
     return (
-        <div className="flex items-center justify-center p-4">
+        <div className="flex items-center justify-center p-6">
             {error ? (
                 <p className="text-red-500">{error}</p>
             ) : repo ? (
