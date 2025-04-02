@@ -1,7 +1,9 @@
 'use client'
 import React from 'react'
 
-const Highlights = ({ children }) => {
+import { ReactNode } from 'react';
+
+const Highlights = ({ children }: { children: ReactNode }) => {
     return (
         <div className="relative flex items-center justify-center p-6">
             {/* Pixelated Cloud Effect */}

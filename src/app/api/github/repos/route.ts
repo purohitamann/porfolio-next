@@ -45,14 +45,14 @@ export async function GET() {
         const repos = await reposResponse.json();
 
         // Return repositories **without README**
-        const repoData = repos.map(repo => ({
+        const repoData = repos.map((repo: { name: string; language: string; html_url: string; }) => ({
             name: repo.name,
             techStack: repo.language || "Not specified",
             githubLink: repo.html_url,
         }));
 
         return NextResponse.json(repoData);
-    } catch (error) {
-        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    } catch (_error) {
+        return NextResponse.json({ error: `Internal Server Error${_error}` }, { status: 500 });
     }
 }

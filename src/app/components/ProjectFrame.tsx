@@ -1,10 +1,24 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Github, Heart } from 'lucide-react';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import { Github } from 'lucide-react';
 import Image from 'next/image';
-import { supabase } from '@/utils/supabase';
 import { useCursorHover } from '../hooks/useCursorHover';
+import ProjectModal from './ProjectModal';
+import FloatingElement from './FloatingElement';
+import { motion } from 'framer-motion';
+
+interface ProjectFrameProps {
+    image: string;
+    name: string;
+    techStack: string;
+    link: string;
+    className?: string;
+    projectId?: number;
+    description?: string;
+    features?: string[];
+    challenges?: string[];
+    learnings?: string[];
+}
 
 const ProjectFrame = ({
     image,
@@ -12,102 +26,77 @@ const ProjectFrame = ({
     techStack,
     link,
     className,
-    projectId
-}: {
-    image: string;
-    name: string;
-    techStack: string;
-    link: string;
-    className?: string;
-    projectId?: number;
-}) => {
-    const [likes, setLikes] = useState(0);
+
+    description,
+    features,
+    challenges,
+    learnings
+}: ProjectFrameProps) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const linkCursorHandlers = useCursorHover('link');
     const hoverCursorHandlers = useCursorHover('hover');
 
-    useEffect(() => {
-        // Only fetch likes if projectId is provided
-        if (projectId) {
-            const fetchLikes = async () => {
-                const { data, error } = await supabase
-                    .from('Project')
-                    .select('likes')
-                    .eq('id', projectId)
-                    .single();
-                    
-                if (!error && data) {
-                    setLikes(data.likes || 0);
-                }
-            };
-            
-            fetchLikes();
-            
-            // Set up real-time subscription if projectId exists
-            const subscription = supabase
-                .channel(`project-${projectId}`)
-                .on('postgres_changes', { 
-                    event: 'UPDATE', 
-                    schema: 'public', 
-                    table: 'Project',
-                    filter: `id=eq.${projectId}` 
-                }, (payload) => {
-                    setLikes(payload.new.likes || 0);
-                })
-                .subscribe();
-                
-            return () => {
-                subscription.unsubscribe();
-            };
-        }
-    }, [projectId]);
-
     return (
-        <div className="flex justify-start items-start text-start transition-transform duration-300 hover:scale-[1.02] p-4" {...hoverCursorHandlers}>
-            <Link href="/projects" className="w-full h-full cursor-pointer">
-                <div className={`relative bg-white rounded-lg shadow-lg overflow-hidden flex flex-col ${className}`}>
-                    {/* Top - Image */}
-                    <div className="w-full h-3/4 relative">
-                        <Image
-                            width={500}
-                            height={500}
-                            src={image}
-                            alt={name}
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
+        <>
+            <FloatingElement>
+                <motion.div 
+                    className="flex justify-start items-start text-start p-4 cursor-pointer" 
+                    onClick={() => setIsModalOpen(true)}
+                    {...hoverCursorHandlers}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <div className={`relative bg-background rounded-2xl border border-border overflow-hidden flex flex-col ${className}`}>
+                        <div className="w-full h-3/4 relative">
+                            <Image
+                                width={500}
+                                height={500}
+                                src={image}
+                                alt={name}
+                                className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
+                            />
+                        </div>
 
-                    {/* Bottom - Content */}
-                    <div className="w-full p-5 bg-white">
-                        <div className="mb-2">
-                            <h3 className="text-xl font-semibold text-gray-900 line-clamp-1">{name}</h3>
-                        </div>
-                        
-                        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{techStack}</p>
-                        
-                        <div className="flex items-center justify-between">
-                            <a
-                                href={link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-                                onClick={(e) => e.stopPropagation()}
-                                {...linkCursorHandlers}
-                            >
-                                <Github className="h-5 w-5" />
-                                <span>View Code</span>
-                            </a>
+                        <div className="w-full p-5 bg-background">
+                            <div className="mb-2">
+                                <h3 className="text-xl font-semibold text-foreground line-clamp-1">{name}</h3>
+                            </div>
                             
-                            {projectId && (
-                                <div className="flex items-center gap-1 text-gray-500">
-                                    <Heart className="h-4 w-4" />
-                                    <span className="text-sm">{likes}</span>
-                                </div>
-                            )}
+                            <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{techStack}</p>
+                            
+                            <div className="flex items-center justify-between">
+                                <a
+                                    href={link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                                    onClick={(e) => e.stopPropagation()}
+                                    {...linkCursorHandlers}
+                                >
+                                    <Github className="h-5 w-5" />
+                                    <span>View Code</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </Link>
-        </div>
+                </motion.div>
+            </FloatingElement>
+
+            <ProjectModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                project={{
+                    name,
+                    image,
+                    techStack,
+                    link,
+                    description,
+                    features,
+                    challenges,
+                    learnings
+                }}
+            />
+        </>
     );
 };
 

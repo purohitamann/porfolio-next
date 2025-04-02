@@ -16,14 +16,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <CursorProvider>
-        <body className="h-screen w-screen bg-white cursor-none">
+        <body className="h-screen w-screen bg-background cursor-none">
           <CustomCursor />
           <div className="w-screen mb-10">
             <Navbar />
           </div>
-          <section className="h-full w-screen flex flex-col justify-center items-center text-black font-sans">
+          <section className="h-full w-screen flex flex-col justify-center items-center text-foreground font-sans">
             {children}
           </section>
         </body>

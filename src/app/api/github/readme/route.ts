@@ -23,7 +23,7 @@ export async function GET(req: Request) {
         const readmeContent = await readmeResponse.text();
 
         return NextResponse.json({ repo: repoName, readme: readmeContent });
-    } catch (error) {
-        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    } catch (_) {
+        return NextResponse.json({ error: `An error occurred while fetching the README${_}` }, { status: 500 });
     }
 }

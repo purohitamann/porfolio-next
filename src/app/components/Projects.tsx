@@ -6,31 +6,33 @@ import project from '../../data/project.json';
 
 const Projects = () => {
     return (
-        <div id="projects">
-            <SectionWrapper title="Projects">
-                <div className="w-full flex flex-col">
+        <div id="projects" className="bg-background">
+            <SectionWrapper title="Featured Projects">
+                <div className="w-full flex flex-col gap-12 max-w-6xl mx-auto">
                     {/* Featured Project */}
-                    <div className="w-full flex justify-center items-center mb-8">
+                    <div className="w-full">
                         <ProjectFrame
-                            image={`${project.project.featured.image}`}
-                            name={`${project.project.featured.name}`}
-                            techStack={`${project.project.featured.techStack}`}
-                            link={`${project.project.featured.link}`}
-                            className="w-full md:w-[70vw] h-[60vh]"
+                            image={project.project.featured.image}
+                            name={project.project.featured.name}
+                            techStack={project.project.featured.techStack}
+                            link={project.project.featured.link}
+                            className="w-full"
+                            //  className="w-full "
                             projectId={project.project.featured.id}
                         />
                     </div>
 
-                    {/* All Projects */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-                        {project.project.projects.map((proj, index) => (
+                    {/* Selected Projects Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {project.project.projects.slice(0, 4).map((proj) => (
                             <ProjectFrame
-                                key={index}
+                                key={proj.id}
                                 image={proj.image}
                                 name={proj.name}
                                 techStack={proj.techStack}
                                 link={proj.link}
-                                className="w-full h-[60vh]"
+                                 className="w-full "
+                                // aspect-[4/3]
                                 projectId={proj.id}
                             />
                         ))}

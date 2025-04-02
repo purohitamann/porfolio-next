@@ -1,9 +1,27 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-const GitHubPRPreview = ({ prUrl }) => {
-    const [pr, setPR] = useState(null)
-    const [error, setError] = useState(null)
+interface GitHubPRPreviewProps {
+    prUrl: string;
+}
+
+const GitHubPRPreview: React.FC<GitHubPRPreviewProps> = ({ prUrl }) => {
+    interface PullRequest {
+        html_url: string;
+        number: number;
+        title: string;
+        user: {
+            login: string;
+            avatar_url: string;
+        };
+        created_at: string;
+        merged: boolean;
+        comments: number;
+        review_comments: number;
+    }
+
+    const [pr, setPR] = useState<PullRequest | null>(null)
+    const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
         async function fetchPRData() {
@@ -71,7 +89,7 @@ const GitHubPRPreview = ({ prUrl }) => {
 
 export default GitHubPRPreview
 
-function extractPRDetails(url) {
+function extractPRDetails(url: string): { owner: string | null; repo: string | null; prNumber: string | null } {
     const match = url.match(/github\.com\/([^\/]+)\/([^\/]+)\/pull\/(\d+)/)
     if (!match) return { owner: null, repo: null, prNumber: null }
     return { owner: match[1], repo: match[2], prNumber: match[3] }

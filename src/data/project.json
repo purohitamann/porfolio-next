@@ -5,7 +5,24 @@
       "image": "/btm.png",
       "name": "Brain Tumor Classification Model",
       "techStack": "Streamlit, Python, Tensorflow, Gemini",
-      "link": "https://github.com/purohitamann/BrainTumorClassficationModel"
+      "link": "https://github.com/purohitamann/BrainTumorClassficationModel",
+      "description": "An AI-powered solution for accurate brain tumor classification using deep learning and advanced image processing techniques.",
+      "features": [
+        "Deep learning model for tumor classification",
+        "Interactive Streamlit interface",
+        "Real-time image processing",
+        "AI-assisted diagnosis support"
+      ],
+      "challenges": [
+        "Optimizing model accuracy while maintaining performance",
+        "Handling diverse medical image formats",
+        "Implementing real-time processing capabilities"
+      ],
+      "learnings": [
+        "Advanced deep learning architectures",
+        "Medical image processing techniques",
+        "Building production-ready ML applications"
+      ]
     },
     "projects": [
       {
@@ -13,28 +30,52 @@
         "image": "/pr.png",
         "name": "ALT - PR Review Agent",
         "techStack": "Typescript, Groq, Github API",
-        "link": "https://github.com/purohitamann/PR-ReviewAgent"
+        "link": "https://github.com/purohitamann/PR-ReviewAgent",
+        "description": "An AI-powered code review assistant that helps streamline the pull request review process.",
+        "features": [
+          "Automated code review suggestions",
+          "Integration with GitHub API",
+          "Real-time feedback on code quality"
+        ]
       },
       {
         "id": 3,
-        "image": "/ssc.png",
+        "image": "/ssc-dashboard.png",
         "name": "Sheridan Swiftie Club Portal",
         "techStack": "React(Next.js), Tailwind, Firebase",
-        "link": "https://github.com/purohitamann/sheridan-swiftie-club"
+        "link": "https://github.com/purohitamann/sheridan-swiftie-club",
+        "description": "A community portal for Sheridan College's Taylor Swift fan club.",
+        "features": [
+          "Event management system",
+          "Member profiles and interactions",
+          "Real-time updates and notifications"
+        ]
       },
       {
         "id": 4,
         "image": "/chm.png",
         "name": "Customer Churn Prediction Model",
         "techStack": "Streamlit, Python, llama, Pandas, Matplotlib",
-        "link": "https://github.com/purohitamann/ChurnPredictionModel"
+        "link": "https://github.com/purohitamann/ChurnPredictionModel",
+        "description": "ML model to predict customer churn using advanced analytics.",
+        "features": [
+          "Predictive analytics dashboard",
+          "Interactive data visualization",
+          "Real-time churn predictions"
+        ]
       },
       {
         "id": 5,
         "image": "/pentagram.png",
         "name": "Pentagram - Realtime Image Diffusion",
-        "techStack": "React(Next.js), Tailwind, Supabase, Modal GPU, Stable Diffusion 3.5 Turbo ",
-        "link": "https://github.com/purohitamann/pentagram"
+        "techStack": "React(Next.js), Tailwind, Supabase, Modal GPU, Stable Diffusion 3.5 Turbo",
+        "link": "https://github.com/purohitamann/pentagram",
+        "description": "Real-time image generation platform using Stable Diffusion.",
+        "features": [
+          "Real-time image generation",
+          "Custom model fine-tuning",
+          "Community sharing features"
+        ]
       }
     ]
   }

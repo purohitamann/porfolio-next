@@ -5,7 +5,7 @@ export function middleware(req: any) {
 
     res.headers.set(
         'Content-Security-Policy',
-        "default-src 'self'; connect-src 'self' https://api.github.com;"
+        "default-src 'self'; connect-src 'self' https://api.github.com;",
     );
 
     return res;

@@ -3,7 +3,7 @@ import React from 'react'
 import GitHubRepoPreview from './GithubRepoPreview'
 import GitHubPRPreview from './GithubPRPreview'
 
-const GitHubPreview = ({ url }) => {
+const GitHubPreview = ({ url }: { url: string }) => {
     if (!url) return <p className="text-gray-500">No GitHub URL provided.</p>
 
     if (url.match(/github\.com\/[^\/]+\/[^\/]+\/pull\/\d+/)) {

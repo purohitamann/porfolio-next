@@ -1,9 +1,23 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-const GitHubRepoPreview = ({ repoUrl }) => {
-    const [repo, setRepo] = useState(null)
-    const [error, setError] = useState(null)
+interface GitHubRepoPreviewProps {
+    repoUrl: string;
+}
+
+const GitHubRepoPreview = ({ repoUrl }: GitHubRepoPreviewProps) => {
+    interface GitHubRepo {
+        html_url: string;
+        full_name: string;
+        description: string | null;
+        stargazers_count: number;
+        forks_count: number;
+        watchers_count: number;
+        updated_at: string;
+    }
+    
+    const [repo, setRepo] = useState<GitHubRepo | null>(null)
+    const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
         async function fetchRepoData() {
@@ -78,7 +92,7 @@ export default GitHubRepoPreview
  * Extracts owner and repo name from a GitHub URL.
  * Supports repo names containing hyphens (-) or underscores (_).
  */
-function extractRepoDetails(url) {
+function extractRepoDetails(url: string) {
     const match = url.match(/github\.com\/([^\/]+)\/([\w-]+)$/)
     if (!match) return { owner: null, repo: null }
     return { owner: match[1], repo: match[2] }

@@ -9,16 +9,17 @@
       "description": "Deploying AI-driven and full-stack solutions in dynamic team environments.",
       "link": "https://headstarter.co/",
       "linkLabel": "Headstarter AI",
-      "logo": "headstarter.avif"
+      "logo": "headstarter.jpeg"
     },
     {
       "id": 3,
-      "role": "Software Developer Intern",
+      "role": "Software Developer",
       "company": "Zeuty",
       "startDate": "April 2024",
-      "endDate": "Present",
-      "description": "Developing cross-platform mobile applications for University students.",
-      "link": "https://www.linkedin.com/company/zeuty"
+      "endDate": "December 2025",
+      "description": "Developed cross-platform mobile applications for University students.",
+      "link": "https://www.linkedin.com/company/zeuty",
+            "logo": "Zeuty.jpeg"
     },
 
     {
@@ -28,16 +29,18 @@
       "startDate": "December 2024",
       "endDate": "Present",
       "description": "Student Leader at Sheridan College.",
-      "link": "https://www.sheridancollege.ca/newsroom/articles/community/students-helping-students-sheridans-peer-mentor-program"
+      "link": "https://www.sheridancollege.ca/newsroom/articles/community/students-helping-students-sheridans-peer-mentor-program",
+            "logo": "sheridan.jpeg"
     },
     {
       "id": 1,
-      "role": "Software Development Learning Assistant",
+      "role": "Software Engineering Learning Assistant",
       "company": "Sheridan College",
       "startDate": "Sepetember 2024",
       "endDate": "December 2024",
-      "description": "Guided 500+ students with modern technologies",
-      "link": "https://www.sheridancollege.ca/"
+      "description": "Mentored more than 500+ students in Software Engineering courses. Assisted in course material preparation and grading.",
+      "link": "https://www.sheridancollege.ca/",
+               "logo": "sheridan.jpeg"
     },
     {
       "id": 4,
@@ -45,8 +48,9 @@
       "company": "Sheridan Swiftie Club",
       "startDate": "Oct 2023",
       "endDate": "Present",
-      "description": "Fostering community engagement by organizing charity events.",
-      "link": "https://sheridanswiftieclub.vercel.app"
+      "description": "Fostering community engagement by organizing charity events. Promoting Taylor Swift's music and philanthropy. Lead a team of 9 executive members to collaborate with 3 local charities.",
+      "link": "https://sheridanswiftieclub.vercel.app",
+               "logo": "ssc.jpeg"
     }
   ]
 }
