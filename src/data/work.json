@@ -1,6 +1,17 @@
 {
   "work": [
     {
+      "id": 6,
+      "role": "Associate Software Engineer",
+      "company": "Sunlife Assurance Company",
+      "startDate": "",
+      "endDate": "",
+      "description": "Incoming Summer 2025 Intern | Generative AI Strategy & Delivery Team",
+      "link": "https://www.sunlife.ca/en/",
+      "linkLabel": "SunLife Assurance Company",
+      "logo": "sunlife.png"
+    },
+    {
       "id": 2,
       "role": "Software Engineering Resident",
       "company": "Headstarter AI",
@@ -10,6 +21,16 @@
       "link": "https://headstarter.co/",
       "linkLabel": "Headstarter AI",
       "logo": "headstarter.jpeg"
+    },
+    {
+      "id": 5,
+      "role": "Peer Mentor",
+      "company": "Sheridan College",
+      "startDate": "December 2024",
+      "endDate": "Present",
+      "description": "Student Leader at Sheridan College.",
+      "link": "https://www.sheridancollege.ca/newsroom/articles/community/students-helping-students-sheridans-peer-mentor-program",
+            "logo": "sheridan.jpeg"
     },
     {
       "id": 3,
@@ -22,16 +43,6 @@
             "logo": "Zeuty.jpeg"
     },
 
-    {
-      "id": 5,
-      "role": "Peer Mentor",
-      "company": "Sheridan College",
-      "startDate": "December 2024",
-      "endDate": "Present",
-      "description": "Student Leader at Sheridan College.",
-      "link": "https://www.sheridancollege.ca/newsroom/articles/community/students-helping-students-sheridans-peer-mentor-program",
-            "logo": "sheridan.jpeg"
-    },
     {
       "id": 1,
       "role": "Software Engineering Learning Assistant",

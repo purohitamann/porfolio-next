@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import Projects from "./components/Projects";
 import Work from "./components/Work";
 import OpenSourceContribution from "./work/OpenSourceContribution";
+import Blog from "./components/Blog";
+import HackathonWins from "./components/HackathonWins";
 
 export default function Home() {
   useEffect(() => {
@@ -30,6 +32,10 @@ export default function Home() {
         </div>
         <div id="projects" className="py-20">
           <Projects />
+        </div>
+        <div>
+          <Blog />
+          <HackathonWins />
         </div>
         <div id="work" className="py-20">
           <Work />

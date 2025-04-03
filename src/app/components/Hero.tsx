@@ -10,7 +10,7 @@ export default function Hero() {
     return (
         <div className="min-h-screen w-screen flex items-center justify-center bg-background/30 px-4 perspective-1000" id='about'>
             <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background pointer-events-none" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),transparent)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_150%,rgba(120,120,120,0.1),transparent)] pointer-events-none" />
             
             <div className="max-w-3xl mx-auto relative">
                 <FloatingElement className="flex flex-col justify-center items-center text-center space-y-12">

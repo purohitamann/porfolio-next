@@ -40,7 +40,7 @@ const OpenSourceContribution = () => {
                                     </h2>
                                     <p className="text-muted-foreground/80 leading-relaxed">
                                         Actively contributing to significant open source projects, with a focus on digital libraries 
-                                        and cloud computing platforms. Making meaningful contributions to enhance developer tools and user experiences.
+                                        and cloud computing platforms. Making meaningful contributions to enhance developer tools and user experiences. Successfully merged 2 PR in the past 6 months.
                                     </p>
                                 </div>
 
@@ -100,7 +100,7 @@ const OpenSourceContribution = () => {
                                     <div className="bg-muted/30 rounded-xl p-6 border border-border hover:border-muted-foreground transition-all">
                                         <h3 className="text-lg font-medium text-foreground mb-2">Impact</h3>
                                         <p className="text-muted-foreground/80">
-                                            Contributing to projects that impact millions of users worldwide, from digital library access to cloud computing solutions.
+                                            Contributing to projects that impact more than 2.4 millions+ monthly users worldwide, from digital library access to cloud computing solutions.
                                         </p>
                                     </div>
                                     <div className="bg-muted/30 rounded-xl p-6 border border-border hover:border-muted-foreground transition-all">

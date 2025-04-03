@@ -1,7 +1,8 @@
-'use client'
-import React from 'react'
-import { animate, motion } from 'framer-motion'
-import { useMotionValue } from 'framer-motion'
+'use client';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+
 interface BlogFrameProps {
     title: string;
     description: string;
@@ -10,31 +11,39 @@ interface BlogFrameProps {
 }
 
 const BlogFrame = ({ title, description, link, timePosted }: BlogFrameProps) => {
-    const handleClick = () => {
-        window.open(link, '_blank');
-    }
-    const x = useMotionValue(0);
     return (
-        <motion.div className='flex-col md:flex w-full justify-between items-stretch h-auto hover:animate-backgroundFade '
-
-            // Animate when this value changes:
-            initial={{ boxShadow: "0px 0px #000" }}
-            onHoverStart={() => { animate(x, 10); }}
-            onHoverEnd={() => { animate(x, 0); }}
-            animate={{ boxShadow: "10px 10px #000" }}
-            style={{ x, y: 0 }}>
-            <form onClick={() => { handleClick() }} className='flex flex-col md:flex-row w-full justify-between items-stretch h-auto p-4 rounded-lg shadow-lg'>
-                <h1 className='text-2xl font-bold '>{title}</h1>
-                <div className='flex flex-col justify-start items-start w-full md:w-1/3'>
-                    <p className='text-lg font-light'>{description}</p>
-                    <p className='text-sm font-light'>{timePosted}</p>
-
+        <motion.div
+            className="group"
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.2 }}
+        >
+            <a 
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-6 bg-muted/30 rounded-xl border border-border hover:border-muted-foreground transition-all"
+            >
+                <div className="flex flex-col md:flex-row justify-between gap-4">
+                    <div className="flex-1 space-y-2">
+                        <div className="flex items-start justify-between">
+                            <h2 className="text-xl font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
+                                {title}
+                            </h2>
+                            <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                        </div>
+                        <p className="text-muted-foreground/80 line-clamp-2">
+                            {description}
+                        </p>
+                    </div>
+                    <div className="shrink-0">
+                        <p className="text-sm text-muted-foreground">
+                            {timePosted}
+                        </p>
+                    </div>
                 </div>
-
-            </form>
-
+            </a>
         </motion.div>
-    )
-}
+    );
+};
 
-export default BlogFrame
+export default BlogFrame;

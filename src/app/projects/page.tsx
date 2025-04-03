@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import FloatingElement from '../components/FloatingElement';
+import Footer from '../components/Footer';
 
 interface Project {
     name: string;
@@ -66,7 +67,7 @@ const GitHubProjects: React.FC = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
-                            Open Source Projects
+                 Personal Projects
                         </motion.h1>
                         <motion.div 
                             className="h-px w-24 bg-gradient-to-r from-transparent via-muted-foreground/20 to-transparent"
@@ -154,6 +155,9 @@ const GitHubProjects: React.FC = () => {
                         ))}
                     </div>
                 </div>
+            </div>
+            <div className="mt-14 bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),transparent)] " >
+                <Footer />
             </div>
         </div>
     );
