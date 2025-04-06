@@ -1,7 +1,7 @@
 {
   "work": [
     {
-      "id": 6,
+      "id": 1,
       "role": "Associate Software Engineer",
       "company": "Sunlife Assurance Company",
       "startDate": "",
@@ -23,7 +23,7 @@
       "logo": "headstarter.jpeg"
     },
     {
-      "id": 5,
+      "id": 3,
       "role": "Peer Mentor",
       "company": "Sheridan College",
       "startDate": "December 2024",
@@ -33,7 +33,7 @@
             "logo": "sheridan.jpeg"
     },
     {
-      "id": 3,
+      "id": 4,
       "role": "Software Developer",
       "company": "Zeuty",
       "startDate": "April 2024",
@@ -44,7 +44,7 @@
     },
 
     {
-      "id": 1,
+      "id": 5,
       "role": "Software Engineering Learning Assistant",
       "company": "Sheridan College",
       "startDate": "Sepetember 2024",
@@ -54,7 +54,7 @@
                "logo": "sheridan.jpeg"
     },
     {
-      "id": 4,
+      "id": 6,
       "role": "President",
       "company": "Sheridan Swiftie Club",
       "startDate": "Oct 2023",

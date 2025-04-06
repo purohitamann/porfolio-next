@@ -7,6 +7,7 @@ import Work from "./components/Work";
 import OpenSourceContribution from "./work/OpenSourceContribution";
 import Blog from "./components/Blog";
 import HackathonWins from "./components/HackathonWins";
+import NowPlaying from "./components/NowPlaying";
 
 export default function Home() {
   useEffect(() => {
@@ -27,6 +28,9 @@ export default function Home() {
       <div className="fixed inset-0 " />
       <div className="noise-overlay" />
       <div className="min-h-screen w-screen overflow-y-auto relative">
+        <div className="fixed top-0 left-0 right-0 z-50">
+          <NowPlaying />
+        </div>
         <div id="about" className="min-h-screen">
           <Hero />
         </div>
