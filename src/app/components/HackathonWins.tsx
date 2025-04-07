@@ -18,7 +18,7 @@ const HackathonWins = () => {
         },
         {
             name: "EverydayAI Hackathon",
-            project: "Protein Suckers",
+            project: "Protein Suckers - AI High Protein Meal Finder",
             position: "Winner - Best use of Nebius AI, Best Life Enhancer Solution, Supercool Awesome Idea ",
             date: "March 2025",
             teamSize: 1,
