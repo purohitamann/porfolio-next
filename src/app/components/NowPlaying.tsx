@@ -32,7 +32,7 @@ const NowPlaying: React.FC = () => {
       const res = await fetch('/api/current-track', {
         headers: {
           // Replace YOUR_ACCESS_TOKEN with your actual token management logic.
-          Authorization: `Bearer YOUR_ACCESS_TOKEN`
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SPOTIFY_ACCESS_TOKEN}`,
         },
       });
 
