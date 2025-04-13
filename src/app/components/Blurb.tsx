@@ -1,6 +1,5 @@
 import React from 'react';
-import blurb from '../../data/blurb.json';
-import Link from 'next/link';
+
 const Blurb = () => {
     return (
         <div className="h-3/4 w-screen  text-white font-sans font-medium">
