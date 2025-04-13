@@ -6,20 +6,21 @@ import project from '../../data/project.json';
 
 const Projects = () => {
     return (
-        <div id="projects" className="bg-background">
+        <div id="projects" className="bg-background ">
             <SectionWrapper title="Featured Projects">
                 <div className="w-full flex flex-col gap-12 max-w-6xl mx-auto">
                     {/* Featured Project */}
-                    <div className="w-full">
+                    <div className=" ">
                         <ProjectFrame
                             image={project.project.featured.image}
                             name={project.project.featured.name}
                             techStack={project.project.featured.techStack}
                             link={project.project.featured.link}
-                            className="w-full"
+                            className="w-full "
                             //  className="w-full "
                             projectId={project.project.featured.id}
                         />
+            
                     </div>
 
                     {/* Selected Projects Grid */}

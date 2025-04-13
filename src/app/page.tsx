@@ -7,6 +7,7 @@ import Work from "./components/Work";
 import OpenSourceContribution from "./work/OpenSourceContribution";
 import Blog from "./components/Blog";
 import HackathonWins from "./components/HackathonWins";
+import Blurb from "./components/Blurb";
 
 export default function Home() {
   useEffect(() => {
@@ -29,6 +30,9 @@ export default function Home() {
       <div className="min-h-screen w-screen overflow-y-auto relative">
         <div id="about" className="min-h-screen">
           <Hero />
+        </div>
+        <div>
+          <Blurb />
         </div>
         <div id="projects" className="py-20">
           <Projects />
