@@ -22,7 +22,8 @@ const Blurb = () => {
                     .  {blurb.blurb[4].text}
                     <Link className='underline  text-black hover:text-gray-600 hover:animate-backgroundFade' href={blurb.blurb[4].highlight!.link}>
                         {blurb.blurb[4].highlight?.name}
-                    </Link> {blurb.blurb[4].description} */}
+                    </Link> {blurb.blurb[4].description} 
+                    */}
                 </p>
             </div>
 
