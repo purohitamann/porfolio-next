@@ -10,7 +10,7 @@ const Projects = () => {
             <SectionWrapper title="Featured Projects">
                 <div className="w-full flex flex-col gap-12 max-w-6xl mx-auto">
                     {/* Featured Project */}
-                    <div className=" flex">
+                    <div className=" md:flex">
                         <ProjectFrame
                             image={project.project.featured[1].image}
                             name={"boilrplarte CLI"}
