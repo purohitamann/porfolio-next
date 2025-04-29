@@ -17,7 +17,7 @@ interface ProjectModalProps {
     features?: string[];
     challenges?: string[];
     learnings?: string[];
-    live_link?: string;
+    live_link: string;
   };
   isVideo?: boolean;
 }
@@ -107,14 +107,14 @@ const ProjectModal = ({ isOpen, onClose, project, isVideo =false }: ProjectModal
               View Code
             </Button>
           </a>
-          {project.live_link && (
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
+  { project.live_link? (  <a href={project.live_link} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="gap-2">
                 <ExternalLink className="h-4 w-4" />
                 Live Demo
               </Button>
-            </a>
-          )}
+            </a>) :(null)}
+          
+       
         </div>
       </div>
     </DialogContent>

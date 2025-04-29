@@ -27,7 +27,7 @@
       "id": 2,
       "image": "/demo.mp4",
       "name": "boilrplate CLI",
-     "live_link": "https://www.heyboilrplate.com/",
+      "live_link": "https://www.heyboilrplate.com/",
       "techStack": "Javascript, Node, Python, DeepSeek, Firebase",
       "link": "https://github.com/purohitamann/boilrplate",
       "description": "Scaffold fullstack apps instantly, give it a prompt from your command line to generate boilerplate and more",
@@ -52,6 +52,7 @@
       {
         "id": 2,
         "image": "/pr.png",
+
         "name": "ALT - PR Review Agent",
         "techStack": "Typescript, Groq, Github API",
         "link": "https://github.com/purohitamann/PR-ReviewAgent",

@@ -18,6 +18,7 @@ interface ProjectFrameProps {
     features?: string[];
     challenges?: string[];
     learnings?: string[];
+    live_link?: string;
     isVideo?: boolean;
 }
 
@@ -27,7 +28,7 @@ const ProjectFrame = ({
     techStack,
     link,
     className,
-     
+    live_link,
     description,
     features,
     challenges,
@@ -106,7 +107,8 @@ const ProjectFrame = ({
                     description,
                     features,
                     challenges,
-                    learnings
+                    learnings,
+                    live_link : "",
                 }}
             />
         </>
