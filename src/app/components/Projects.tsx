@@ -10,15 +10,25 @@ const Projects = () => {
             <SectionWrapper title="Featured Projects">
                 <div className="w-full flex flex-col gap-12 max-w-6xl mx-auto">
                     {/* Featured Project */}
-                    <div className=" ">
+                    <div className=" flex">
                         <ProjectFrame
-                            image={project.project.featured.image}
-                            name={project.project.featured.name}
-                            techStack={project.project.featured.techStack}
-                            link={project.project.featured.link}
+                            image={project.project.featured[1].image}
+                            name={"boilrplarte CLI"}
+                            techStack={project.project.featured[1].techStack}
+                            link={project.project.featured[1].link}
+                            className="w-full "
+                            isVideo={true}
+                            //  className="w-full "
+                            projectId={project.project.featured[1].id}
+                        />
+                             <ProjectFrame
+                            image={project.project.featured[0].image}
+                            name={project.project.featured[0].name}
+                            techStack={project.project.featured[0].techStack}
+                            link={project.project.featured[0].link}
                             className="w-full "
                             //  className="w-full "
-                            projectId={project.project.featured.id}
+                            projectId={project.project.featured[0].id}
                         />
             
                     </div>

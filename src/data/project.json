@@ -1,6 +1,6 @@
 {
   "project": {
-    "featured": {
+    "featured": [{
       "id": 1,
       "image": "/btm.png",
       "name": "Brain Tumor Classification Model",
@@ -23,7 +23,31 @@
         "Medical image processing techniques",
         "Building production-ready ML applications"
       ]
-    },
+    },{
+      "id": 2,
+      "image": "/demo.mp4",
+      "name": "boilrplate CLI",
+     "live_link": "https://www.heyboilrplate.com/",
+      "techStack": "Javascript, Node, Python, DeepSeek, Firebase",
+      "link": "https://github.com/purohitamann/boilrplate",
+      "description": "Scaffold fullstack apps instantly, give it a prompt from your command line to generate boilerplate and more",
+      "features": [
+        "Deep learning model for tumor classification",
+        "Interactive Streamlit interface",
+        "Real-time image processing",
+        "AI-assisted diagnosis support"
+      ],
+      "challenges": [
+        "Optimizing model accuracy while maintaining performance",
+        "Handling diverse medical image formats",
+        "Implementing real-time processing capabilities"
+      ],
+      "learnings": [
+        "Advanced deep learning architectures",
+        "Medical image processing techniques",
+        "Building production-ready ML applications"
+      ]
+    }],
     "projects": [
       {
         "id": 2,

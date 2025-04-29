@@ -18,6 +18,7 @@ interface ProjectFrameProps {
     features?: string[];
     challenges?: string[];
     learnings?: string[];
+    isVideo?: boolean;
 }
 
 const ProjectFrame = ({
@@ -26,11 +27,12 @@ const ProjectFrame = ({
     techStack,
     link,
     className,
-
+     
     description,
     features,
     challenges,
-    learnings
+    learnings,
+    isVideo = false,
 }: ProjectFrameProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const linkCursorHandlers = useCursorHover('link');
@@ -48,13 +50,23 @@ const ProjectFrame = ({
                 >
                     <div className={`relative bg-background rounded-2xl border border-border overflow-hidden flex flex-col ${className}`}>
                         <div className="w-full h-3/4 relative">
+                        {isVideo ? (
+                            <video
+                                className="w-full h-full object-cover"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                src={image}
+                            />
+                        ) : (
                             <Image
                                 width={500}
                                 height={500}
                                 src={image}
                                 alt={name}
                                 className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
-                            />
+                            />)}
                         </div>
 
                         <div className="w-full p-5 bg-background">
@@ -83,6 +95,7 @@ const ProjectFrame = ({
             </FloatingElement>
 
             <ProjectModal
+                isVideo={isVideo}
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 project={{
