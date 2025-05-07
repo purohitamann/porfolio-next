@@ -95,6 +95,7 @@ const ProjectFrame = ({
                 </motion.div>
             </FloatingElement>
 
+
             <ProjectModal
                 isVideo={isVideo}
                 isOpen={isModalOpen}
