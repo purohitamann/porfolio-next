@@ -110,6 +110,7 @@ const ProjectFrame = ({
                     challenges,
                       learnings,
                       live_link,
+
                 }}
             />
         </>

@@ -34,3 +34,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Blog
+
+A `/blog` page has been added that loads its post content, likes, and comments from [Supabase](https://supabase.com/).
+Users can leave a comment with their name or choose to hide it. Hidden names are still stored in the database but
+are shown as "Anonymous" on the page. The page also displays a like counter.
+
+To enable Supabase integration, define the following environment variables:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=<your-project-url>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-anon-key>
+```
+
+The implementation expects `blog_posts`, `comments`, and `likes` tables in your Supabase project.
