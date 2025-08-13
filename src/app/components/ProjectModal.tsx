@@ -38,19 +38,16 @@ const ProjectModal = ({ isOpen, onClose, project, isVideo =false }: ProjectModal
               loop
               muted
               playsInline
-              src={project.image} />
+              src={project.image}
+            />
           ) : (
             <Image
               src={project.image}
               alt={project.name}
               fill
-              className="object-cover" />
+              className="object-cover"
+            />
           )}
-          <Image
-            src={project.image}
-            alt={project.name}
-            fill
-            className="object-cover" />
         </div>
 
         <div className="mt-6 space-y-6">
