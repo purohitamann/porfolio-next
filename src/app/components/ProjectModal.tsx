@@ -17,7 +17,7 @@ interface ProjectModalProps {
     features?: string[];
     challenges?: string[];
     learnings?: string[];
-    live_link: string;
+    live_link?: string;
   };
   isVideo?: boolean;
 }
