@@ -74,7 +74,7 @@ const BlogPage = () => {
   const blogPosts: BlogPost[] = [
     {
       title: "My Time Under the Sun",
-      description: "A deep dive into the advancements in AI technology and its implications for the future.",
+      description: "Thank You SunLife!",
       link: "/blog/my-time-under-the-sun-at-skynet",
       timePosted: "August 2025",
       category: "Summer Internship Experience"
