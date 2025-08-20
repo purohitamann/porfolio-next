@@ -205,7 +205,7 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mb-8 relative"
             >
-              <div className="relative rounded-lg border border-border overflow-hidden bg-muted/10 w-full h-96 md:h-[500px]">
+              <div className="relative rounded-lg border border-border overflow-hidden bg-muted/10 w-full h-48 md:h-[500px]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentImageIndex}
