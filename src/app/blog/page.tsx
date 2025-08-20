@@ -5,7 +5,6 @@ import { ArrowUpRight, Calendar, Award, Briefcase, Users, FileText, ArrowLeft } 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import highlights from '../../data/highlights.json';
-import blogData from '../../data/blog.json';
 
 interface Highlight {
   id: number;

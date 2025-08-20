@@ -46,8 +46,11 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
     notFound();
   }
 
-  // Get images for slideshow (prioritize featuredImages array, fallback to single featuredImage)
-  const slideshowImages = post.featuredImages || (post.featuredImage ? [post.featuredImage] : []);
+  // Get images for slideshow (use featuredImages array)
+  const slideshowImages =
+    post.featuredImages && post.featuredImages.length > 0
+      ? post.featuredImages
+      : [];
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % slideshowImages.length);

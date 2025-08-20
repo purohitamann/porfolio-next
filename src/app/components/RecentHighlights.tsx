@@ -45,7 +45,7 @@ const getTypeColor = (type: string) => {
 };
 
 const RecentHighlights = () => {
-  const recentHighlights = highlights.highlights.slice(0, 3);
+  const recentHighlights = (highlights.highlights as Highlight[]).slice(0, 3);
 
   return (
     <section className="w-full">
