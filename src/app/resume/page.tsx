@@ -59,7 +59,7 @@ export default function ResumePage() {
 </p> */}
 
           <iframe 
-  src="/AmanPurohit-Resume.pdf"
+  src="/AmanPurohitResume2025.pdf"
   className="w-full h-full border-0 bg-white"
   allowFullScreen
 

@@ -73,7 +73,7 @@ const getTypeLabel = (type: string) => {
 const BlogPage = () => {
   const blogPosts: BlogPost[] = [
     {
-      title: "My Time Under the Sun at Skynet",
+      title: "My Time Under the Sun",
       description: "A deep dive into the advancements in AI technology and its implications for the future.",
       link: "/blog/my-time-under-the-sun-at-skynet",
       timePosted: "August 2025",
