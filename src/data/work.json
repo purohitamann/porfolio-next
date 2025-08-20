@@ -2,11 +2,11 @@
   "work": [
     {
       "id": 6,
-      "role": "Associate Software Engineer",
+      "role": "Software Engineer",
       "company": "Sunlife Assurance Company",
-      "startDate": "",
-      "endDate": "",
-      "description": "Incoming Summer 2025 Intern | Generative AI Strategy & Delivery Team",
+      "startDate": "May 2025",
+      "endDate": "August 2025",
+      "description": "Generative AI Strategy & Delivery Team | InnerSource Platforms",
       "link": "https://www.sunlife.ca/en/",
       "linkLabel": "SunLife Assurance Company",
       "logo": "sunlife.png"
@@ -68,7 +68,7 @@
       "role": "President",
       "company": "Sheridan Swiftie Club",
       "startDate": "Oct 2023",
-      "endDate": "Present",
+      "endDate": "May 2025",
       "description": "Fostering community engagement by organizing charity events. Promoting Taylor Swift's music and philanthropy. Lead a team of 9 executive members to collaborate with 3 local charities.",
       "link": "https://sheridanswiftieclub.vercel.app",
                "logo": "ssc.jpeg"

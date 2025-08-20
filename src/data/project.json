@@ -28,7 +28,7 @@
       "image": "/demo.mp4",
       "name": "boilrplate CLI",
       "live_link": "https://www.heyboilrplate.com/",
-      "techStack": "Javascript, Node, Python, DeepSeek, Firebase",
+      "techStack": "Javascript, Node, Python, DeepSeek, Firebase, MongoDB, Digital Ocean",
       "link": "https://github.com/purohitamann/boilrplate",
       "description": "Scaffold fullstack apps instantly, give it a prompt from your command line to generate boilerplate and more",
       "features": [

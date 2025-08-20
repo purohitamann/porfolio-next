@@ -10,37 +10,13 @@ export default {
   theme: {
   	extend: {
 		keyframes: {
-			backgroundFade: {
-			  '0%': { backgroundColor: '#F2FCE2' },
-			  '50%': { backgroundColor: '#EAFBFC' },
-			  '100%': { backgroundColor: '#F2FCE2' },
-			},
-			lift: {
-				'0%': { transform: 'translateZ(0px) rotateX(0deg)' },
-				'50%': { transform: 'translateZ(50px) rotateX(10deg)' },
-				'100%': { transform: 'translateZ(0px) rotateX(0deg)' },
-			  },
-			fadeInOut: {
-			  '0%': { opacity: '1' },
-			  '50%': { opacity: '0.5' },
-			  '100%': { opacity: '1' },
-			},
-			float: {
-			  '0%': { transform: 'translateY(0)' },
-			  '50%': { transform: 'translateY(-10px)' },
-			  '100%': { transform: 'translateY(0)' },
-			},
-			fade:{
-				'0%': { opacity: '0' },
-				'100%': { opacity: '1' },
+			fade: {
+				'0%': { opacity: '0', transform: 'translateY(10px)' },
+				'100%': { opacity: '1', transform: 'translateY(0)' },
 			}
 		  },
 		  animation: {
-			backgroundFade: 'backgroundFade 10s infinite',
-			fadeInOut: 'fadeInOut 5s infinite',
-			float: 'float 3s ease-in-out infinite',
-			lift: 'lift 4s ease-in-out infinite',
-			fade: 'fade 1.2s ease-in-out',
+			fade: 'fade 0.6s ease-out',
 		  },
   		colors: {
   			background: 'hsl(var(--background))',

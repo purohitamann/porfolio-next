@@ -8,35 +8,32 @@ type Props = {
 
 const Footer = ({ className }: Props) => {
     return (
-        <div className={`h-auto w-full text-foreground font-sans relative font-medium bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),transparent)] ${className}`} id="contact">
-            <div className="flex flex-col justify-center items-center w-full px-4 md:px-20 lg:px-44 py-10">
-                <div className="flex flex-row text-wrap md:pb-20 justify-start items-start text-start gap-4 w-auto">
-                    <h1 className="text-foreground hidden md:flex font-bold text-3xl mr-10 pr-10 -rotate-45 hover:rotate-3">
-                        A
-                    </h1>
-                    <p className="text-center md:text-start font-light w-full md:w-1/2 text-lg md:text-2xl lg:text-4xl mb-6 md:mb-10">
+        <footer className={`border-t border-border/50 mt-24 ${className}`} id="contact">
+            <div className="max-w-6xl mx-auto px-6 md:px-8 py-16">
+                <div className="text-center space-y-8">
+                    <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
                         {footer.title}
-                    </p>
-                </div>
-
-                <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start items-center w-full">
-                    <Button variant="outline" className="w-full md:w-auto">
+                    </h2>
+                    
+                    <Button className="button-hover">
                         <a href={"mailto:" + footer.email} target="_blank" rel="noopener noreferrer">
-                            Email Me
+                            Get in Touch
                         </a>
                     </Button>
-
-                    <div className="flex flex-wrap justify-center md:justify-start items-center gap-4">
-                        <Button variant="link" className="text-sm md:text-base"><a href={footer.medium}>Medium</a></Button>
-                        <Button variant="link" className="text-sm md:text-base"><a href={footer.linkedin}>LinkedIn</a></Button>
-                        <Button variant="link" className="text-sm md:text-base"><a href={footer.instagram}>Instagram</a></Button>
-                        <Button variant="link" className="text-sm md:text-base"><a href={footer.github}>Github</a></Button>
-                        <Button variant="link" className="text-sm md:text-base"><a href="#blog">Blog</a></Button>
-                        <p className="text-muted-foreground"> &copy; 2024 All Rights Reserved.</p>
+                    
+                    <div className="flex flex-wrap justify-center items-center gap-6 pt-8">
+                        <a href={footer.github} className="text-sm text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
+                        <a href={footer.linkedin} className="text-sm text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a>
+                        <a href={footer.medium} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Medium</a>
+                        <a href={footer.instagram} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Instagram</a>
                     </div>
+                    
+                    <p className="text-sm text-muted-foreground pt-8 border-t border-border/30">
+                        &copy; 2024 Aman Purohit. All rights reserved.
+                    </p>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };
 

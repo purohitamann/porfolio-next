@@ -8,6 +8,7 @@ import OpenSourceContribution from "./work/OpenSourceContribution";
 import Blog from "./components/Blog";
 import HackathonWins from "./components/HackathonWins";
 import Blurb from "./components/Blurb";
+import RecentHighlights from "./components/RecentHighlights";
 
 export default function Home() {
   useEffect(() => {
@@ -24,31 +25,30 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <div className="fixed inset-0 " />
-      <div className="noise-overlay" />
-      <div className="min-h-screen w-screen overflow-y-auto relative">
-        <div id="about" className="min-h-screen">
-          <Hero />
-        </div>
-        <div>
-          <Blurb />
-        </div>
-        <div id="projects" className="py-20">
+    <div className="min-h-screen">
+      <Hero />
+      
+      <div className="max-w-6xl mx-auto px-6 md:px-8 space-y-24">
+        <Blurb />
+        
+        <RecentHighlights />
+        
+        <section id="projects">
           <Projects />
-        </div>
-        <div>
+        </section>
+        
+        <div className="space-y-16">
           <Blog />
           <HackathonWins />
         </div>
-        <div id="work" className="py-20">
+        
+        <section id="work">
           <Work />
-          <OpenSourceContribution  />
-        </div>
-        <div id="contact">
-          <Footer />
-        </div>
+          <OpenSourceContribution />
+        </section>
       </div>
-    </>
+      
+      <Footer />
+    </div>
   );
 }

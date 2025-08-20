@@ -6,14 +6,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Custom cursor styles */
-.cursor-none * {
-  cursor: none !important;
-}
 
-a, button, [role="button"], input, select, textarea {
-  cursor: none !important;
-}
 
 /* Dynamic background animation */
 @keyframes gradient {
@@ -102,18 +95,21 @@ a, button, [role="button"], input, select, textarea {
     @apply border-border;
   }
   body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
     @apply bg-background text-foreground;
   }
 }
-
 /* Hero animations */
 @keyframes fadeUpShow {
   from {
     opacity: 0;
     transform: translateY(20px);
-  }
   to {
     opacity: 1;
+  }
+
     transform: translateY(0);
   }
 }
@@ -126,10 +122,10 @@ a, button, [role="button"], input, select, textarea {
   animation-delay: 0.2s;
 }
 
+
 .animate-delay-2 {
   animation-delay: 0.4s;
 }
-
 .animate-delay-3 {
   animation-delay: 0.6s;
 }
@@ -139,12 +135,12 @@ a, button, [role="button"], input, select, textarea {
 }
 
 /* Button hover animation */
-.button-hover-translate {
-  transition: transform 0.2s ease-out;
+.button-hover {
+  transition: all 0.2s ease;
 }
 
-.button-hover-translate:hover {
-  transform: translateY(-2px);
+.button-hover:hover {
+  transform: translateY(-1px);
 }
 
 .perspective-1000 {

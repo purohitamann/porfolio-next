@@ -1,0 +1,37 @@
+{
+  "highlights": [
+     {
+      "id": 2,
+      "title": "GenAI Intern at Sun Life",
+      "description": "Started working as a GenAI intern at Sun Life, focusing on AI-powered solutions for financial services.",
+      "date": "May 2024",
+      "type": "career",
+      "link": null
+    },
+    {
+      "id": 1,
+      "title": "Open Source Contribution to Internet Archive",
+      "description": "Made my first open-source contribution to the Internet Archive - documenting the journey and learnings.",
+      "date": "January 2025",
+      "type": "achievement",
+      "link": "https://medium.com/@purohitamann/my-first-open-source-contribution-to-the-internet-archive-6ec2621b8a68"
+    },
+   
+    {
+      "id": 3,
+      "title": "VP of Technology at Hackville",
+      "description": "Appointed as VP of Technology at Hackville, leading tech initiatives and hackathon organization.",
+      "date": "November 2024",
+      "type": "leadership",
+      "link": null
+    },
+    {
+      "id": 4,
+      "title": "Published AI-First Student Guide",
+      "description": "Published comprehensive guide on how students can leverage AI tools effectively in their academic journey.",
+      "date": "December 2024",
+      "type": "content",
+      "link": "https://medium.com/p/d004dbc7a633"
+    }
+  ]
+}
