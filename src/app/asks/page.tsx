@@ -4,12 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, User, Bot, Mail, MessageSquare, Star, Plus, Calendar, Heart, ExternalLink, Github, Linkedin, Instagram, BookOpen, Zap, ChevronRight, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
-
-// Fix import paths - adjust based on your actual file structure
-import footerData from '../../../src/data/footer.json';
-import blogData from '../../../src/data/blog.json';
-import highlightsData from '../../../src/data/highlights.json';
+import { db } from '@/lib/firebase';
+import footerData from '@/data/footer.json';
+import blogData from '@/data/blog.json';
+import highlightsData from '@/data/highlights.json';
 
 interface Message {
   id: number;
@@ -355,13 +353,13 @@ const AmanAsksPage = () => {
   ];
 
   // Fallback footer data
-  const footerLinks = footerData || {
-    github: 'https://github.com',
-    linkedin: 'https://linkedin.com',
-    medium: 'https://medium.com',
-    instagram: 'https://instagram.com',
-    email: 'hello@example.com'
-  };
+//   const footerLinks = footerData || {
+//     github: 'https://github.com/purohitamann',
+//     linkedin: 'https://www.linkedin.com/in/amanhiranpurohit/',
+//     medium: 'https://medium.com/@purohitamann',
+//     instagram: 'https://www.instagram.com/purohitamann/',
+//     email: 'purohitaman@icloud.com'
+//   };
 
   return (
     <div className="h-screen flex pt-16 bg-background relative">
@@ -643,7 +641,7 @@ const AmanAsksPage = () => {
       <div className={`${rightSidebarOpen ? 'w-80' : 'w-0'} transition-all duration-300 bg-card border-l border-border flex flex-col overflow-hidden xl:relative absolute right-0 top-16 h-[calc(100vh-4rem)] z-20 xl:z-auto xl:h-auto xl:top-0`}>
         {/* Social Links Section */}
         <div className="p-3 sm:p-4 border-b border-border">
-          <h3 className="text-base sm:text-lg font-semibold text-foreground mb-3 sm:mb-4">Connect with Aman</h3>
+          <h3 className="text-base sm:text-lg font-semibold text-foreground mb-3 sm:mb-4">My Socials</h3>
           <div className="space-y-3">
             <a 
               href={footerData.github} 
