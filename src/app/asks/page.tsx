@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 
-// Fix import paths
-import footerData from '../../data/footer.json';
-import blogData from '../../data/blog.json';
-import highlightsData from '../../data/highlights.json';
+// Fix import paths - adjust based on your actual file structure
+import footerData from '../../../src/data/footer.json';
+import blogData from '../../../src/data/blog.json';
+import highlightsData from '../../../src/data/highlights.json';
 
 interface Message {
   id: number;
@@ -344,9 +344,24 @@ const AmanAsksPage = () => {
   const currentQuestion = botQuestions[currentStep];
   const isCompleted = currentStep >= botQuestions.length;
 
-  // Safe data access with fallbacks
-  const recentBlogs = blogData?.posts?.slice(0, 3) || [];
-  const recentHighlights = highlightsData?.highlights?.slice(0, 3) || [];
+  // Safe data access with fallbacks - use hardcoded data if imports fail
+  const recentBlogs = blogData?.posts?.slice(0, 3) || [
+    { id: 1, title: 'Sample Blog Post', slug: 'sample', readTime: '5 min read' },
+    { id: 2, title: 'Another Blog Post', slug: 'another', readTime: '3 min read' },
+  ];
+  
+  const recentHighlights = highlightsData?.highlights?.slice(0, 3) || [
+    { id: 1, title: 'Sample Highlight', description: 'Sample description', date: '2024', link: '#' },
+  ];
+
+  // Fallback footer data
+  const footerLinks = footerData || {
+    github: 'https://github.com',
+    linkedin: 'https://linkedin.com',
+    medium: 'https://medium.com',
+    instagram: 'https://instagram.com',
+    email: 'hello@example.com'
+  };
 
   return (
     <div className="h-screen flex pt-16 bg-background relative">

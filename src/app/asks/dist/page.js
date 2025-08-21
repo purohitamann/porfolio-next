@@ -61,10 +61,10 @@ var lucide_react_1 = require("lucide-react");
 var link_1 = require("next/link");
 var firestore_1 = require("firebase/firestore");
 var firebase_1 = require("../../lib/firebase");
-// Fix import paths
-var footer_json_1 = require("../../data/footer.json");
-var blog_json_1 = require("../../data/blog.json");
-var highlights_json_1 = require("../../data/highlights.json");
+// Fix import paths - adjust based on your actual file structure
+var footer_json_1 = require("../../../src/data/footer.json");
+var blog_json_1 = require("../../../src/data/blog.json");
+var highlights_json_1 = require("../../../src/data/highlights.json");
 var AmanAsksPage = function () {
     var _a, _b, _c;
     var _d = react_1.useState([
@@ -331,9 +331,22 @@ var AmanAsksPage = function () {
     };
     var currentQuestion = botQuestions[currentStep];
     var isCompleted = currentStep >= botQuestions.length;
-    // Safe data access with fallbacks
-    var recentBlogs = ((_a = blog_json_1["default"] === null || blog_json_1["default"] === void 0 ? void 0 : blog_json_1["default"].posts) === null || _a === void 0 ? void 0 : _a.slice(0, 3)) || [];
-    var recentHighlights = ((_b = highlights_json_1["default"] === null || highlights_json_1["default"] === void 0 ? void 0 : highlights_json_1["default"].highlights) === null || _b === void 0 ? void 0 : _b.slice(0, 3)) || [];
+    // Safe data access with fallbacks - use hardcoded data if imports fail
+    var recentBlogs = ((_a = blog_json_1["default"] === null || blog_json_1["default"] === void 0 ? void 0 : blog_json_1["default"].posts) === null || _a === void 0 ? void 0 : _a.slice(0, 3)) || [
+        { id: 1, title: 'Sample Blog Post', slug: 'sample', readTime: '5 min read' },
+        { id: 2, title: 'Another Blog Post', slug: 'another', readTime: '3 min read' },
+    ];
+    var recentHighlights = ((_b = highlights_json_1["default"] === null || highlights_json_1["default"] === void 0 ? void 0 : highlights_json_1["default"].highlights) === null || _b === void 0 ? void 0 : _b.slice(0, 3)) || [
+        { id: 1, title: 'Sample Highlight', description: 'Sample description', date: '2024', link: '#' },
+    ];
+    // Fallback footer data
+    var footerLinks = footer_json_1["default"] || {
+        github: 'https://github.com',
+        linkedin: 'https://linkedin.com',
+        medium: 'https://medium.com',
+        instagram: 'https://instagram.com',
+        email: 'hello@example.com'
+    };
     return (react_1["default"].createElement("div", { className: "h-screen flex pt-16 bg-background relative" },
         (sidebarOpen || rightSidebarOpen) && (react_1["default"].createElement("div", { className: "fixed inset-0 bg-black/50 z-10 lg:hidden xl:hidden", onClick: function () {
                 setSidebarOpen(false);
