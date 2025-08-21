@@ -434,11 +434,6 @@ const AmanAsksPage = () => {
               </div>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mt-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <span>Let&apos;s connect!</span>
-                <span className="hidden sm:inline">•</span>
-                <span>Thank you</span>
-              </div>
               <a
                 href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=amanhiranpurohit"
                 target="_blank"
