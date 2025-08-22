@@ -133,8 +133,6 @@ const BlogPage = () => {
               >
                 <a
                   href={post.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="block p-6 rounded-lg border border-border hover:border-muted-foreground transition-all bg-card/50 hover:bg-card/70"
                 >
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
@@ -254,15 +252,11 @@ const BlogPage = () => {
             Stay Updated
           </h3>
           <p className="text-muted-foreground mb-6">
-            Follow me on Medium for more articles on technology, AI, and software engineering.
+            Subscribe to my newsletter for the latest articles, provide Feedback and book a time to chat with me.
           </p>
           <Button asChild className="button-hover">
-            <a
-              href="https://medium.com/@purohitamann"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Follow on Medium
+            <a href="/asks">
+              Aman Asks
               <ArrowUpRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
