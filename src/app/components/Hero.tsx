@@ -3,6 +3,7 @@ import hero from '../../data/hero.json';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, Github } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
     return (
@@ -13,19 +14,21 @@ export default function Hero() {
                     <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mb-12">
                         {/* Profile Photo */}
                         <div className="flex-shrink-0">
-                            <div className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 rounded-full bg-muted/20 border-2 border-border/30 overflow-hidden">
-                                <img 
+                            <div className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 rounded-full bg-muted/20 border-2 border-border/30 overflow-hidden relative">
+                                <Image 
                                     src="/profile.jpg" 
                                     alt="Aman Purohit" 
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
+                                    priority
                                     onError={(e) => {
                                         e.currentTarget.style.display = 'none';
-                                        if (e.currentTarget.nextElementSibling) {
-                                            (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex';
+                                        if (e.currentTarget.parentElement?.nextElementSibling) {
+                                            (e.currentTarget.parentElement.nextElementSibling as HTMLElement).style.display = 'flex';
                                         }
                                     }}
                                 />
-                                <div className="w-full h-full flex items-center justify-center text-muted-foreground" style={{display: 'none'}}>
+                                <div className="w-full h-full flex items-center justify-center text-muted-foreground absolute inset-0" style={{display: 'none'}}>
                                     <span className="text-sm">Photo</span>
                                 </div>
                             </div>
