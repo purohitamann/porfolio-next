@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import highlights from '../../data/highlights.json';
 import blogData from '../../data/blog.json';
 
+
 interface Highlight {
   id: number;
   title: string;
