@@ -1,12 +1,13 @@
 'use client';
 import React, { use, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Calendar, Clock, Tag, User, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag, User, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import blogData from '../../../data/blog.json';
-
+import { Button
+ } from '@/components/ui/button';
 interface BlogPost {
   id: number;
   title: string;
@@ -372,6 +373,26 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
           </div>
         </motion.footer>
       </article>
+       {/* Newsletter CTA */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-16 p-8 rounded-lg border border-border bg-card/30 text-center"
+        >
+          <h3 className="text-xl font-semibold text-foreground mb-2">
+            Stay Updated
+          </h3>
+          <p className="text-muted-foreground mb-6">
+            Subscribe to my newsletter for the latest articles, provide Feedback and book a time to chat with me.
+          </p>
+          <Button asChild className="button-hover">
+            <a href="/asks">
+              Aman Asks
+              <ArrowUpRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </motion.section>
     </div>
   );
 };

@@ -758,6 +758,9 @@ const AmanAsksPage = () => {
               </div>
             ))}
           </div>
+          <Link href="/asks" className="text-sm text-primary hover:underline">
+            View all
+          </Link>
         </div>
       </div>
     </div>

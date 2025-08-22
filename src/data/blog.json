@@ -15,48 +15,6 @@
       "author": "Aman Purohit",
       "featured": true,
       "featuredImages": ["/ci.jpg", "/c2.jpg","/kumon.png","/hack.jpeg","/volunteer.MOV"]
-    },
-    {
-      "id": 1,
-      "title": "My First Open-Source Contribution to the Internet Archive",
-      "slug": "open-source-contribution-internet-archive",
-      "description": "Even though it was a small 'good first issue,' it felt incredibly exciting. Documenting my journey and the lessons learned from contributing to such an important project.",
-      "content": "Making my first open-source contribution was both nerve-wracking and exciting. I chose the Internet Archive because of their mission to preserve digital content for future generations.\n\nThe contribution itself was small - just fixing a documentation issue - but the process taught me so much about:\n\n- Reading and understanding large codebases\n- Following contribution guidelines\n- Working with maintainers and the community\n- The importance of clear documentation\n\nWhat started as a simple 'good first issue' became a gateway into the open-source world. The Internet Archive maintainers were incredibly welcoming and provided helpful feedback throughout the process.\n\nThis experience has motivated me to contribute more to open-source projects and give back to the community that has given me so much.",
-      "timePosted": "January 2025",
-      "category": "Open Source",
-      "readTime": "5 min read",
-      "tags": ["open-source", "internet-archive", "contribution", "documentation"],
-      "publishedDate": "2025-01-15",
-      "author": "Aman Purohit",
-      "featured": true
-    },
-    {
-      "id": 2,
-      "title": "Students guide to becoming 'AI first' at School",
-      "slug": "ai-first-student-guide",
-      "description": "There's more to using ChatGPT than just helping you paraphrase. A comprehensive guide for students to effectively leverage AI tools in their academic journey.",
-      "content": "The rise of AI tools has fundamentally changed how we approach learning and problem-solving. As a student, embracing an 'AI-first' mindset doesn't mean replacing your thinking - it means augmenting it.\n\nHere's how to effectively integrate AI into your academic workflow:\n\n## Beyond Simple Questions\n\nMost students use AI for basic queries, but the real power lies in:\n- Research assistance and source discovery\n- Code debugging and explanation\n- Writing structure and improvement\n- Complex problem breakdown\n\n## Ethical Considerations\n\nUsing AI responsibly means:\n- Understanding your institution's AI policies\n- Citing AI assistance when appropriate\n- Using AI as a learning tool, not a replacement for learning\n- Maintaining academic integrity\n\n## Practical Applications\n\n1. **Research**: Use AI to find relevant papers and summarize key concepts\n2. **Writing**: Get feedback on structure and clarity\n3. **Programming**: Debug code and understand complex algorithms\n4. **Study**: Create practice questions and explanations\n\nThe goal is to become more efficient and effective in your learning while maintaining the integrity of your education.",
-      "timePosted": "December 2024",
-      "category": "AI & Education",
-      "readTime": "8 min read",
-      "tags": ["ai", "education", "students", "productivity", "ethics"],
-      "publishedDate": "2024-12-10",
-      "author": "Aman Purohit",
-      "featured": true
-    },
-    {
-      "id": 3,
-      "title": "Building Real-time Applications with WebSockets",
-      "slug": "building-realtime-websockets",
-      "description": "A deep dive into creating responsive real-time applications using WebSockets, covering both frontend and backend implementation.",
-      "content": "Real-time applications are becoming increasingly important in today's web development landscape. From chat applications to live updates, WebSockets provide the foundation for truly interactive experiences.\n\n## What are WebSockets?\n\nWebSockets provide a persistent, full-duplex communication channel between the client and server. Unlike traditional HTTP requests, WebSockets maintain an open connection, allowing for instant bi-directional communication.\n\n## Implementation Overview\n\n### Server-side Setup\n\nUsing Node.js with Socket.io:\n\n```javascript\nconst io = require('socket.io')(server);\n\nio.on('connection', (socket) => {\n  console.log('User connected');\n  \n  socket.on('message', (data) => {\n    io.emit('message', data);\n  });\n});\n```\n\n### Client-side Integration\n\n```javascript\nconst socket = io();\n\nsocket.on('message', (data) => {\n  updateUI(data);\n});\n\nsocket.emit('message', messageData);\n```\n\n## Best Practices\n\n1. **Error Handling**: Always implement reconnection logic\n2. **Performance**: Use rooms and namespaces for scalability\n3. **Security**: Validate all incoming data\n4. **Fallbacks**: Implement polling fallbacks for older browsers\n\nReal-time features can dramatically improve user experience when implemented correctly.",
-      "timePosted": "November 2024",
-      "category": "Web Development",
-      "readTime": "12 min read",
-      "tags": ["websockets", "realtime", "nodejs", "javascript", "web-development"],
-      "publishedDate": "2024-11-20",
-      "author": "Aman Purohit",
-      "featured": false
     }
   ]
 }
