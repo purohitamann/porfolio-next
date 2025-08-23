@@ -371,6 +371,13 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
               </span>
             ))}
           </div>
+          <div className="flex  items-center gap-2 mt-2">
+            <span className="text-sm font-medium text-muted-foreground">Surprise:</span>
+              <a href="/asks" className='flex items-center underline'>
+              Aman Asks
+              <ArrowUpRight className=" h-4 w-4" />
+            </a>
+          </div>
         </motion.footer>
       </article>
        {/* Newsletter CTA */}
@@ -384,7 +391,7 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
             Stay Updated
           </h3>
           <p className="text-muted-foreground mb-6">
-            Subscribe to my newsletter for the latest articles, provide Feedback and book a time to chat with me.
+            Subscribe to my newsletter for the latest articles, provide Feedback and connect
           </p>
           <Button asChild className="button-hover">
             <a href="/asks">

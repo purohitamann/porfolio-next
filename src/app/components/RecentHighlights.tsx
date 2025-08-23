@@ -75,8 +75,6 @@ const RecentHighlights = () => {
               {highlight.link ? (
                 <a
                   href={highlight.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="block p-4 rounded-lg border border-border hover:border-muted-foreground transition-all bg-card/50 hover:bg-card/70"
                 >
                   <div className="flex items-start gap-3">

@@ -252,7 +252,7 @@ const BlogPage = () => {
             Stay Updated
           </h3>
           <p className="text-muted-foreground mb-6">
-            Subscribe to my newsletter for the latest articles, provide Feedback and book a time to chat with me.
+            Subscribe to my newsletter for the latest articles, provide Feedback and connect
           </p>
           <Button asChild className="button-hover">
             <a href="/asks">

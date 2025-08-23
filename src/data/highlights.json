@@ -2,6 +2,14 @@
   "highlights": [
 
         {
+      "id": 9,
+      "title": "My Time Under the Sun",
+      "description": "Reflecting on my summer internship experience at Sun Life.",
+      "date": "August 2025",
+      "type": "achievement",
+      "link": "/blog/my-time-under-the-sun-at-skynet"
+    },
+        {
       "id": 10,
       "title": "boilrplate CLI (v2.0.2) is out now",
       "description": "Let GenAI do your boilerplating, AI's gotta AI!",
