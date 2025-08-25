@@ -1,10 +1,11 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Calendar, Award, Briefcase, Users, FileText, ArrowLeft } from 'lucide-react';
+import { ArrowUpRight, Calendar, Award, Briefcase, Users, FileText, ArrowLeft, Camera } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import highlights from '../../data/highlights.json';
+import blogData from '../../data/blog.json';
 
 interface Highlight {
   id: number;
@@ -23,6 +24,7 @@ interface BlogPost {
   category: string;
   readTime?: string;
   slug?: string;
+  photographer?: string;
 }
 
 const getTypeIcon = (type: string) => {
@@ -71,14 +73,9 @@ const getTypeLabel = (type: string) => {
 };
 
 const BlogPage = () => {
-  const blogPosts: BlogPost[] = [
-    {
-      title: "My Time Under the Sun",
-      description: "Thank You SunLife!",
-      link: "/blog/my-time-under-the-sun-at-skynet",
-      timePosted: "August 2025",
-      category: "Summer Internship Experience"
-    },
+  // Combine data from JSON with static posts
+  const jsonPosts = blogData.posts || [];
+  const staticPosts: BlogPost[] = [
     {
       title: "My First Open-Source Contribution to the Internet Archive",
       description: "Even though it was a small 'good first issue,' it felt incredibly exciting. Documenting my journey and the lessons learned from contributing to such an important project.",
@@ -93,6 +90,21 @@ const BlogPage = () => {
       timePosted: "December 2024",
       category: "AI & Education"
     }
+  ];
+
+  // Convert JSON posts to BlogPost format and combine with static posts
+  const blogPosts: BlogPost[] = [
+    ...jsonPosts.map(post => ({
+      title: post.title,
+      description: post.description,
+      link: post.slug ? `/blog/${post.slug}` : '#',
+      timePosted: post.timePosted,
+      category: post.category,
+      readTime: post.readTime,
+      slug: post.slug,
+      photographer: post.photographer
+    })),
+    ...staticPosts
   ];
 
   return (
@@ -150,7 +162,7 @@ const BlogPage = () => {
                       <p className="text-muted-foreground mb-4 leading-relaxed">
                         {post.description}
                       </p>
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-4 flex-wrap">
                         <span className="text-sm px-3 py-1 rounded-full bg-muted/30 text-muted-foreground">
                           {post.category}
                         </span>
@@ -162,6 +174,7 @@ const BlogPage = () => {
                         <span className="text-sm text-muted-foreground/60">
                           {post.timePosted}
                         </span>
+                        
                       </div>
                     </div>
                   </div>

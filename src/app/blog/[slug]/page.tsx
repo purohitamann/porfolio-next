@@ -1,13 +1,13 @@
 'use client';
 import React, { use, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag, User, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag, User, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import blogData from '../../../data/blog.json';
-import { Button
- } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
+
 interface BlogPost {
   id: number;
   title: string;
@@ -24,6 +24,7 @@ interface BlogPost {
   featuredImage?: string; // Single featured image
   featuredImages?: string[]; // Multiple featured images for slideshow
   images?: string[]; // Add this for content images
+  photographer?: string; // Add photographer field
 }
 
 interface BlogPostPageProps {
@@ -318,6 +319,14 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
                   ))}
                 </div>
               )}
+
+              {/* Photographer Credit - Show below slideshow if photographer exists */}
+              {post.photographer && (
+                <div className="flex items-center justify-center gap-2 mt-3 text-sm text-muted-foreground">
+                  <Camera className="h-4 w-4" />
+                  <span>Photos by {post.photographer}</span>
+                </div>
+              )}
             </motion.div>
           )}
 
@@ -371,35 +380,46 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
               </span>
             ))}
           </div>
-          <div className="flex  items-center gap-2 mt-2">
+          
+          {/* Additional photographer credit in footer if exists */}
+          {post.photographer && (
+            <div className="flex items-center gap-2 mt-4">
+              <Camera className="h-4 w-4 text-muted-foreground" />
+              <span className="text-sm font-medium text-muted-foreground">Photos:</span>
+              <span className="text-sm text-muted-foreground">{post.photographer}</span>
+            </div>
+          )}
+          
+          <div className="flex items-center gap-2 mt-2">
             <span className="text-sm font-medium text-muted-foreground">Surprise:</span>
-              <a href="/asks" className='flex items-center underline'>
+            <a href="/asks" className='flex items-center underline'>
               Aman Asks
-              <ArrowUpRight className=" h-4 w-4" />
+              <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
         </motion.footer>
       </article>
-       {/* Newsletter CTA */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-16 p-8 rounded-lg border border-border bg-card/30 text-center"
-        >
-          <h3 className="text-xl font-semibold text-foreground mb-2">
-            Stay Updated
-          </h3>
-          <p className="text-muted-foreground mb-6">
-            Subscribe to my newsletter for the latest articles, provide Feedback and connect
-          </p>
-          <Button asChild className="button-hover">
-            <a href="/asks">
-              Aman Asks
-              <ArrowUpRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
-        </motion.section>
+      
+      {/* Newsletter CTA */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="mt-16 p-8 rounded-lg border border-border bg-card/30 text-center max-w-4xl mx-auto px-6 md:px-8"
+      >
+        <h3 className="text-xl font-semibold text-foreground mb-2">
+          Stay Updated
+        </h3>
+        <p className="text-muted-foreground mb-6">
+          Subscribe to my newsletter for the latest articles, provide Feedback and connect
+        </p>
+        <Button asChild className="button-hover">
+          <a href="/asks">
+            Aman Asks
+            <ArrowUpRight className="ml-2 h-4 w-4" />
+          </a>
+        </Button>
+      </motion.section>
     </div>
   );
 };
