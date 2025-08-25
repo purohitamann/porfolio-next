@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Calendar, Award, Briefcase, Users, FileText, ArrowLeft, Camera } from 'lucide-react';
+import { ArrowUpRight, Calendar, Award, Briefcase, Users, FileText, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import highlights from '../../data/highlights.json';
