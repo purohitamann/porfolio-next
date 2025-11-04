@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { X, Sparkles, Calendar, Newspaper, Zap, MessageCircle } from 'lucide-react';
+import { X, Sparkles, Calendar, Newspaper, Zap, MessageCircle, FileText } from 'lucide-react';
 import blogData from '../../data/blog.json';
 import Image from 'next/image';
 import Hero from './Hero';
@@ -141,6 +141,21 @@ useEffect(() => {
         </div>
       ),
       color: 'from-cyan-600 to-cyan-700',
+    },
+    {
+      id: 'resume',
+      title: 'Resume',
+      icon: <FileText className="w-8 h-8" />,
+      component: (
+        <div className="w-full h-full">
+          <iframe 
+            src="/AmanPurohitResume2025.pdf"
+            className="w-full h-full border-0"
+            title="Aman Purohit Resume"
+          />
+        </div>
+      ),
+      color: 'from-teal-600 to-teal-700',
     },
   ];
 
