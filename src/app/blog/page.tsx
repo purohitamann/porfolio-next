@@ -5,7 +5,7 @@ import { ArrowUpRight, Calendar, Award, Briefcase, Users, FileText, ArrowLeft } 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import highlights from '../../data/highlights.json';
-import blogData from '../../data/blog.json';
+import { getAllPosts } from '../../lib/blog';
 
 
 
@@ -75,39 +75,18 @@ const getTypeLabel = (type: string) => {
 };
 
 const BlogPage = () => {
-  // Combine data from JSON with static posts
-  const jsonPosts = blogData.posts || [];
-  const staticPosts: BlogPost[] = [
-    {
-      title: "My First Open-Source Contribution to the Internet Archive",
-      description: "Even though it was a small 'good first issue,' it felt incredibly exciting. Documenting my journey and the lessons learned from contributing to such an important project.",
-      link: "https://medium.com/@purohitamann/my-first-open-source-contribution-to-the-internet-archive-6ec2621b8a68",
-      timePosted: "January 2025",
-      category: "Open Source"
-    },
-    {
-      title: "Students guide to becoming 'AI first' at School",
-      description: "There's more to using ChatGPT than just helping you paraphrase. A comprehensive guide for students to effectively leverage AI tools in their academic journey.",
-      link: "https://medium.com/p/d004dbc7a633",
-      timePosted: "December 2024",
-      category: "AI & Education"
-    }
-  ];
-
-  // Convert JSON posts to BlogPost format and combine with static posts
-  const blogPosts: BlogPost[] = [
-    ...jsonPosts.map(post => ({
-      title: post.title,
-      description: post.description,
-      link: post.slug ? `/blog/${post.slug}` : '#',
-      timePosted: post.timePosted,
-      category: post.category,
-      readTime: post.readTime,
-      slug: post.slug,
-      photographer: post.photographer
-    })),
-    ...staticPosts
-  ];
+  // Use centralized JSON posts
+  const jsonPosts = getAllPosts();
+  const blogPosts: BlogPost[] = jsonPosts.map(post => ({
+    title: post.title || '',
+    description: post.description || '',
+    link: post.slug ? `/blog/${post.slug}` : '#',
+    timePosted: post.timePosted || '',
+    category: post.category || '',
+    readTime: post.readTime,
+    slug: post.slug,
+    photographer: post.photographer
+  }));
 
   return (
     <div className="min-h-screen pt-20">
