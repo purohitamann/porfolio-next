@@ -10,6 +10,7 @@ import { getAllPosts } from '../../lib/blog';
 
 
 interface Highlight {
+  
   id: number;
   title: string;
   description: string;
