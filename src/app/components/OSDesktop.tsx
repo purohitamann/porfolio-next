@@ -128,19 +128,9 @@ const OSDesktop = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Handle hash navigation on mount
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  React.useEffect(() => {
-    if (window.location.hash) {
-      const hash = window.location.hash.substring(1);
-      const app = apps.find(a => a.id === hash || a.id === 'about' && hash === 'about');
-      if (app) {
-        setTimeout(() => openApp(app), 500);
-      }
-    }
-  }, []);
+  
 
-  const apps = [
+  const apps = React.useMemo(() => ([
     {
       id: 'about',
       title: 'About Me',
@@ -151,6 +141,21 @@ const OSDesktop = () => {
           <div className="mt-8">
             <Blurb />
           </div>
+        </div>
+      ),
+    },
+    {
+      id: 'resume',
+      title: 'Resume',
+      icon: <FileText className="w-5 h-5" />,
+      component: (
+        <div className="w-full h-full bg-white">
+          <iframe
+            src="/AmanPurohitResume2025.pdf"
+            className="w-full h-full border-0 bg-white"
+            allowFullScreen
+            title="Aman Purohit Resume"
+          />
         </div>
       ),
     },
@@ -210,59 +215,40 @@ const OSDesktop = () => {
         </div>
       ),
     },
-    {
-      id: 'resume',
-      title: 'Resume',
-      icon: <FileText className="w-5 h-5" />,
-      component: (
-        <div className="w-full h-full bg-white">
-          <iframe
-            src="/AmanPurohitResume2025.pdf"
-            className="w-full h-full border-0 bg-white"
-            allowFullScreen
-            title="Aman Purohit Resume"
-          />
-        </div>
-      ),
-    },
-  ];
+  ]), []);
 
-  const openApp = (app: typeof apps[0]) => {
-    const existingWindow = windows.find(w => w.id === app.id);
-    
-    if (existingWindow) {
-      // Bring to front and unminimize
-      const newZIndex = highestZIndex + 1;
-      setHighestZIndex(newZIndex);
-      setWindows(windows.map(w => 
-        w.id === app.id 
-          ? { ...w, isMinimized: false, zIndex: newZIndex }
-          : w
-      ));
-    } else {
-      // Create new window
-      const newZIndex = highestZIndex + 1;
-      setHighestZIndex(newZIndex);
-      
-      // Calculate position in a grid pattern to avoid off-screen
-      const windowCount = windows.length;
-      const gridOffset = (windowCount % 5) * 40; // Cycle through 5 positions
-      
-      // Compute pixel positions (fallback to px offsets)
+  const openApp = React.useCallback((app: typeof apps[0]) => {
+    // Use functional updates to avoid depending on `windows` or `highestZIndex` in the closure
+    setWindows((prev) => {
+      const existing = prev.find(w => w.id === app.id);
+      if (existing) {
+        // unminimize / keep existing window; zIndex will be updated below
+        return prev.map(w => w.id === app.id ? { ...w, isMinimized: false } : w);
+      }
+
+      const windowCount = prev.length;
+      const gridOffset = (windowCount % 5) * 40;
       const left = isMobile ? Math.round(window.innerWidth * 0.05) : 50 + gridOffset;
       const top = isMobile ? Math.round(window.innerHeight * 0.05) : 50 + gridOffset;
 
-      setWindows([...windows, {
+      return [...prev, {
         ...app,
         isMinimized: false,
-        isMaximized: isMobile, // Auto-maximize on mobile
-        zIndex: newZIndex,
+        isMaximized: isMobile,
+        zIndex: 0, // assigned below when we bump highestZIndex
         gridOffset,
         left,
         top,
-      }]);
-    }
-  };
+      }];
+    });
+
+    // bump global z-index and assign to the opened app
+    setHighestZIndex((prev) => {
+      const newZ = prev + 1;
+      setWindows((prevWindows) => prevWindows.map(w => w.id === app.id ? { ...w, zIndex: newZ } : w));
+      return newZ;
+    });
+  }, [isMobile]);
 
   const closeWindow = (id: string) => {
     setWindows(windows.filter(w => w.id !== id));
@@ -294,6 +280,16 @@ const OSDesktop = () => {
   const handleDockClick = (app: typeof apps[0]) => {
     openApp(app);
   };
+
+  // Handle hash navigation (run on mount). apps is memoized and openApp is stable
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      const app = apps.find(a => a.id === hash || (a.id === 'about' && hash === 'about'));
+      if (app) setTimeout(() => openApp(app), 500);
+    }
+  }, [apps, openApp]);
 
   // Dragging state for windows
   const draggingWindowRef = React.useRef<{
@@ -331,12 +327,27 @@ const OSDesktop = () => {
     return 0;
   });
 
+  // find resume app for mobile quick access
+  const resumeApp = apps.find(a => a.id === 'resume');
+
   return (
     <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-gray-950 via-sky-800 to-sky-950 relative">
       {/* Desktop Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-texture" />
       </div>
+      {/* Mobile quick-access resume button (pinned bottom-left) */}
+      {isMobile && resumeApp && (
+        <div className="absolute left-4 bottom-4 z-60 md:hidden pointer-events-auto">
+          <button
+            onClick={() => handleDockClick(resumeApp)}
+            title="Resume"
+            className="p-3 rounded-full bg-background/80 shadow-lg border border-border/40"
+          >
+            <div className="w-5 h-5 text-foreground">{resumeApp.icon}</div>
+          </button>
+        </div>
+      )}
 
       {/* Welcome / Loading Overlay (desktop-style solid loader window) */}
       <div
@@ -403,11 +414,13 @@ const OSDesktop = () => {
       </div>
 
       {/* Windows */}
-      {/* Top status bar: time and day */}
-      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-40 pointer-events-none">
-        <div className="bg-background/70 backdrop-blur rounded-full px-4 py-1 text-white/90 text-sm shadow-md flex items-center gap-3 pointer-events-auto">
-          <div className="font-medium">{now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
-          <div className="text-xs text-white/80">{now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' })}</div>
+      {/* Top status bar: time and day
+          - On small screens position at top-right and only show time to save space
+          - On md+ center it with date visible */}
+      <div className="absolute top-3 right-3 md:left-1/2 md:right-auto md:transform md:-translate-x-1/2 z-40 pointer-events-none">
+        <div className="bg-background/70 backdrop-blur rounded-full px-3 md:px-4 py-1 text-foreground text-sm shadow-md flex items-center gap-3 pointer-events-auto">
+          <div className="font-medium text-sm md:text-base">{now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+          <div className="hidden md:block text-xs text-muted-foreground">{now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' })}</div>
         </div>
       </div>
       <div className="absolute inset-0 pb-16">
@@ -416,6 +429,7 @@ const OSDesktop = () => {
         <DesktopIcons
           apps={apps}
           openApp={openApp}
+          isMobile={isMobile}
         />
 
         {/* Left widget column (top-left) - only visible when no windows are open */}
@@ -533,6 +547,7 @@ const OSDesktop = () => {
         </div>
       </div>
 
+
       {/* Start Message + Home Widget */}
       {windows.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -562,7 +577,7 @@ export default OSDesktop;
 type DesktopApp = { id: string; title: string; icon: React.ReactElement; component: React.ReactElement };
 type IconItem = { id: string; title: string; appId: string; left?: number; top?: number };
 
-function DesktopIcons({ apps, openApp }: { apps: DesktopApp[]; openApp: (app: DesktopApp) => void }) {
+function DesktopIcons({ apps, openApp, isMobile }: { apps: DesktopApp[]; openApp: (app: DesktopApp) => void; isMobile?: boolean }) {
   const initial: IconItem[] = [
     {
       id: 'resume',
@@ -705,7 +720,9 @@ function DesktopIcons({ apps, openApp }: { apps: DesktopApp[]; openApp: (app: De
 
   return (
     <div className="absolute inset-0 pointer-events-none ">
-      {icons.map((icon: IconItem) => (
+      {icons
+        .filter((icon) => !(isMobile && icon.id === 'resume'))
+        .map((icon: IconItem) => (
         <div
           key={icon.id}
           onPointerDown={(e) => onPointerDown(e, icon)}
