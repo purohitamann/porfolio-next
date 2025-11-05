@@ -11,6 +11,8 @@ import RecentHighlights from './RecentHighlights';
 import HackathonWins from './HackathonWins';
 import OpenSourceContribution from '../work/OpenSourceContribution';
 import BlogWidget from './BlogWidget';
+import WeatherWidget from './WeatherWidget';
+import NotesWidget from './NotesWidget';
 
 interface AppWindow {
   id: string;
@@ -33,6 +35,14 @@ const OSDesktop = () => {
   // Loading overlay for initial welcome screen
   const [isLoading, setIsLoading] = useState(true);
   const [now, setNow] = useState<Date>(() => new Date());
+  // Progress state for desktop-style loader
+  const [progress, setProgress] = useState(6);
+  // Whether to show the welcome/loading overlay (kept until progress finishes)
+  const [showWelcome, setShowWelcome] = useState(true);
+  // Keep a ref snapshot of progress so effects that run on isLoading can read
+  // the current value without needing `progress` in their dependency arrays.
+  const progressRef = React.useRef(progress);
+  React.useEffect(() => { progressRef.current = progress; }, [progress]);
 
   useEffect(() => {
     const t = setTimeout(() => setIsLoading(false), 1300);
@@ -46,6 +56,70 @@ const OSDesktop = () => {
       clearInterval(interval);
     };
   }, []);
+
+  // Manage simulated progress for loader. We increment slowly while still loading
+  // and finish to 100% when `isLoading` becomes false. We respect prefers-reduced-motion.
+  useEffect(() => {
+    let rafId: number | null = null;
+    let iv: number | null = null;
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Increment function (not used when reduced motion is preferred)
+    const increment = () => {
+      setProgress((p) => {
+        if (p >= 88) return p; // hold near-complete until real load
+        // small random bumps for a natural feel
+        const next = p + (2 + Math.round(Math.random() * 3));
+        return Math.min(88, next);
+      });
+      // continue
+      rafId = requestAnimationFrame(() => setTimeout(increment, 200 + Math.random() * 300));
+    };
+
+    if (!prefersReduced) {
+      // Start slow increments
+      iv = window.setTimeout(() => increment(), 300);
+    } else {
+      // reduced motion: jump to a mid-value quickly
+      setProgress(20);
+    }
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      if (iv) clearTimeout(iv);
+    };
+  }, []);
+
+  // When the real loading finishes, finish the progress to 100 and then hide overlay
+  useEffect(() => {
+    if (!isLoading) {
+      const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) {
+        setProgress(100);
+        // hide quickly
+        const t = setTimeout(() => setShowWelcome(false), 220);
+        return () => clearTimeout(t);
+      }
+
+      // animate progress to 100 smoothly
+      let start: number | null = null;
+  const startProgress = progressRef.current;
+      const duration = 600; // ms
+      const step = (ts: number) => {
+        if (!start) start = ts;
+        const elapsed = ts - start;
+        const pct = Math.min(1, elapsed / duration);
+        const next = Math.round(startProgress + (100 - startProgress) * pct);
+        setProgress(next);
+        if (pct < 1) requestAnimationFrame(step);
+        else {
+          // give a small pause before removing overlay so the user sees 100%
+          setTimeout(() => setShowWelcome(false), 220);
+        }
+      };
+      requestAnimationFrame(step);
+    }
+  }, [isLoading]);
   // Check for mobile on mount
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -258,24 +332,73 @@ const OSDesktop = () => {
   });
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-indigo-900 via-black-900 to-black-900 relative">
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-gray-950 via-sky-800 to-sky-950 relative">
       {/* Desktop Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-texture" />
       </div>
 
-      {/* Welcome / Loading Overlay */}
+      {/* Welcome / Loading Overlay (desktop-style solid loader window) */}
       <div
-        onClick={() => setIsLoading(false)}
-        className={`absolute inset-0 z-[70] flex items-center justify-center bg-black/80 text-white transition-all duration-700 ${
-          isLoading ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+        onClick={() => { setIsLoading(false); setShowWelcome(false); }}
+        className={`absolute inset-0 z-[70] flex items-center justify-center bg-background/60 transition-all duration-500 ${
+          showWelcome ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
-        role="status"
-        aria-live="polite"
+        aria-hidden={!showWelcome}
       >
-        <div className="text-center space-y-2 px-6">
-          <h2 className="text-2xl sm:text-3xl font-semibold">Loading Aman&#39;s OS...</h2>
-          <p className="text-sm text-white/80">Preparing your desktop…</p>
+        {/* Centered solid loader panel that resembles a desktop window */}
+        <div
+          role="status"
+          aria-live="polite"
+          className="w-[min(92vw,540px)] mx-4 bg-background/95 text-foreground rounded-lg shadow-2xl ring-1 ring-border/30 overflow-hidden"
+        >
+          {/* Title bar with control dots */}
+          <div className="flex items-center justify-between px-3 py-2 bg-muted/50 border-b border-border/30">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-red-500" aria-hidden />
+                <span className="w-3 h-3 rounded-full bg-amber-400" aria-hidden />
+                <span className="w-3 h-3 rounded-full bg-emerald-400" aria-hidden />
+              </div>
+              <div className="flex items-center gap-2">
+                <User className="w-5 h-5 text-white/90" />
+                {/* <span className="text-sm font-medium">my portfolio</span> */}
+              </div>
+            </div>
+            <div className="text-xs text-white/60">Initializing…</div>
+          </div>
+
+          {/* Content */}
+          <div className="p-6">
+            <div className="flex flex-col items-center gap-4">
+              <div className="text-center">
+                <h3 className="text-lg font-semibold">Loading OS</h3>
+                <p className="text-sm text-muted-foreground"></p>
+              </div>
+
+              {/* Progress bar */}
+              <div className="w-full">
+                <div className="w-full h-3 bg-border/10 rounded overflow-hidden">
+                  <div
+                    className="h-3 bg-gradient-to-r from-sky-400 to-sky-500 rounded transition-[width] ease-out"
+                    style={{ width: `${progress}%` }}
+                    role="progressbar"
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={progress}
+                    aria-label="Loading progress"
+                  />
+                </div>
+                <div className="flex items-center justify-between mt-2 text-xs text-muted-foreground">
+                  <span>{progress < 100 ? `${progress}%` : 'Done'}</span>
+                  <span>{isLoading ? 'Loading…' : 'Almost there'}</span>
+                </div>
+              </div>
+
+              {/* Small hint to dismiss */}
+              {/* <div className="text-[11px] text-muted-foreground">Click anywhere to skip</div> */}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -294,6 +417,15 @@ const OSDesktop = () => {
           apps={apps}
           openApp={openApp}
         />
+
+        {/* Left widget column (top-left) - only visible when no windows are open */}
+        {windows.length === 0 && (
+          <div className="hidden md:flex flex-col gap-3 absolute left-6 top-6 z-30 pointer-events-auto">
+            <WeatherWidget />
+            <NotesWidget />
+            {/* <QuickLinksWidget /> */}
+          </div>
+        )}
         {windows.map((win) => (
           <div
             key={win.id}

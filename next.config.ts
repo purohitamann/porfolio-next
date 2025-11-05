@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
                 https://identitytoolkit.googleapis.com
                 wss://firestore.googleapis.com
                 https://*.googleapis.com;
-              frame-src 'self' docs.google.com drive.google.com;
+              frame-src 'self' docs.google.com drive.google.com https://www.openstreetmap.org https://www.openstreetmap.org/* https://maps.google.com https://www.google.com;
               font-src 'self' https://fonts.gstatic.com;
               worker-src 'self' blob:;
               object-src 'none';
