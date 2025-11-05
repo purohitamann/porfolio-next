@@ -29,7 +29,23 @@ const OSDesktop = () => {
   const [windows, setWindows] = useState<AppWindow[]>([]);
   const [highestZIndex, setHighestZIndex] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
+  
+  // Loading overlay for initial welcome screen
+  const [isLoading, setIsLoading] = useState(true);
+  const [now, setNow] = useState<Date>(() => new Date());
 
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoading(false), 1300);
+    const onLoad = () => setIsLoading(false);
+    // Also clear loading when the window load event fires (fallback)
+    window.addEventListener('load', onLoad);
+    const interval = setInterval(() => setNow(new Date()), 1000);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener('load', onLoad);
+      clearInterval(interval);
+    };
+  }, []);
   // Check for mobile on mount
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -198,6 +214,13 @@ const OSDesktop = () => {
     ));
   };
 
+  // When clicking an item in the dock/taskbar, open the in-app window (openApp).
+  // This ensures a consistent windowed experience; desktop icons can still open
+  // routes in a new tab if desired (handled separately by DesktopIcons).
+  const handleDockClick = (app: typeof apps[0]) => {
+    openApp(app);
+  };
+
   // Dragging state for windows
   const draggingWindowRef = React.useRef<{
     id: string;
@@ -227,14 +250,43 @@ const OSDesktop = () => {
     };
   }, []);
 
+  // Ensure resume appears first in the dock regardless of apps array order
+  const dockApps = apps.slice().sort((a, b) => {
+    if (a.id === 'resume') return -1;
+    if (b.id === 'resume') return 1;
+    return 0;
+  });
+
   return (
-    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 relative">
+    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-indigo-900 via-black-900 to-black-900 relative">
       {/* Desktop Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-texture" />
       </div>
 
+      {/* Welcome / Loading Overlay */}
+      <div
+        onClick={() => setIsLoading(false)}
+        className={`absolute inset-0 z-[70] flex items-center justify-center bg-black/80 text-white transition-all duration-700 ${
+          isLoading ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+        }`}
+        role="status"
+        aria-live="polite"
+      >
+        <div className="text-center space-y-2 px-6">
+          <h2 className="text-2xl sm:text-3xl font-semibold">Loading Aman&#39;s OS...</h2>
+          <p className="text-sm text-white/80">Preparing your desktop…</p>
+        </div>
+      </div>
+
       {/* Windows */}
+      {/* Top status bar: time and day */}
+      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-40 pointer-events-none">
+        <div className="bg-background/70 backdrop-blur rounded-full px-4 py-1 text-white/90 text-sm shadow-md flex items-center gap-3 pointer-events-auto">
+          <div className="font-medium">{now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+          <div className="text-xs text-white/80">{now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' })}</div>
+        </div>
+      </div>
       <div className="absolute inset-0 pb-16">
         {/* Desktop icons (shortcuts) - draggable */}
         {/* We'll render icons from state so they can be moved and persisted */}
@@ -254,8 +306,8 @@ const OSDesktop = () => {
               zIndex: win.zIndex,
               left: win.isMaximized ? undefined : (typeof win.left === 'number' ? `${win.left}px` : (isMobile ? '5%' : `${50 + (win.gridOffset || 0)}px`)),
               top: win.isMaximized ? undefined : (typeof win.top === 'number' ? `${win.top}px` : (isMobile ? '5%' : `${50 + (win.gridOffset || 0)}px`)),
-              width: win.isMaximized ? undefined : isMobile ? '90%' : 'min(800px, 80vw)',
-              height: win.isMaximized ? undefined : isMobile ? '85%' : 'min(600px, 70vh)',
+              width: win.isMaximized ? undefined : isMobile ? '95%' : 'min(800px, 80vw)',
+              height: win.isMaximized ? undefined : isMobile ? '90%' : 'min(600px, 70vh)',
             }}
             onClick={() => bringToFront(win.id)}
           >
@@ -323,38 +375,38 @@ const OSDesktop = () => {
         ))}
       </div>
 
-      {/* Taskbar */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-background/90 backdrop-blur-md border-t border-border/50 shadow-lg">
-        <div className="h-full flex items-center justify-center gap-2 px-4">
-          {apps.map((app) => {
-            const isOpen = windows.some(w => w.id === app.id);
-            return (
-              <button
-                key={app.id}
-                onClick={() => openApp(app)}
-                className={`flex flex-col items-center justify-center gap-1 p-3 rounded-lg transition-all hover:bg-muted/50 ${
-                  isOpen ? 'bg-muted/30 border-b-2 border-primary' : ''
-                }`}
-                title={app.title}
-              >
-                <div className={`transition-transform hover:scale-110 ${
-                  isOpen ? 'scale-110' : ''
-                }`}>
-                  {app.icon}
-                </div>
-                <span className="text-xs text-muted-foreground">{app.title}</span>
-              </button>
-            );
-          })}
+      {/* Floating iOS-like Dock */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-6 w-[min(96vw,900px)] sm:w-[min(92vw,820px)] pointer-events-auto z-50">
+        <div className="mx-auto bg-background/80 backdrop-blur-lg rounded-3xl px-3 py-2 shadow-2xl border border-white/6">
+          <div className="overflow-x-auto no-scrollbar">
+            <div className="inline-flex items-center justify-center gap-2 w-full px-1">
+              {dockApps.map((app) => {
+                const isOpen = windows.some(w => w.id === app.id);
+                return (
+                  <button
+                    key={app.id}
+                    onClick={() => handleDockClick(app)}
+                    className={`flex-shrink-0 inline-flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-transform hover:scale-110 active:scale-95 ${isOpen ? 'scale-110' : ''}`}
+                    title={app.title}
+                  >
+                    <div className="p-2 rounded-full bg-background/60">
+                      {app.icon}
+                    </div>
+                    <span className="text-[11px] sm:text-xs text-muted-foreground truncate max-w-[76px] block mt-1">{app.title}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Start Message + Home Widget */}
       {windows.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="text-center space-y-4 text-white/80">
-            <h1 className="text-4xl font-bold">Welcome to Aman\u2019s Portfolio OS</h1>
-            <p className="text-lg">Click an app in the taskbar below to get started</p>
+          <div className="text-center space-y-4 text-white/80 px-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Aman Purohit</h1>
+            <p className="text-xs sm:text-base md:text-lg font-thin"> Software Engineer | GenAI Creator | Open Source Contributor</p>
           </div>
 
           {/* home screen file tiles are rendered by DesktopIcons (draggable) */}
@@ -364,9 +416,7 @@ const OSDesktop = () => {
             <BlogWidget />
           </div>
 
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-24 pointer-events-auto md:hidden">
-            <BlogWidget />
-          </div>
+          {/* Blog widget hidden on mobile - only show on md+ (top-right) */}
         </div>
       )}
     </div>
@@ -386,8 +436,6 @@ function DesktopIcons({ apps, openApp }: { apps: DesktopApp[]; openApp: (app: De
       id: 'resume',
       title: 'Resume',
       appId: 'resume',
-      left: 24,
-      top: 160,
     },
   ];
 
@@ -400,10 +448,24 @@ function DesktopIcons({ apps, openApp }: { apps: DesktopApp[]; openApp: (app: De
     setMounted(true);
     try {
       const raw = localStorage.getItem('desktopIcons');
-      if (raw) setIcons(JSON.parse(raw));
+      if (raw) {
+        setIcons(JSON.parse(raw));
+        return;
+      }
     } catch {
       // ignore
     }
+
+    // If no saved positions, compute centered defaults on first mount
+    const ICON_W = 80;
+    const ICON_H = 120;
+    const centerLeft = Math.round((window.innerWidth - ICON_W) / 2);
+    const topStart = 160;
+    setIcons(prev => prev.map((ic, idx) => ({
+      ...ic,
+      left: Math.round(centerLeft),
+      top: Math.round(topStart + idx * (ICON_H + 16)),
+    })));
   }, []);
 
   const draggingRef = React.useRef<{ id: string; startX: number; startY: number; offsetX: number; offsetY: number } | null>(null);
@@ -487,6 +549,22 @@ function DesktopIcons({ apps, openApp }: { apps: DesktopApp[]; openApp: (app: De
       movedRef.current = false;
       return;
     }
+    // Prefer opening a dedicated route in a new browser tab for common desktop icons.
+    const ROUTES: Record<string, string> = {
+      resume: '/resume',
+      blog: '/blog',
+      projects: '/projects',
+      work: '/work',
+      about: '/',
+    };
+
+    const route = ROUTES[icon.appId];
+    if (route) {
+      // open in a new tab
+      window.open(route, '_blank');
+      return;
+    }
+
     const app = apps.find((a) => a.id === icon.appId);
     if (app) openApp(app);
   };
@@ -494,7 +572,7 @@ function DesktopIcons({ apps, openApp }: { apps: DesktopApp[]; openApp: (app: De
   if (!mounted) return null;
 
   return (
-    <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute inset-0 pointer-events-none ">
       {icons.map((icon: IconItem) => (
         <div
           key={icon.id}

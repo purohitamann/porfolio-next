@@ -7,14 +7,14 @@ import Image from 'next/image';
 
 export default function Hero() {
     return (
-        <section className="flex items-center justify-center px-4 py-8 w-full overflow-x-hidden" id='about'>
+        <section className="flex items-center justify-center px-3 sm:px-4 py-6 sm:py-8 w-full overflow-x-hidden" id='about'>
             <div className="w-full max-w-6xl mx-auto">
                 <div className="animate-fade">
                     {/* Photo and Name Side by Side */}
-                    <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mb-12">
+                    <div className="flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-16 mb-8 sm:mb-12">
                         {/* Profile Photo */}
                         <div className="flex-shrink-0">
-                            <div className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 rounded-full bg-muted/20 border-2 border-border/30 overflow-hidden relative">
+                            <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 rounded-full bg-muted/20 border-2 border-border/30 overflow-hidden relative">
                                 <Image 
                                     src="/profile.jpg" 
                                     alt="Aman Purohit" 
@@ -36,11 +36,11 @@ export default function Hero() {
                         
                         {/* Name and Description */}
                         <div className="flex-1 text-center lg:text-left space-y-6">
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground leading-tight">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground leading-tight">
                                 {hero.hero.title}
                             </h1>
                             
-                            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl lg:max-w-none">
+                            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl lg:max-w-none">
                                 {hero.hero.description}
                             </p>
                         </div>

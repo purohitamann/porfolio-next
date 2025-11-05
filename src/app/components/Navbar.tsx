@@ -23,8 +23,8 @@ const Navbar = () => {
 
     return (
         <div className="w-full bg-background/95 backdrop-blur-sm border-b border-border/50 top-0 left-0 z-50 fixed">
-            <div className="max-w-6xl mx-auto flex justify-between items-center px-6 md:px-8 py-4">
-                <Link href="/" className="text-foreground font-semibold text-xl hover:text-muted-foreground transition-colors">
+            <div className="max-w-6xl mx-auto flex justify-between items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4">
+                <Link href="/" className="text-foreground font-semibold text-lg sm:text-xl hover:text-muted-foreground transition-colors">
                     Aman Purohit
                 </Link>
 
@@ -59,7 +59,7 @@ const Navbar = () => {
             </div>
             {isOpen && (
                 <div className="md:hidden bg-background border-b border-border/50">
-                    <nav className="max-w-6xl mx-auto px-6 py-4 space-y-4">
+                    <nav className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 space-y-3 sm:space-y-4">
                         <button
                             className="block text-foreground hover:text-muted-foreground transition-colors"
                             onClick={() => { scrollToSection('about'); setIsOpen(false); }}

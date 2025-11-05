@@ -75,7 +75,7 @@ useEffect(() => {
     {
       id: 'about',
       title: 'About',
-      icon: <Sparkles className="w-8 h-8" />,
+      icon: <Sparkles />,
       component: (
         <div className="p-6 overflow-y-auto h-full">
           <Hero />
@@ -87,7 +87,7 @@ useEffect(() => {
     {
       id: 'projects',
       title: 'Projects',
-      icon: <Zap className="w-8 h-8" />,
+      icon: <Zap />,
       component: (
         <div className="p-6 overflow-y-auto h-full">
           <Projects />
@@ -98,7 +98,7 @@ useEffect(() => {
     {
       id: 'work',
       title: 'Work',
-      icon: <Calendar className="w-8 h-8" />,
+      icon: <Calendar />,
       component: (
         <div className="p-6 overflow-y-auto h-full">
           <Work />
@@ -110,7 +110,7 @@ useEffect(() => {
     {
       id: 'blog',
       title: 'Blog',
-      icon: <Newspaper className="w-8 h-8" />,
+      icon: <Newspaper />,
       component: (
         <div className="p-6 overflow-y-auto h-full">
           <Blog />
@@ -121,7 +121,7 @@ useEffect(() => {
     {
       id: 'highlights',
       title: 'Highlights',
-      icon: <Sparkles className="w-8 h-8" />,
+      icon: <Sparkles />,
       component: (
         <div className="p-6 overflow-y-auto h-full">
           <RecentHighlights />
@@ -133,7 +133,7 @@ useEffect(() => {
     {
       id: 'contact',
       title: 'Contact',
-      icon: <MessageCircle className="w-8 h-8" />,
+      icon: <MessageCircle />,
       component: (
         <div className="p-6 overflow-y-auto h-full">
           <Footer className="border-none mt-0" />
@@ -144,7 +144,7 @@ useEffect(() => {
     {
       id: 'resume',
       title: 'Resume',
-      icon: <FileText className="w-8 h-8" />,
+      icon: <FileText />,
       component: (
         <div className="w-full h-full">
           <iframe 
@@ -208,10 +208,10 @@ useEffect(() => {
       </div>
 
       {/* Status Bar */}
-      <div className="absolute top-0 left-0 right-0 h-12 bg-black/20 backdrop-blur-xl z-50">
-        <div className="h-full flex items-center justify-between px-6 text-white text-sm font-medium">
+      <div className="absolute top-0 left-0 right-0 h-10 sm:h-12 bg-black/20 backdrop-blur-xl z-50">
+        <div className="h-full flex items-center justify-between px-3 sm:px-6 text-white text-xs sm:text-sm font-medium">
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold">Aman&apos;s OS</span>
+            <span className="text-base sm:text-lg font-bold">Aman&apos;s OS</span>
           </div>
           <div className="flex items-center gap-2">
             <span>{battery}%</span>
@@ -229,16 +229,16 @@ useEffect(() => {
 
       {/* Home Screen */}
       {!openApp && (
-        <div className="absolute inset-0 pt-12 pb-32 px-6">
+        <div className="absolute inset-0 pt-10 sm:pt-12 pb-24 sm:pb-32 px-3 sm:px-6">
           {/* Date Widget */}
-          <div className="text-center text-white mb-8 mt-16">
-            <div className="text-xl font-medium opacity-90">{currentDate}</div>
+          <div className="text-center text-white mb-6 sm:mb-8 mt-8 sm:mt-16">
+            <div className="text-base sm:text-xl font-medium opacity-90 px-2">{currentDate}</div>
           </div>
 
           {/* Blog Slideshow Widget */}
-          <div className="mb-8 mx-auto max-w-lg px-4">
-            <div className="bg-gray-800/40 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/50 relative">
-              <div className="h-72 bg-black relative">
+          <div className="mb-6 sm:mb-8 mx-auto max-w-lg px-2 sm:px-4">
+            <div className="bg-gray-800/40 backdrop-blur-xl rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-700/50 relative">
+              <div className="h-56 sm:h-72 bg-black relative">
                 {blogPosts.map((post, index) => (
                   <button
                     key={post.id}
@@ -262,14 +262,14 @@ useEffect(() => {
                     )}
                     
                     {/* Content Overlay */}
-                    <div className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                      <span className="text-white/90 text-xs font-medium px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full w-fit mb-2">
+                    <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                      <span className="text-white/90 text-[10px] sm:text-xs font-medium px-2 sm:px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full w-fit mb-2">
                         {post.category}
                       </span>
-                      <h3 className="text-white text-lg font-bold line-clamp-1 drop-shadow-lg text-left">
+                      <h3 className="text-white text-base sm:text-lg font-bold line-clamp-2 drop-shadow-lg text-left">
                         {post.title}
                       </h3>
-                      <p className="text-white/90 text-xs mt-1 line-clamp-1 drop-shadow-md text-left">
+                      <p className="text-white/90 text-[10px] sm:text-xs mt-1 line-clamp-2 drop-shadow-md text-left">
                         {post.description}
                       </p>
                       <div className="flex items-center justify-between text-white/70 text-xs mt-2">
@@ -297,17 +297,17 @@ useEffect(() => {
           </div>
 
           {/* App Icons Grid */}
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-2xl mx-auto px-2">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 max-w-2xl mx-auto px-2">
             {apps.map((app) => (
               <button
                 key={app.id}
                 onClick={() => handleAppClick(app)}
                 className="flex flex-col items-center gap-2 group"
               >
-                <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-[22%] bg-gradient-to-br ${app.color} flex items-center justify-center text-white shadow-xl transform transition-all duration-200 group-hover:scale-110 group-active:scale-95`}>
-                  {app.icon}
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-[22%] bg-gradient-to-br ${app.color} flex items-center justify-center text-white shadow-xl transform transition-all duration-200 group-hover:scale-110 group-active:scale-95`}>
+                  {React.cloneElement(app.icon as React.ReactElement, { className: 'w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8' })}
                 </div>
-                <span className="text-white text-xs font-medium text-center drop-shadow-lg">
+                <span className="text-white text-[10px] sm:text-xs font-medium text-center drop-shadow-lg max-w-[80px] sm:max-w-none truncate">
                   {app.title}
                 </span>
               </button>
@@ -331,25 +331,25 @@ useEffect(() => {
 
       {/* Opened App Window */}
       {openApp && (
-        <div className="absolute inset-0 pt-12 pb-4 px-4 flex items-center justify-center z-50 pointer-events-none">
+        <div className="absolute inset-0 pt-10 sm:pt-12 pb-2 sm:pb-4 px-2 sm:px-4 flex items-center justify-center z-50 pointer-events-none">
           <div 
             className="w-full max-w-4xl h-full bg-background/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/10 overflow-hidden animate-scale-up pointer-events-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* App Header */}
-            <div className="h-16 flex items-center justify-between px-6 border-b border-border/20 bg-gradient-to-b from-background/80 to-background/60">
+            <div className="h-12 sm:h-16 flex items-center justify-between px-4 sm:px-6 border-b border-border/20 bg-gradient-to-b from-background/80 to-background/60">
               <button
                 onClick={handleCloseApp}
                 className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
               >
                 <div className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors" />
               </button>
-              <h1 className="text-lg font-semibold">{openApp.title}</h1>
+              <h1 className="text-base sm:text-lg font-semibold">{openApp.title}</h1>
               <div className="w-16" /> {/* Spacer for centering */}
             </div>
 
             {/* App Content */}
-            <div className="h-[calc(100%-4rem)] overflow-y-auto">
+            <div className="h-[calc(100%-3rem)] sm:h-[calc(100%-4rem)] overflow-y-auto">
               {openApp.component}
             </div>
           </div>

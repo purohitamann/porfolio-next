@@ -1,7 +1,7 @@
 'use client';
 import React from "react";
-import IOSDesktop from "./components/IOSDesktop";
+import OSDesktop from "./components/OSDesktop";
 
 export default function Home() {
-  return <IOSDesktop />;
+  return <OSDesktop />;
 }

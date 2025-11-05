@@ -89,8 +89,8 @@ const BlogPage = () => {
   }));
 
   return (
-    <div className="min-h-screen pt-20">
-      <div className="max-w-4xl mx-auto px-6 md:px-8 py-12">
+    <div className="min-h-screen pt-16 sm:pt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
         {/* Header */}
         <div className="mb-12">
           <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8">
@@ -103,18 +103,18 @@ const BlogPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
               Blog & Highlights
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl">
               Thoughts on technology, open source, AI, and my journey as a software engineer.
             </p>
           </motion.div>
         </div>
 
         {/* Blog Posts Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Latest Articles</h2>
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Latest Articles</h2>
           <div className="space-y-6">
             {blogPosts.map((post, index) => (
               <motion.article
@@ -126,12 +126,12 @@ const BlogPage = () => {
               >
                 <a
                   href={post.link}
-                  className="block p-6 rounded-lg border border-border hover:border-muted-foreground transition-all bg-card/50 hover:bg-card/70"
+                  className="block p-4 sm:p-6 rounded-lg border border-border hover:border-muted-foreground transition-all bg-card/50 hover:bg-card/70"
                 >
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-start justify-between gap-2 mb-3">
-                        <h3 className="text-xl font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
+                        <h3 className="text-lg sm:text-xl font-semibold text-foreground group-hover:text-foreground/90 transition-colors">
                           {post.title}
                         </h3>
                         {post.link.startsWith('/blog/') ? (

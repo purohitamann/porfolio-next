@@ -49,7 +49,7 @@ const GitHubProjects: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen w-screen bg-background pt-20 px-4 md:px-8 lg:px-16">
+        <div className="min-h-screen w-screen bg-background pt-16 sm:pt-20 px-3 sm:px-4 md:px-8 lg:px-16">
             <div className="max-w-4xl mx-auto">
                 <div className="mb-6">
                     <Link href="/">
@@ -61,9 +61,9 @@ const GitHubProjects: React.FC = () => {
                 </div>
 
                 <div className="space-y-8">
-                    <div className="flex flex-col items-center space-y-4">
+                    <div className="flex flex-col items-center space-y-3 sm:space-y-4">
                         <motion.h1 
-                            className="text-3xl md:text-4xl font-bold tracking-tighter bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
+                            className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
@@ -81,15 +81,15 @@ const GitHubProjects: React.FC = () => {
                         {projects.map((project, index) => (
                             <FloatingElement key={project.name}>
                                 <motion.div 
-                                    className="bg-background/50 backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
+                                    className="bg-background/50 backdrop-blur-sm border border-border rounded-xl sm:rounded-2xl overflow-hidden"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.1 }}
                                 >
-                                    <div className="p-6 space-y-4">
+                                    <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
                                         <div className="flex justify-between items-start">
                                             <div>
-                                                <h2 className="text-xl font-semibold text-foreground">
+                                                <h2 className="text-lg sm:text-xl font-semibold text-foreground">
                                                     {project.name}
                                                 </h2>
                                                 <p className="text-muted-foreground text-sm mt-1">
