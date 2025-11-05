@@ -7,7 +7,7 @@ import BodyClassController from "./components/BodyClassController";
 
 export const metadata: Metadata = {
   title: "Aman Purohit",
-  description: "Aspiring Software Developer and AI Engineer",
+  description: "Software Engineer in GenAI & DevOps",
   icons: {
     icon: "/favicon.ico",
   },
