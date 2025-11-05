@@ -39,6 +39,7 @@ const OSDesktop = () => {
   }, []);
 
   // Handle hash navigation on mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     if (window.location.hash) {
       const hash = window.location.hash.substring(1);
@@ -352,7 +353,7 @@ const OSDesktop = () => {
       {windows.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="text-center space-y-4 text-white/80">
-            <h1 className="text-4xl font-bold">Welcome to Aman's Portfolio OS</h1>
+            <h1 className="text-4xl font-bold">Welcome to Aman\u2019s Portfolio OS</h1>
             <p className="text-lg">Click an app in the taskbar below to get started</p>
           </div>
 
@@ -375,8 +376,12 @@ const OSDesktop = () => {
 export default OSDesktop;
 
 // Draggable desktop icons helper component
-function DesktopIcons({ apps, openApp }: { apps: any[]; openApp: (app: any) => void }) {
-  const initial = [
+// Types for DesktopIcons
+type DesktopApp = { id: string; title: string; icon: React.ReactElement; component: React.ReactElement };
+type IconItem = { id: string; title: string; appId: string; left?: number; top?: number };
+
+function DesktopIcons({ apps, openApp }: { apps: DesktopApp[]; openApp: (app: DesktopApp) => void }) {
+  const initial: IconItem[] = [
     {
       id: 'resume',
       title: 'Resume',
@@ -389,14 +394,14 @@ function DesktopIcons({ apps, openApp }: { apps: any[]; openApp: (app: any) => v
   // Avoid rendering desktop icons during SSR / before hydration to prevent
   // mismatches between server and client (localStorage and window are client-only).
   const [mounted, setMounted] = useState(false);
-  const [icons, setIcons] = useState<any[]>(initial);
+  const [icons, setIcons] = useState<IconItem[]>(initial);
 
   useEffect(() => {
     setMounted(true);
     try {
       const raw = localStorage.getItem('desktopIcons');
       if (raw) setIcons(JSON.parse(raw));
-    } catch (e) {
+    } catch {
       // ignore
     }
   }, []);
@@ -408,13 +413,13 @@ function DesktopIcons({ apps, openApp }: { apps: any[]; openApp: (app: any) => v
     if (!mounted) return;
     try {
       localStorage.setItem('desktopIcons', JSON.stringify(icons));
-    } catch (e) {}
+    } catch {}
   }, [icons, mounted]);
 
   useEffect(() => {
     const handlePointerMove = (e: PointerEvent) => {
       if (!draggingRef.current) return;
-      const { id, startX, startY, offsetX, offsetY } = draggingRef.current;
+      const { id, offsetX, offsetY } = draggingRef.current;
       // Compute new position and clamp to viewport bounds
       const rawX = e.clientX - offsetX;
       const rawY = e.clientY - offsetY;
@@ -426,11 +431,11 @@ function DesktopIcons({ apps, openApp }: { apps: any[]; openApp: (app: any) => v
       const maxY = Math.max(0, window.innerHeight - ICON_H - 80); // leave some room for taskbar
       const nx = Math.min(maxX, Math.max(minX, Math.round(rawX)));
       const ny = Math.min(maxY, Math.max(minY, Math.round(rawY)));
-      setIcons((prev: any[]) => prev.map((ic: any) => (ic.id === id ? { ...ic, left: nx, top: ny } : ic)));
+      setIcons((prev: IconItem[]) => prev.map((ic: IconItem) => (ic.id === id ? { ...ic, left: nx, top: ny } : ic)));
       movedRef.current = true;
     };
 
-    const handlePointerUp = (_e: PointerEvent) => {
+    const handlePointerUp = () => {
       if (draggingRef.current) {
         // Snap the dragged icon to grid and clamp to viewport
         const didId = draggingRef.current.id;
@@ -441,7 +446,7 @@ function DesktopIcons({ apps, openApp }: { apps: any[]; openApp: (app: any) => v
         const minY = 0;
         const maxX = Math.max(0, window.innerWidth - ICON_W);
         const maxY = Math.max(0, window.innerHeight - ICON_H - 80);
-        setIcons(prev => prev.map(ic => {
+        setIcons(prev => prev.map((ic: IconItem) => {
           if (ic.id !== didId) return ic;
           const left = Math.round((ic.left ?? 0) / GRID) * GRID;
           const top = Math.round((ic.top ?? 0) / GRID) * GRID;
@@ -461,7 +466,7 @@ function DesktopIcons({ apps, openApp }: { apps: any[]; openApp: (app: any) => v
     };
   }, []);
 
-  const onPointerDown = (e: React.PointerEvent, icon: any) => {
+  const onPointerDown = (e: React.PointerEvent, icon: IconItem) => {
     // prevent text/image drag
     (e.target as Element).setPointerCapture?.(e.pointerId);
     movedRef.current = false;
@@ -476,7 +481,7 @@ function DesktopIcons({ apps, openApp }: { apps: any[]; openApp: (app: any) => v
     };
   };
 
-  const onClickIcon = (icon: any) => {
+  const onClickIcon = (icon: IconItem) => {
     // if it was moved recently, don't open
     if (movedRef.current) {
       movedRef.current = false;
@@ -490,7 +495,7 @@ function DesktopIcons({ apps, openApp }: { apps: any[]; openApp: (app: any) => v
 
   return (
     <div className="absolute inset-0 pointer-events-none">
-      {icons.map((icon: any) => (
+      {icons.map((icon: IconItem) => (
         <div
           key={icon.id}
           onPointerDown={(e) => onPointerDown(e, icon)}

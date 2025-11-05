@@ -87,11 +87,11 @@ const AmanAsksPage = () => {
 
   const botQuestions = [
     {
-      text: "Hi there! I'm here to collect feedback about Aman's work. What's your name?",
+      text: "Hi there! I\u2019m here to collect feedback about Aman\u2019s work. What\u2019s your name?",
       field: 'name' as keyof FormData
     },
     {
-      text: "Nice to meet you, {name}! What's your email address so Aman can get back to you?",
+      text: "Nice to meet you, {name}! What\u2019s your email address so Aman can get back to you?",
       field: 'email' as keyof FormData
     },
     {
@@ -103,7 +103,7 @@ const AmanAsksPage = () => {
       field: 'improvements' as keyof FormData
     },
     {
-      text: "How would you rate your overall experience with Aman's portfolio? (1-5 stars)",
+      text: "How would you rate your overall experience with Aman\u2019s portfolio? (1-5 stars)",
       field: 'rating' as keyof FormData,
       type: 'rating' as const
     },
@@ -133,6 +133,7 @@ const AmanAsksPage = () => {
         }, 1000);
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeChat]);
 
   useEffect(() => {
@@ -413,7 +414,7 @@ const AmanAsksPage = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-sm sm:text-base font-medium text-foreground truncate">
-                    {chat.formData.name ? `${chat.formData.name}'s Feedback` : chat.title}
+                    {chat.formData.name ? `${chat.formData.name}\u2019s Feedback` : chat.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-muted-foreground truncate">{chat.lastMessage}</p>
                   <div className="flex items-center gap-1 mt-1">

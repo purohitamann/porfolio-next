@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { getFeaturedPosts } from '../../lib/blog';
+import { getFeaturedPosts, BlogPost } from '../../lib/blog';
 import Link from 'next/link';
 
 export default function BlogWidget({ className = '' }: { className?: string }) {
-  const featured = getFeaturedPosts() || [];
+  const featured: BlogPost[] = getFeaturedPosts() || [];
 
   const [index, setIndex] = useState(0);
 
@@ -36,7 +36,7 @@ export default function BlogWidget({ className = '' }: { className?: string }) {
           <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
             <span>{post.readTime || post.timePosted}</span>
             <div className="flex items-center gap-2">
-              {featured.map((_: any, i: number) => (
+              {featured.map((f: BlogPost, i: number) => (
                 <button key={i} onClick={() => setIndex(i)} className={`w-2 h-2 rounded-full ${i === index ? 'bg-primary' : 'bg-muted/50'}`} aria-label={`Show slide ${i + 1}`} />
               ))}
             </div>

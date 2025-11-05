@@ -36,9 +36,11 @@ export function getPostBySlug(slug?: string) {
   return posts.find(p => p.slug === slug);
 }
 
-export default {
+const blogApi = {
   getAllPosts,
   getFeaturedPosts,
   getLatest,
   getPostBySlug,
 };
+
+export default blogApi;

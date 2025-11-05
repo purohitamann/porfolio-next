@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { X, Sparkles, Calendar, Newspaper, Zap, MessageCircle, FileText } from 'lucide-react';
+import { Sparkles, Calendar, Newspaper, Zap, MessageCircle, FileText } from 'lucide-react';
 import blogData from '../../data/blog.json';
 import Image from 'next/image';
 import Hero from './Hero';
@@ -40,17 +40,24 @@ useEffect(() => {
     updateTime();
     const timer = setInterval(updateTime, 1000);
 
-    // Get battery level with fallback
-    if ('getBattery' in navigator) {
-      (navigator as any).getBattery().then((battery: any) => {
-        setBattery(Math.round(battery.level * 100));
-        battery.addEventListener('levelchange', () => {
-          setBattery(Math.round(battery.level * 100));
-        });
-      }).catch(() => {
-        // Fallback to static 100% if battery API fails
-        setBattery(100);
-      });
+    // Get battery level with fallback (use BatteryManager shape)
+    try {
+      const nav = navigator as unknown as {
+        getBattery?: () => Promise<{ level: number; addEventListener: (type: string, cb: () => void) => void }>;
+      };
+      if (nav.getBattery) {
+        nav.getBattery()
+          .then((bat) => {
+            setBattery(Math.round(bat.level * 100));
+            bat.addEventListener('levelchange', () => {
+              setBattery(Math.round(bat.level * 100));
+            });
+          })
+          .catch(() => setBattery(100));
+      }
+    } catch {
+      // If anything fails, default to 100
+      setBattery(100);
     }
 
     return () => clearInterval(timer);
@@ -63,14 +70,6 @@ useEffect(() => {
     }, 5000);
     return () => clearInterval(slideTimer);
   }, [blogPosts.length]);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % blogPosts.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + blogPosts.length) % blogPosts.length);
-  };
 
   const apps: App[] = [
     {
@@ -169,59 +168,54 @@ useEffect(() => {
 
   return (
     <div className="h-screen w-screen overflow-hidden relative">
-      {/* iOS Wallpaper - Dark Theme with Animation */}
-      <div className="absolute inset-0">
-        {/* Pixelated pattern background */}
+      {/* iOS Wallpaper Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black">
+        {/* Mesh gradient overlay */}
         <div 
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234f46e5' fill-opacity='0.4'%3E%3Cpath d='M0 0h10v10H0V0zm20 0h10v10H20V0zm20 0h10v10H40V0zm0 20h10v10H40V20zm20-20h10v10H60V0zm0 20h10v10H60V20zM0 20h10v10H0V20zm20 20h10v10H20V40zm-20 0h10v10H0V40zm40 0h10v10H40V40zM20 60h10v10H20V60zm20 0h10v10H40V60z'/%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '30px 30px',
-            imageRendering: 'pixelated'
+            background: `
+              radial-gradient(circle at 10% 20%, rgba(75, 85, 99, 0.2) 0%, transparent 50%),
+              radial-gradient(circle at 90% 80%, rgba(55, 65, 81, 0.2) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(31, 41, 55, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 10%, rgba(75, 85, 99, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 20% 90%, rgba(55, 65, 81, 0.15) 0%, transparent 50%)
+            `
           }}
         />
-        {/* Animated gradient orbs */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 animate-gradient-shift" style={{
-            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.25) 0%, transparent 50%)'
-          }} />
+        
+        {/* Animated gradient layer */}
+        <div className="absolute inset-0 opacity-30 animate-gradient-shift">
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: `
+                radial-gradient(circle at 30% 40%, rgba(75, 85, 99, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, rgba(55, 65, 81, 0.12) 0%, transparent 60%)
+              `
+            }}
+          />
         </div>
         
-        {/* Depth layers with shadows */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-indigo-500/5 rounded-full blur-2xl" />
-        </div>
-        
-        {/* Floating particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full animate-float"
-              style={{
-                width: `${Math.random() * 4 + 2}px`,
-                height: `${Math.random() * 4 + 2}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                background: `rgba(${Math.random() > 0.5 ? '59, 130, 246' : '139, 92, 246'}, ${Math.random() * 0.3 + 0.1})`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${Math.random() * 10 + 10}s`
-              }}
-            />
-          ))}
-        </div>
+        {/* Subtle noise texture */}
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundSize: '200px 200px'
+          }}
+        />
       </div>
 
       {/* Status Bar */}
       <div className="absolute top-0 left-0 right-0 h-12 bg-black/20 backdrop-blur-xl z-50">
         <div className="h-full flex items-center justify-between px-6 text-white text-sm font-medium">
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold">Aman's OS</span>
+            <span className="text-lg font-bold">Aman&apos;s OS</span>
           </div>
           <div className="flex items-center gap-2">
             <span>{battery}%</span>
+            <span className="hidden sm:inline">{currentTime}</span>
             <div className="w-6 h-3 border-2 border-white rounded-sm relative">
               <div className="absolute right-[-3px] top-1/2 -translate-y-1/2 w-1 h-2 bg-white rounded-r" />
               <div 
