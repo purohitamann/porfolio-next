@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export default function Hero() {
     return (
-        <section className="min-h-screen flex items-center justify-center px-4 pt-20 w-full overflow-x-hidden" id='about'>
+        <section className="flex items-center justify-center px-4 py-8 w-full overflow-x-hidden" id='about'>
             <div className="w-full max-w-6xl mx-auto">
                 <div className="animate-fade">
                     {/* Photo and Name Side by Side */}

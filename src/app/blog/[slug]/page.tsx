@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag, User, ChevronLeft, Chevr
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import blogData from '../../../data/blog.json';
+import { getPostBySlug } from '../../../lib/blog';
 import { Button } from '@/components/ui/button';
 
 interface BlogPost {
@@ -38,7 +38,7 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
   const { slug } = use(params);
   
   // Find the blog post by slug
-  const post = blogData.posts.find((p: BlogPost) => p.slug === slug);
+  const post = getPostBySlug(slug) as BlogPost | undefined;
 
   // Slideshow state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

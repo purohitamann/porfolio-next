@@ -5,14 +5,14 @@ import BlogFrame from './BlogFrame';
 import { motion } from 'framer-motion';
 import FloatingElement from './FloatingElement';
 
-import blogData from '../../data/blog.json';
+import { getLatest } from '../../lib/blog';
 
 const Blog = () => {
-    // Get latest 2 blog posts from JSON data
-    const blogs = blogData.posts.slice(0, 2).map(post => ({
+    // Get latest 2 blog posts from centralized blog module
+    const blogs = getLatest(2).map(post => ({
         title: post.title,
         description: post.description,
-        link: `/blog/${post.slug}`,
+        link: post.slug ? `/blog/${post.slug}` : '#',
         timePosted: post.timePosted
     }));
 
@@ -32,9 +32,9 @@ const Blog = () => {
                                         <BlogFrame
                                             key={index}
                                             title={blog.title}
-                                            description={blog.description}
+                                            description={blog.description || ''}
                                             link={blog.link}
-                                            timePosted={blog.timePosted}
+                                            timePosted={blog.timePosted || ''}
                                         />
                                     ))}
                                 </div>
