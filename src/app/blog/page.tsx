@@ -147,7 +147,7 @@ const BlogPage = () => {
               >
                 <a
                   href={post.link}
-                  className="block p-6 rounded-lg border border-border hover:border-muted-foreground transition-all bg-card/50 hover:bg-card/70"
+                  className="block p-6 rounded-lg border border-border hover:border-muted-foreground transition-all bg-muted hover:bg-secondary"
                 >
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                     <div className="flex-1">
@@ -165,7 +165,7 @@ const BlogPage = () => {
                         {post.description}
                       </p>
                       <div className="flex items-center gap-4 flex-wrap">
-                        <span className="text-sm px-3 py-1 rounded-full bg-muted/30 text-muted-foreground">
+                        <span className="text-sm px-3 py-1 rounded-full bg-secondary text-muted-foreground">
                           {post.category}
                         </span>
                         {post.readTime && (
@@ -229,7 +229,7 @@ const BlogPage = () => {
                     </p>
                   </a>
                 ) : (
-                  <div className="p-6 rounded-lg border border-border bg-card/50 h-full">
+                  <div className="p-6 rounded-lg border border-border bg-muted h-full">
                     <div className="flex items-start gap-4 mb-4">
                       <div className={`p-2 rounded-lg ${getTypeColor(highlight.type)}`}>
                         {getTypeIcon(highlight.type)}
@@ -261,7 +261,7 @@ const BlogPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-16 p-8 rounded-lg border border-border bg-card/30 text-center"
+          className="mt-16 p-8 rounded-lg border border-border bg-muted text-center"
         >
           <h3 className="text-xl font-semibold text-foreground mb-2">
             Stay Updated

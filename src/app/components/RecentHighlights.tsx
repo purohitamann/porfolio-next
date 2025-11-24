@@ -75,7 +75,7 @@ const RecentHighlights = () => {
               {highlight.link ? (
                 <a
                   href={highlight.link}
-                  className="block p-4 rounded-lg border border-border hover:border-muted-foreground transition-all bg-card/50 hover:bg-card/70"
+                  className="block p-4 rounded-lg border border-border hover:border-muted-foreground transition-all bg-muted hover:bg-secondary"
                 >
                   <div className="flex items-start gap-3">
                     <div className={`mt-1 ${getTypeColor(highlight.type)}`}>
@@ -98,7 +98,7 @@ const RecentHighlights = () => {
                   </div>
                 </a>
               ) : (
-                <div className="p-4 rounded-lg border border-border bg-card/50">
+                <div className="p-4 rounded-lg border border-border bg-muted">
                   <div className="flex items-start gap-3">
                     <div className={`mt-1 ${getTypeColor(highlight.type)}`}>
                       {getTypeIcon(highlight.type)}

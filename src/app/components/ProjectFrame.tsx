@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Github } from 'lucide-react';
 import Image from 'next/image';
-import { useCursorHover } from '../hooks/useCursorHover';
+
 import ProjectModal from './ProjectModal';
 import FloatingElement from './FloatingElement';
 import { motion } from 'framer-motion';
@@ -36,8 +36,6 @@ const ProjectFrame = ({
     isVideo = false,
 }: ProjectFrameProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const linkCursorHandlers = useCursorHover('link');
-    const hoverCursorHandlers = useCursorHover('hover');
 
     return (
         <>
@@ -45,7 +43,6 @@ const ProjectFrame = ({
                 <motion.div 
                     className="flex justify-start items-start text-start p-4 cursor-pointer" 
                     onClick={() => setIsModalOpen(true)}
-                    {...hoverCursorHandlers}
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                 >
@@ -84,7 +81,6 @@ const ProjectFrame = ({
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                                     onClick={(e) => e.stopPropagation()}
-                                    {...linkCursorHandlers}
                                 >
                                     <Github className="h-5 w-5" />
                                     <span>View Code</span>

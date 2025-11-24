@@ -1,13 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { useCursorHover } from '../hooks/useCursorHover';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export default function ResumePage() {
   const [isLoading, setIsLoading] = useState(true);
-  const linkCursorHandlers = useCursorHover('link');
   
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,7 +20,7 @@ export default function ResumePage() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-6">
           <Link href="/">
-            <Button variant="outline" className="group" {...linkCursorHandlers}>
+            <Button variant="outline" className="group">
               <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Back to Home
             </Button>

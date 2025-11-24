@@ -8,6 +8,16 @@ import { motion } from 'framer-motion';
 const HackathonWins = () => {
     const hackathons = [
         {
+            name: "Canada Devops Community of Practice Hackathon for GenAI",
+            project: "Pagragon AI: GenAI as a Service - Deploye AI Agents from CLI",
+            position: "Winner - 2nd Place",
+            date: "November 2025",
+            teamSize: 5,
+            description: "Developed a CLI tool to deploy AI agents on cloud infrastructure with customizable prompts and tools, competing against 100+ hackers.",
+            techStack: "TypeScript, Node.js, OpenAI API, Docker, AWS EKS, Digital Ocean"
+
+        },
+        {
             name: "Nosu AI Hackathon",
             project: "Swot-up: Contextual Exam Preparation",
             position: "Winner - Best use of AI, Supercool Awesome Idea",
@@ -29,12 +39,12 @@ const HackathonWins = () => {
     ];
 
     return (
-        <div className="bg-background py-20">
+        <div className=" py-20">
             <SectionWrapper title="Hackathon Achievements">
                 <div className="max-w-4xl mx-auto">
                     <FloatingElement>
                         <motion.div 
-                            className="bg-background/50 backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
+                            className=" backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
@@ -43,7 +53,7 @@ const HackathonWins = () => {
                                     {hackathons.map((hackathon, index) => (
                                         <motion.div 
                                             key={hackathon.name}
-                                            className="bg-muted/30 rounded-xl p-6 border border-border hover:border-muted-foreground transition-all"
+                                            className="bg-muted rounded-xl p-6 border border-border hover:border-muted-foreground transition-all"
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: index * 0.1 }}

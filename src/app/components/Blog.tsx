@@ -1,47 +1,41 @@
 'use client';
 import React from 'react';
 import SectionWrapper from './SectionWrapper';
-import BlogFrame from './BlogFrame';
-import { motion } from 'framer-motion';
-import FloatingElement from './FloatingElement';
-
+import BlogSlideshow from './BlogSlideshow';
 import blogData from '../../data/blog.json';
 
 const Blog = () => {
-    // Get latest 2 blog posts from JSON data
-    const blogs = blogData.posts.slice(0, 2).map(post => ({
+    const staticPosts = [
+        {
+            title: "My First Open-Source Contribution to the Internet Archive",
+            description: "Even though it was a small 'good first issue,' it felt incredibly exciting. Documenting my journey and the lessons learned from contributing to such an important project.",
+            link: "https://medium.com/@purohitamann/my-first-open-source-contribution-to-the-internet-archive-6ec2621b8a68",
+            timePosted: "January 2025",
+            category: "Open Source"
+        },
+        {
+            title: "Students guide to becoming 'AI first' at School",
+            description: "There's more to using ChatGPT than just helping you paraphrase. A comprehensive guide for students to effectively leverage AI tools in their academic journey.",
+            link: "https://medium.com/p/d004dbc7a633",
+            timePosted: "December 2024",
+            category: "AI & Education"
+        }
+    ];
+
+    const jsonPosts = blogData.posts.map(post => ({
         title: post.title,
         description: post.description,
-        link: `/blog/${post.slug}`,
-        timePosted: post.timePosted
+        link: post.slug ? `/blog/${post.slug}` : '#',
+        timePosted: post.timePosted,
+        category: post.category
     }));
 
+    const allPosts = [...jsonPosts, ...staticPosts];
+
     return (
-        <div id="blog" className="bg-background">
+        <div id="blog" className=" py-8">
             <SectionWrapper title="Blog">
-                <div className="max-w-4xl mx-auto">
-                    <FloatingElement>
-                        <motion.div 
-                            className="bg-background/50 backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                        >
-                            <div className="p-8 space-y-6">
-                                <div className="space-y-6">
-                                    {blogs.map((blog, index) => (
-                                        <BlogFrame
-                                            key={index}
-                                            title={blog.title}
-                                            description={blog.description}
-                                            link={blog.link}
-                                            timePosted={blog.timePosted}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    </FloatingElement>
-                </div>
+                <BlogSlideshow posts={allPosts} />
             </SectionWrapper>
         </div>
     );

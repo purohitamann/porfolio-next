@@ -24,12 +24,12 @@ const OpenSourceContribution = () => {
     ];
 
     return (
-        <div className="bg-background py-20">
+        <div className=" py-20">
             <SectionWrapper title="Open Source">
                 <div className="max-w-4xl mx-auto">
                     <FloatingElement>
                         <motion.div 
-                            className="bg-background/50 backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
+                            className=" backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
@@ -48,7 +48,7 @@ const OpenSourceContribution = () => {
                                     <a href="https://github.com/purohitamann" target="_blank" rel="noopener noreferrer">
                                         <Button 
                                             variant="outline" 
-                                            className="group button-hover-translate bg-background/50 backdrop-blur-sm border-muted hover:bg-muted/20 hover:border-muted-foreground"
+                                            className="group button-hover-translate bg-muted hover:bg-secondary hover:border-muted-foreground"
                                         >
                                             <Github className="mr-2 h-4 w-4" />
                                             GitHub Profile
@@ -57,7 +57,7 @@ const OpenSourceContribution = () => {
                                     <Link href="/projects">
                                         <Button 
                                             variant="outline" 
-                                            className="group button-hover-translate bg-background/50 backdrop-blur-sm border-muted hover:bg-muted/20 hover:border-muted-foreground"
+                                            className="group button-hover-translate bg-muted hover:bg-secondary hover:border-muted-foreground"
                                         >
                                             View All Projects
                                             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -69,7 +69,7 @@ const OpenSourceContribution = () => {
                                     {contributions.map((contrib, index) => (
                                         <motion.div 
                                             key={contrib.org}
-                                            className="bg-muted/30 rounded-xl p-6 border border-border hover:border-muted-foreground transition-all"
+                                            className="bg-muted rounded-xl p-6 border border-border hover:border-muted-foreground transition-all"
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: index * 0.1 }}
@@ -97,13 +97,13 @@ const OpenSourceContribution = () => {
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                                    <div className="bg-muted/30 rounded-xl p-6 border border-border hover:border-muted-foreground transition-all">
+                                    <div className="bg-muted rounded-xl p-6 border border-border hover:border-muted-foreground transition-all">
                                         <h3 className="text-lg font-medium text-foreground mb-2">Impact</h3>
                                         <p className="text-muted-foreground/80">
                                             Contributing to projects that impact more than 2.4 millions+ monthly users worldwide, from digital library access to cloud computing solutions.
                                         </p>
                                     </div>
-                                    <div className="bg-muted/30 rounded-xl p-6 border border-border hover:border-muted-foreground transition-all">
+                                    <div className="bg-muted rounded-xl p-6 border border-border hover:border-muted-foreground transition-all">
                                         <h3 className="text-lg font-medium text-foreground mb-2">Focus Areas</h3>
                                         <p className="text-muted-foreground/80">
                                             Specializing in user experience improvements, accessibility enhancements, and developer tool optimization.

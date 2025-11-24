@@ -14,7 +14,7 @@ export default function Hero() {
                     <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mb-12">
                         {/* Profile Photo */}
                         <div className="flex-shrink-0">
-                            <div className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 rounded-full bg-muted/20 border-2 border-border/30 overflow-hidden relative">
+                            <div className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 rounded-full bg-muted border-2 border-border overflow-hidden relative">
                                 <Image 
                                     src="/profile.jpg" 
                                     alt="Aman Purohit" 

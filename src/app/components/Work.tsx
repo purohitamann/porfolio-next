@@ -6,7 +6,7 @@ import experience from '../../data/work.json';
 
 const Work = () => {
     return (
-        <div id="work" className="bg-background">
+        <div id="work" className="">
             <SectionWrapper title="Experience">
                 <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto">
                     {experience.work.map((work) => (

@@ -29,7 +29,7 @@ export default function Experience({ role, company, startDate, endDate, descript
                 </div>
             </Link>
             
-            <div className="flex-1 bg-muted/30 rounded-2xl p-6 border border-border hover:border-muted-foreground transition-all">
+            <div className="flex-1 bg-muted rounded-2xl p-6 border border-border hover:border-muted-foreground transition-all">
                 <div className="flex flex-col md:items-start md:justify-start">
                     <h1 className="text-xl font-semibold text-foreground">{role}</h1>
                     <Link href={link} target="_blank" className="text-lg text-muted-foreground hover:text-foreground transition-colors">

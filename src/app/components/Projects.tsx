@@ -6,7 +6,7 @@ import project from '../../data/project.json';
 
 const Projects = () => {
     return (
-        <div id="projects" className="bg-background ">
+        <div id="projects" className="bg-muted">
             <SectionWrapper title="Featured Projects">
                 <div className="w-full flex flex-col gap-12 max-w-6xl mx-auto">
                     {/* Featured Project */}
