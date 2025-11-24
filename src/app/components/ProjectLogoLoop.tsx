@@ -4,15 +4,46 @@ import LogoLoop from '@/components/LogoLoop';
 import projectData from '../../data/project.json';
 import ProjectFrame from './ProjectFrame';
 
+// Define the Project interface
+interface Project {
+  id: number;
+  image: string;
+  name: string;
+  live_link?: string;
+  techStack: string;
+  link: string;
+  description: string;
+  features: string[];
+  challenges?: string[];
+  learnings?: string[];
+}
+
+// Define LogoLoop props interface
+interface LogoLoopProps {
+  logos: {
+    node: React.ReactNode;
+    title: string;
+    ariaLabel: string;
+  }[];
+  speed: number;
+  direction: string;
+  logoHeight: number;
+  gap: number;
+  hoverSpeed: number;
+  scaleOnHover: boolean;
+  fadeOut: boolean;
+  ariaLabel: string;
+}
+
 // Type assertion for LogoLoop since it's a .jsx file
-const TypedLogoLoop = LogoLoop as any;
+const TypedLogoLoop = LogoLoop as React.ComponentType<LogoLoopProps>;
 
 const ProjectLogoLoop = () => {
   // Only use projects from the projects array
-  const allProjects = projectData.project.projects;
+  const allProjects = projectData.project.projects as Project[];
 
   // Create logo items with ProjectFrame components
-  const projectLogos = allProjects.map((project, index) => ({
+  const projectLogos = allProjects.map((project: Project, index: number) => ({
     node: (
       <div key={`project-${project.id}-${index}`} className="w-[280px] h-[360px] sm:w-[250px] sm:h-[420px] md:w-[500px] md:h-[480px]" onClick={(e) => e.stopPropagation()}>
         <ProjectFrame
@@ -25,7 +56,7 @@ const ProjectLogoLoop = () => {
           features={project.features}
           challenges={project.challenges}
           learnings={project.learnings}
-          live_link={('live_link' in project ? project.live_link : undefined) as string | undefined}
+          live_link={project.live_link}
           isVideo={project.image?.includes('.mp4') || project.image?.includes('.mov') || project.image?.includes('.GIF')}
           className="w-full h-full"
         />

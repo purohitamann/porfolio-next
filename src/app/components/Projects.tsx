@@ -1,8 +1,5 @@
 'use client';
 import React from 'react';
-import SectionWrapper from './SectionWrapper';
-import ProjectFrame from './ProjectFrame';
-import project from '../../data/project.json';
 import ProjectLogoLoop from './ProjectLogoLoop';
 import { motion } from 'framer-motion';
 

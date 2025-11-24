@@ -8,7 +8,6 @@ import OpenSourceContribution from "./work/OpenSourceContribution";
 import Blog from "./components/Blog";
 import HackathonWins from "./components/HackathonWins";
 import Blurb from "./components/Blurb";
-import RecentHighlights from "./components/RecentHighlights";
 import { motion } from "framer-motion";
 
 export default function Home() {

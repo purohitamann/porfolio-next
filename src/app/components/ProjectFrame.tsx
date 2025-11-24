@@ -27,7 +27,6 @@ const ProjectFrame = ({
     name,
     techStack,
     link,
-    className,
     live_link,
     description,
     features,
