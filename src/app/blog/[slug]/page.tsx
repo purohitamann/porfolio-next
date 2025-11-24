@@ -1,7 +1,7 @@
 'use client';
 import React, { use, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag, User, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag, User, ChevronLeft, ChevronRight, Camera, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -25,6 +25,7 @@ interface BlogPost {
   featuredImages?: string[]; // Multiple featured images for slideshow
   images?: string[]; // Add this for content images
   photographer?: string; // Add photographer field
+  links?: Array<{ name: string; url: string }>; // External links
 }
 
 interface BlogPostPageProps {
@@ -225,7 +226,7 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
                         src={slideshowImages[currentImageIndex]}
                         className="w-full h-full object-cover"
                         autoPlay
-                        muted
+                        // muted
                         loop
                         playsInline
                         controls={false}
@@ -345,6 +346,37 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
               <span>{post.readTime}</span>
             </div>
           </div>
+
+          {/* Links Section */}
+          {post.links && post.links.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-8 p-6 rounded-lg border border-border bg-card/50"
+            >
+              <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+                <ExternalLink className="h-5 w-5" />
+                Related Links
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {post.links.map((linkItem, idx) => (
+                  <a
+                    key={idx}
+                    href={linkItem.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex"
+                  >
+                    <Button variant="outline" className="gap-2">
+                      <ExternalLink className="h-4 w-4" />
+                      {linkItem.name}
+                    </Button>
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </motion.header>
 
         {/* Article Content */}

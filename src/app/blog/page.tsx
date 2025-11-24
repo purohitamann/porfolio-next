@@ -145,10 +145,11 @@ const BlogPage = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                <a
-                  href={post.link}
-                  className="block p-6 rounded-lg border border-border hover:border-muted-foreground transition-all bg-muted hover:bg-secondary"
-                >
+                <div className="glass w-full rounded-xl">
+                  <a
+                    href={post.link}
+                    className="block p-6 rounded-xl hover:bg-white/5 transition-all"
+                  >
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-start justify-between gap-2 mb-3">
@@ -180,7 +181,8 @@ const BlogPage = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                  </a>
+                </div>
               </motion.article>
             ))}
           </div>
@@ -196,15 +198,16 @@ const BlogPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: (index + blogPosts.length) * 0.1 }}
-                className="group"
+                className="group h-full"
               >
                 {highlight.link ? (
-                  <a
-                    href={highlight.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block p-6 rounded-lg border border-border hover:border-muted-foreground transition-all bg-card/50 hover:bg-card/70 h-full"
-                  >
+                  <div className="glass-light w-full h-full rounded-xl">
+                    <a
+                      href={highlight.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block p-6 rounded-xl hover:bg-white/5 transition-all h-full"
+                    >
                     <div className="flex items-start gap-4 mb-4">
                       <div className={`p-2 rounded-lg ${getTypeColor(highlight.type)}`}>
                         {getTypeIcon(highlight.type)}
@@ -227,9 +230,11 @@ const BlogPage = () => {
                     <p className="text-sm text-muted-foreground/60">
                       {highlight.date}
                     </p>
-                  </a>
+                    </a>
+                  </div>
                 ) : (
-                  <div className="p-6 rounded-lg border border-border bg-muted h-full">
+                  <div className="glass-light w-full h-full rounded-xl">
+                    <div className="p-6 rounded-xl h-full">
                     <div className="flex items-start gap-4 mb-4">
                       <div className={`p-2 rounded-lg ${getTypeColor(highlight.type)}`}>
                         {getTypeIcon(highlight.type)}
@@ -249,6 +254,7 @@ const BlogPage = () => {
                     <p className="text-sm text-muted-foreground/60">
                       {highlight.date}
                     </p>
+                    </div>
                   </div>
                 )}
               </motion.div>
@@ -261,8 +267,9 @@ const BlogPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-16 p-8 rounded-lg border border-border bg-muted text-center"
         >
+          <div className="glass w-full rounded-xl">
+            <div className="p-8 rounded-xl text-center">
           <h3 className="text-xl font-semibold text-foreground mb-2">
             Stay Updated
           </h3>
@@ -275,6 +282,8 @@ const BlogPage = () => {
               <ArrowUpRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
+            </div>
+          </div>
         </motion.section>
       </div>
     </div>

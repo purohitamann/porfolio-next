@@ -1,5 +1,21 @@
 {
   "highlights": [
+    {
+      "id": 11,
+      "title": "Won a Google Award for Best Use of GCP at Sheridan Datathon 2025",
+      "description": "Developed 'Avacado', an AI-driven housing recommendation system, winning the Best Use of GCP award among 30+ teams.",
+      "date": "November 2025",
+      "type": "achievement",
+      "link": "/blog/devfest-2025-sheridan-datathon-recap"
+    },
+         {
+      "id": 9,
+      "title": "Won 2nd Place at Canada DevOps CoP Hackathon for GenAI",
+      "description": "Built Paragon AI - a CLI tool to deploy GenAI agents on Kubernetes clusters, securing 2nd place among 50+ teams.",
+      "date": "November 2025",
+      "type": "achievement",
+      "link": "/blog/we-got-the-place-surrounded"
+    },
 
         {
       "id": 9,

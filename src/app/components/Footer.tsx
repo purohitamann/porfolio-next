@@ -8,8 +8,9 @@ type Props = {
 
 const Footer = ({ className }: Props) => {
     return (
-        <footer className={`border-t border-border/50 mt-24 ${className}`} id="contact">
-            <div className="max-w-6xl mx-auto px-6 md:px-8 py-16">
+        <footer className={`mt-24 ${className}`} id="contact">
+            <div className="glass w-full border-t border-border/30">
+                <div className="max-w-6xl mx-auto px-6 md:px-8 py-16">
                 <div className="text-center space-y-8">
                     <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
                         {footer.title}
@@ -33,6 +34,7 @@ const Footer = ({ className }: Props) => {
                     <p className="text-sm text-muted-foreground pt-8 border-t border-border/30">
                         &copy; 2024 Aman Purohit. All rights reserved.
                     </p>
+                </div>
                 </div>
             </div>
         </footer>

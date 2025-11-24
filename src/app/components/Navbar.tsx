@@ -22,8 +22,9 @@ const Navbar = () => {
     };
 
     return (
-        <div className="w-full bg-background border-b border-border top-0 left-0 z-50 fixed">
-            <div className="max-w-6xl mx-auto flex justify-between items-center px-6 md:px-8 py-4">
+        <div className="w-full top-0 left-0 z-50 fixed">
+            <div className="glass w-full border-b border-border/30">
+                <div className="max-w-6xl mx-auto flex justify-between items-center px-6 md:px-8 py-4">
                 <Link href="/" className="text-foreground font-semibold text-xl hover:text-muted-foreground transition-colors">
                     Aman Purohit
                 </Link>
@@ -56,9 +57,10 @@ const Navbar = () => {
                         Contact
                     </button>
                 </nav>
+                </div>
             </div>
             {isOpen && (
-                <div className="md:hidden bg-background border-b border-border/50">
+                <div className="glass md:hidden w-full border-b border-border/30">
                     <nav className="max-w-6xl mx-auto px-6 py-4 space-y-4">
                         <button
                             className="block text-foreground hover:text-muted-foreground transition-colors"

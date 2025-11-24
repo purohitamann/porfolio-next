@@ -7,6 +7,19 @@ import { motion } from 'framer-motion';
 
 const HackathonWins = () => {
     const hackathons = [
+        
+              {
+            name: "Sheridan Datathon 2025",
+            project: "Avacado - Plan your next move",
+            position: "Winner - Top-4 Project - Best Use of GCP, runner up for Best UI/UX",
+            date: "November 2025",
+            teamSize: 5,
+            description: "Developed a CLI tool to deploy AI agents on cloud infrastructure with customizable prompts and tools, competing against 100+ hackers.",
+            techStack: "TypeScript, Node.js, OpenAI API, Docker, AWS EKS, Digital Ocean"
+
+        },
+        
+
         {
             name: "Canada Devops Community of Practice Hackathon for GenAI",
             project: "Pagragon AI: GenAI as a Service - Deploye AI Agents from CLI",
@@ -43,21 +56,22 @@ const HackathonWins = () => {
             <SectionWrapper title="Hackathon Achievements">
                 <div className="max-w-4xl mx-auto">
                     <FloatingElement>
-                        <motion.div 
-                            className=" backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                        >
-                            <div className="p-8 space-y-6">
-                                <div className="space-y-4">
-                                    {hackathons.map((hackathon, index) => (
-                                        <motion.div 
-                                            key={hackathon.name}
-                                            className="bg-muted rounded-xl p-6 border border-border hover:border-muted-foreground transition-all"
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: index * 0.1 }}
-                                        >
+                        <div className="glass w-full rounded-3xl">
+                            <motion.div 
+                                className="rounded-3xl overflow-hidden"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                            >
+                                <div className="p-8 space-y-6">
+                                    <div className="space-y-4">
+                                        {hackathons.map((hackathon, index) => (
+                                            <div key={hackathon.name} className="glass-light w-full rounded-2xl">
+                                                <motion.div 
+                                                    className="rounded-2xl p-6 hover:bg-white/5 transition-all"
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: index * 0.1 }}
+                                                >
                                             <div className="flex items-start justify-between mb-4">
                                                 <div>
                                                     <h3 className="text-xl font-semibold text-foreground">
@@ -99,12 +113,14 @@ const HackathonWins = () => {
                                                 <p className="text-sm text-muted-foreground mt-2">
                                                     Tech Stack: {hackathon.techStack}
                                                 </p>
+                                                </div>
+                                                </motion.div>
                                             </div>
-                                        </motion.div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
+                            </motion.div>
+                        </div>
                     </FloatingElement>
                 </div>
             </SectionWrapper>

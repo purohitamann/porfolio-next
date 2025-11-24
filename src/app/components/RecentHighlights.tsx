@@ -72,51 +72,53 @@ const RecentHighlights = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              {highlight.link ? (
-                <a
-                  href={highlight.link}
-                  className="block p-4 rounded-lg border border-border hover:border-muted-foreground transition-all bg-muted hover:bg-secondary"
-                >
-                  <div className="flex items-start gap-3">
-                    <div className={`mt-1 ${getTypeColor(highlight.type)}`}>
-                      {getTypeIcon(highlight.type)}
+              <div className="glass-light w-full rounded-xl">
+                {highlight.link ? (
+                  <a
+                    href={highlight.link}
+                    className="block p-4 rounded-xl hover:bg-white/5 transition-all"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className={`mt-1 ${getTypeColor(highlight.type)}`}>
+                        {getTypeIcon(highlight.type)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2">
+                          <h3 className="font-medium text-foreground group-hover:text-foreground/90 transition-colors">
+                            {highlight.title}
+                          </h3>
+                          <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0" />
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                          {highlight.description}
+                        </p>
+                        <p className="text-xs text-muted-foreground/60 mt-2">
+                          {highlight.date}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-2">
-                        <h3 className="font-medium text-foreground group-hover:text-foreground/90 transition-colors">
+                  </a>
+                ) : (
+                  <div className="p-4 rounded-xl">
+                    <div className="flex items-start gap-3">
+                      <div className={`mt-1 ${getTypeColor(highlight.type)}`}>
+                        {getTypeIcon(highlight.type)}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-medium text-foreground">
                           {highlight.title}
                         </h3>
-                        <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0" />
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {highlight.description}
+                        </p>
+                        <p className="text-xs text-muted-foreground/60 mt-2">
+                          {highlight.date}
+                        </p>
                       </div>
-                      <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
-                        {highlight.description}
-                      </p>
-                      <p className="text-xs text-muted-foreground/60 mt-2">
-                        {highlight.date}
-                      </p>
                     </div>
                   </div>
-                </a>
-              ) : (
-                <div className="p-4 rounded-lg border border-border bg-muted">
-                  <div className="flex items-start gap-3">
-                    <div className={`mt-1 ${getTypeColor(highlight.type)}`}>
-                      {getTypeIcon(highlight.type)}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-medium text-foreground">
-                        {highlight.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {highlight.description}
-                      </p>
-                      <p className="text-xs text-muted-foreground/60 mt-2">
-                        {highlight.date}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
+                )}
+              </div>
             </motion.div>
           ))}
         </div>

@@ -24,7 +24,9 @@ interface ProjectModalProps {
 
 const ProjectModal = ({ isOpen, onClose, project, isVideo =false }: ProjectModalProps) => (
   <Dialog open={isOpen} onOpenChange={onClose}>
-    <DialogContent className="max-w-3xl w-[90vw] max-h-[90vh] overflow-y-auto bg-background">
+    <DialogContent className="max-w-3xl w-[90vw] max-h-[90vh] overflow-y-auto bg-transparent border-0">
+      <div className="glass-strong w-full rounded-2xl">
+        <div className="p-6">
       <DialogHeader>
         <DialogTitle className="text-2xl font-bold text-foreground">{project.name}</DialogTitle>
       </DialogHeader>
@@ -112,6 +114,8 @@ const ProjectModal = ({ isOpen, onClose, project, isVideo =false }: ProjectModal
             </a>) :(null)}
           
        
+        </div>
+      </div>
         </div>
       </div>
     </DialogContent>

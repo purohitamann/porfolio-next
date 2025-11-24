@@ -1,29 +1,8 @@
 {
   "project": {
-    "featured": [{
-      "id": 1,
-      "image": "/btm.png",
-      "name": "Brain Tumor Classification Model",
-      "techStack": "Streamlit, Python, Tensorflow, Gemini",
-      "link": "https://github.com/purohitamann/BrainTumorClassficationModel",
-      "description": "An AI-powered solution for accurate brain tumor classification using deep learning and advanced image processing techniques.",
-      "features": [
-        "Deep learning model for tumor classification",
-        "Interactive Streamlit interface",
-        "Real-time image processing",
-        "AI-assisted diagnosis support"
-      ],
-      "challenges": [
-        "Optimizing model accuracy while maintaining performance",
-        "Handling diverse medical image formats",
-        "Implementing real-time processing capabilities"
-      ],
-      "learnings": [
-        "Advanced deep learning architectures",
-        "Medical image processing techniques",
-        "Building production-ready ML applications"
-      ]
-    },{
+
+    "projects": [
+      {
       "id": 2,
       "image": "/demo.mp4",
       "name": "boilrplate CLI",
@@ -47,10 +26,59 @@
         "Medical image processing techniques",
         "Building production-ready ML applications"
       ]
-    }],
-    "projects": [
+    },
+     {
+        "id": 31,
+        "image": "/hack/devops/demo.mp4",
+        "name": "Paragon AI - GenAI Agent Deployment",
+        "techStack": "Typescript, Groq, Digital Ocean, Python, Kubernetes, Docker, GenAI, Terraform",
+        "link": "https://github.com/purohitamann/ParagonAI-The-Null-Pointers",
+        "description": "Deploy multiple GenAI agents on Kubernetes clusters from your CLI, built under 24 hours.",
+        "features": [
+          "Automated code review suggestions",
+          "Integration with GitHub API",
+          "Real-time feedback on code quality"
+        ]
+      }, {
+        "id": 12,
+        "image": "/hack/datathon25/avocadodemo.mp4",
+
+        "name": "Avacado - Plan your next move",
+        "techStack": "Python, RandomForest, RandomRegressorClassifier, Pandas, Matplotlib, Seaborn, GCP - Cloud Run, GoogleMaps, Gemini, Typescript, tailwind, Next.js",
+        "link": "https://github.com/purohitamann/Avocado/tree/main",
+        "description": "Find out the best places to live based on your preferences using data-driven insights and AI, built during Sheridan Datathon 2025 in less than 12 hours.",
+        "features": [
+          "Automated insights on housing data",
+          "Realtime Location-based recommendations",
+          "Integration with Google Maps API"
+        ]
+      },
       {
-        "id": 2,
+      "id": 1,
+      "image": "/btm.png",
+      "name": "Brain Tumor Classification Model",
+      "techStack": "Streamlit, Python, Tensorflow, Gemini",
+      "link": "https://github.com/purohitamann/BrainTumorClassficationModel",
+      "description": "An AI-powered solution for accurate brain tumor classification using deep learning and advanced image processing techniques.",
+      "features": [
+        "Deep learning model for tumor classification",
+        "Interactive Streamlit interface",
+        "Real-time image processing",
+        "AI-assisted diagnosis support"
+      ],
+      "challenges": [
+        "Optimizing model accuracy while maintaining performance",
+        "Handling diverse medical image formats",
+        "Implementing real-time processing capabilities"
+      ],
+      "learnings": [
+        "Advanced deep learning architectures",
+        "Medical image processing techniques",
+        "Building production-ready ML applications"
+      ]
+    },
+      {
+        "id": 22,
         "image": "/pr.png",
 
         "name": "ALT - PR Review Agent",
@@ -64,7 +92,7 @@
         ]
       },
       {
-        "id": 3,
+        "id": 31,
         "image": "/ssc-dashboard.png",
         "name": "Sheridan Swiftie Club Portal",
         "techStack": "React(Next.js), Tailwind, Firebase",

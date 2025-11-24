@@ -28,11 +28,12 @@ const OpenSourceContribution = () => {
             <SectionWrapper title="Open Source">
                 <div className="max-w-4xl mx-auto">
                     <FloatingElement>
-                        <motion.div 
-                            className=" backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                        >
+                        <div className="glass w-full rounded-2xl">
+                          <motion.div 
+                              className="rounded-2xl overflow-hidden"
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                          >
                             <div className="p-8 space-y-6">
                                 <div>
                                     <h2 className="text-xl font-semibold text-foreground mb-3">
@@ -67,13 +68,13 @@ const OpenSourceContribution = () => {
 
                                 <div className="space-y-4">
                                     {contributions.map((contrib, index) => (
-                                        <motion.div 
-                                            key={contrib.org}
-                                            className="bg-muted rounded-xl p-6 border border-border hover:border-muted-foreground transition-all"
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: index * 0.1 }}
-                                        >
+                                        <div key={contrib.org} className="glass-light w-full rounded-2xl">
+                                          <motion.div 
+                                              className="rounded-2xl p-6 hover:bg-white/5 transition-all"
+                                              initial={{ opacity: 0, y: 20 }}
+                                              animate={{ opacity: 1, y: 0 }}
+                                              transition={{ delay: index * 0.1 }}
+                                          >
                                             <div className="flex items-center gap-2 mb-2">
                                                 <GitPullRequest className="h-5 w-5 text-muted-foreground" />
                                                 <h3 className="text-lg font-medium text-foreground">
@@ -92,26 +93,32 @@ const OpenSourceContribution = () => {
                                                 <GitFork className="h-4 w-4 mr-2" />
                                                 View Repository
                                             </a>
-                                        </motion.div>
+                                          </motion.div>
+                                        </div>
                                     ))}
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                                    <div className="bg-muted rounded-xl p-6 border border-border hover:border-muted-foreground transition-all">
+                                    <div className="glass-light w-full rounded-2xl">
+                                      <div className="rounded-2xl p-6 hover:bg-white/5 transition-all">
                                         <h3 className="text-lg font-medium text-foreground mb-2">Impact</h3>
                                         <p className="text-muted-foreground/80">
                                             Contributing to projects that impact more than 2.4 millions+ monthly users worldwide, from digital library access to cloud computing solutions.
                                         </p>
+                                      </div>
                                     </div>
-                                    <div className="bg-muted rounded-xl p-6 border border-border hover:border-muted-foreground transition-all">
+                                    <div className="glass-light w-full rounded-2xl">
+                                      <div className="rounded-2xl p-6 hover:bg-white/5 transition-all">
                                         <h3 className="text-lg font-medium text-foreground mb-2">Focus Areas</h3>
                                         <p className="text-muted-foreground/80">
                                             Specializing in user experience improvements, accessibility enhancements, and developer tool optimization.
                                         </p>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
+                          </motion.div>
+                        </div>
                     </FloatingElement>
                 </div>
             </SectionWrapper>

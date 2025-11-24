@@ -80,12 +80,13 @@ const GitHubProjects: React.FC = () => {
                     <div className="space-y-6">
                         {projects.map((project, index) => (
                             <FloatingElement key={project.name}>
-                                <motion.div 
-                                    className="bg-background/50 backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1 }}
-                                >
+                                <div className="glass w-full rounded-2xl">
+                                  <motion.div 
+                                      className="rounded-2xl overflow-hidden"
+                                      initial={{ opacity: 0, y: 20 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      transition={{ delay: index * 0.1 }}
+                                  >
                                     <div className="p-6 space-y-4">
                                         <div className="flex justify-between items-start">
                                             <div>
@@ -150,7 +151,8 @@ const GitHubProjects: React.FC = () => {
                                             </motion.div>
                                         )}
                                     </div>
-                                </motion.div>
+                                  </motion.div>
+                                </div>
                             </FloatingElement>
                         ))}
                     </div>
