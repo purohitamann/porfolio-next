@@ -43,7 +43,7 @@
         "id": 12,
         "image": "/hack/datathon25/avocadodemo.mp4",
 
-        "name": "Avacado - Plan your next move",
+        "name": "Avocado - Plan your next move",
         "techStack": "Python, RandomForest, RandomRegressorClassifier, Pandas, Matplotlib, Seaborn, GCP - Cloud Run, GoogleMaps, Gemini, Typescript, tailwind, Next.js",
         "link": "https://github.com/purohitamann/Avocado/tree/main",
         "description": "Find out the best places to live based on your preferences using data-driven insights and AI, built during Sheridan Datathon 2025 in less than 12 hours.",
